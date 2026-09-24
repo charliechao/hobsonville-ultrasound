@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Callout from '../components/Callout.astro';
 import { pricingGroups } from '../data/services';
+import { site } from '../data/site';
 ---
 
 <Layout
@@ -17,6 +18,23 @@ import { pricingGroups } from '../data/services';
   <section class="section">
     <div class="container two-column">
       <div>
+        <div class="notice notice-strong" id="referral">
+          <h2>All scans require a referral</h2>
+          <p>
+            We accept referrals from registered New Zealand health
+            professionals, including GPs and medical specialists, sport and
+            exercise physicians, chiropractors, physiotherapists, osteopaths,
+            podiatrists, nurse practitioners, LMCs and midwives.
+          </p>
+          <p>
+            Already have a referral? Send a copy or clear photo to{' '}
+            <a href={`mailto:${site.email}`} data-event="email_click">
+              {site.email}
+            </a>{' '}
+            before booking, or bring it to your appointment. If you are unsure
+            whether your referral is suitable, please contact us.
+          </p>
+        </div>
         {pricingGroups.map((group) => (
           <table class="price-table">
             <caption>{group.name}</caption>

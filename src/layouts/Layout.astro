@@ -17,8 +17,16 @@ interface Props {
   description: string;
   schema?: Record<string, unknown>;
   noindex?: boolean;
+  fullTitle?: boolean;
 }
-const { title, description, schema, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  schema,
+  noindex = false,
+  fullTitle = false,
+} = Astro.props;
+const pageTitle = fullTitle ? title : `${title} | ${site.name}`;
 const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
 const ga = import.meta.env.PUBLIC_GA4_ID;
 const basePath =
@@ -47,6 +55,9 @@ const clinic = {
   '@type': 'MedicalClinic',
   '@id': `${site.url}/#clinic`,
   name: site.name,
+  alternateName: site.formerName,
+  description:
+    'Diagnostic ultrasound clinic in Hobsonville, West Auckland, formerly known as Body 2 Baby Ultrasound.',
   url: site.url,
   telephone: '+6498693328',
   email: site.email,
@@ -73,7 +84,7 @@ const clinic = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} | Hobsonville Ultrasound</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="stylesheet" href={globalStyles} />
@@ -84,7 +95,7 @@ const clinic = {
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_NZ" />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:title" content={`${title} | ${site.name}`} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta

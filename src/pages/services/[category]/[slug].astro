@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Callout from '../../../components/Callout.astro';
+import FAQ from '../../../components/FAQ.astro';
 import Photo from '../../../components/Photo.astro';
 import Icon from '../../../components/Icon.astro';
 import { images } from '../../../data/images';
@@ -21,6 +22,18 @@ export function getStaticPaths() {
 }
 const { service } = Astro.props;
 const category = categories.find((c) => c.slug === service.category)!;
+const related = services
+  .filter((s) => s.category === service.category && s.slug !== service.slug)
+  .slice(0, 4);
+const priceSummary =
+  (service.slug === 'other-vascular' ? 'From ' : '') +
+  `$${service.price}` +
+  (service.priceNote && service.slug !== 'other-vascular'
+    ? ` (${service.priceNote})`
+    : '') +
+  (service.pregnancyEligible
+    ? ' for eligible NZ maternity patients, or $30 with a Community Services Card.'
+    : '.');
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -65,6 +78,34 @@ const schema = {
     <div class="container two-column">
       <div class="prose">
         <h2>
+          <Icon name="scan" size={27} /> About this examination
+        </h2>
+        <p>{service.assesses}</p>
+        <h3>When it may be requested</h3>
+        <ul>
+          {service.reasons.map((reason) => (
+            <li>{reason}</li>
+          ))}
+        </ul>
+        {service.urgentNote && (
+          <div class="notice notice-urgent">
+            <p>{service.urgentNote}</p>
+          </div>
+        )}
+        <h2>
+          <Icon name="care" size={27} /> What to expect
+        </h2>
+        <ul>
+          {category.expect.map((line) => (
+            <li>{line}</li>
+          ))}
+        </ul>
+        <p>
+          Our team will explain the examination and answer your questions.
+          Please let reception know beforehand if you need any support for your
+          visit.
+        </p>
+        <h2>
           <Icon name="clock" size={27} /> Preparing for your scan
         </h2>
         <ul>
@@ -76,9 +117,7 @@ const schema = {
           If your appointment instructions differ, or you have questions about
           preparation, contact reception before your visit.
         </p>
-        <h2>
-          <Icon name="file" size={27} /> What to bring
-        </h2>
+        <h3>What to bring</h3>
         <ul>
           <li>
             Your completed referral, if it has not already been sent to the
@@ -90,22 +129,47 @@ const schema = {
           </li>
         </ul>
         <h2>
-          <Icon name="care" size={27} /> During your appointment
+          <Icon name="file" size={27} /> Referral requirements
+        </h2>
+        {service.nonDiagnostic ? (
+          <p>
+            This is a non-diagnostic scan. Please contact reception to confirm
+            whether a referral is needed before you book.
+          </p>
+        ) : (
+          <p>{category.referral}</p>
+        )}
+        <p>
+          Send a copy or clear photo of your referral to{' '}
+          <a href={`mailto:${site.email}`} data-event="email_click">
+            {site.email}
+          </a>{' '}
+          before your appointment, or bring it with you. If you are unsure
+          whether your referral is suitable, please contact us.
+        </p>
+        <h2>
+          <Icon name="wallet" size={27} /> Pricing
         </h2>
         <p>
-          Our team will explain the examination and answer your questions. You
-          may bring one adult support person. Please let reception know
-          beforehand if you need any support for your visit.
+          {priceSummary} Payment is due at your appointment.{' '}
+          <a href="/pricing/">View all prices</a>
         </p>
         <h2>
           <Icon name="scan" size={27} /> Your results
         </h2>
-        <p>
-          For diagnostic examinations, images are reviewed by the reporting
-          radiologist and the completed report is sent to your referring
-          clinician. Your referrer will discuss the results and next steps with
-          you.
-        </p>
+        {service.nonDiagnostic ? (
+          <p>
+            This scan is non-diagnostic and does not replace your diagnostic
+            pregnancy examinations. Please ask reception which images are
+            included with your appointment.
+          </p>
+        ) : (
+          <p>
+            Your images are reviewed by our reporting radiologist and the
+            completed report is sent to your referring clinician. Your referrer
+            will discuss the results and next steps with you.
+          </p>
+        )}
         <p>
           <a href="/patient-information/">Read our patient information</a> or{' '}
           <a href="/appointment-policy/">view the appointment policy</a>.
@@ -154,6 +218,43 @@ const schema = {
           </a>
         </div>
       </aside>
+    </div>
+  </section>
+  <section class="section-tight mist">
+    <div class="container split split-top">
+      <div>
+        <h2>Related services</h2>
+        <div class="related-list">
+          {related.map((s) => (
+            <a class="exam-link" href={serviceUrl(s)}>
+              <div>
+                <h3>{s.name}</h3>
+                <p>
+                  {s.slug === 'other-vascular' ? 'From ' : ''}${s.price}
+                </p>
+              </div>
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+        <p style="margin-top:1.5rem">
+          <a href={`/services/${category.slug}/`}>
+            All {category.short.toLowerCase()} scans
+          </a>{' '}
+          · <a href="/services/">All services</a>
+        </p>
+      </div>
+      <div>
+        <h2>Common questions</h2>
+        <FAQ
+          questions={[
+            'Do I need a referral for an ultrasound?',
+            'How long does an ultrasound examination take?',
+            'When will my ultrasound report be available?',
+            'Can I bring someone with me?',
+          ]}
+        />
+      </div>
     </div>
   </section>
   <Callout />

@@ -16,6 +16,8 @@ The first version was too static and visually restrained. The client references 
 - A continuously moving automatic service track, paced to make the motion visible without abrupt card changes. It pauses for keyboard focus, hover, out-of-view content, a hidden browser tab and reduced-motion users.
 - Restrained entrance reveals, hover photo zoom, button lift and navigation underlines. Reduced motion disables these effects. No animation hides core content when JavaScript is unavailable.
 
+- Services hub keeps the current website's typing line under the heading (“Select your exam and book now:” cycling the five categories, with a blinking cursor) and slides category photos and examination links in on scroll with a short stagger, as requested by the client. Screen readers get the full category list once; reduced-motion users see the first category without typing.
+
 See `docs/design-reference-review.md` for how the five client-supplied references informed the redesign.
 
 ## Palette revision, 24 September 2026

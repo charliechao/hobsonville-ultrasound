@@ -1,59 +1,114 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
+import { site } from '../data/site';
 ---
 
 <Layout
   title="Appointment policy"
-  description="Read Hobsonville Ultrasound’s appointment policy covering cancellations, late arrival, support people, payment and repeat scans."
+  description="Read Hobsonville Ultrasound’s appointment policy covering referrals, cancellations, late arrival, support people, payment and rescans."
 >
   <PageIntro
     title="Appointment policy"
     eyebrow="Planning your visit"
-    description="Please read these details before your appointment so we can make the best use of your booked time."
+    description="At Hobsonville Ultrasound, we value your time and ours. When you book an appointment, that time is reserved especially for you. Please read the following before your appointment."
   />
   <section class="section">
     <div class="container reading prose">
-      <h2>Cancellations and rescheduling</h2>
+      <h2>Referral</h2>
       <p>
-        Please give at least 24 hours’ notice if you need to cancel or
-        reschedule. Call reception, leave a voicemail, or reply to your
-        confirmation text.
+        Your scan requires a referral. Please send us a copy or clear photo of
+        your referral before your appointment, by emailing{' '}
+        <a href={`mailto:${site.email}`} data-event="email_click">
+          {site.email}
+        </a>
+        .
+      </p>
+      <h2>Cancellations and no-shows</h2>
+      <p>
+        Please give us at least 24 hours’ notice if you need to cancel or
+        reschedule your appointment.
       </p>
       <p>
-        Late cancellations or missed appointments may incur a $50 fee.
-        Emergencies are considered individually.
+        Late cancellations and missed appointments (no-shows) may incur a $50
+        missed appointment fee, which must be paid before your next appointment.
+        We understand that genuine emergencies can happen and will consider
+        these on a case-by-case basis.
       </p>
-      <h2>Arriving late</h2>
       <p>
-        If you arrive 10 minutes or more after your appointment time, we may
-        need to reschedule. Where possible we may proceed with a shorter
-        session, depending on the examination and available time.
+        To cancel or reschedule, please call us or reply to your appointment
+        confirmation text. If we are unable to answer, you may leave a
+        voicemail.
       </p>
-      <h2>Support people and children</h2>
+      <h2>Late arrivals</h2>
       <p>
-        One adult support person may attend. Please avoid bringing children
-        where possible. If unavoidable, a maximum of one child may attend and
-        must be supervised by another responsible adult.
+        Please arrive on time for your appointment. Most ultrasound examinations
+        take approximately 30 minutes.
       </p>
+      <p>
+        If you are running late, please contact us as soon as possible. If you
+        arrive 10 minutes or more late, we may not be able to complete your scan
+        and you may need to reschedule. A missed appointment fee may apply. Late
+        arrivals may also result in a shorter appointment to avoid delaying
+        other patients.
+      </p>
+      <h2>Support person and children</h2>
+      <p>
+        You are welcome to bring one adult support person to your scan. For
+        health, safety and privacy reasons, we prefer that children do not
+        attend appointments.
+      </p>
+      <p>If a child must attend:</p>
+      <ul>
+        <li>Only one child may attend.</li>
+        <li>
+          The child must be supervised by another adult who is not the patient.
+        </li>
+        <li>Children must not be left unattended in the waiting room.</li>
+        <li>
+          If the child becomes unsettled, the accompanying adult may be asked to
+          take them outside.
+        </li>
+        <li>
+          For longer or more detailed examinations, we strongly recommend making
+          other childcare arrangements where possible.
+        </li>
+      </ul>
       <h2>Payment</h2>
       <p>
-        Payment is due at the appointment. Outstanding charges must be settled
-        before further appointments. Please contact reception with any pricing
-        or eligibility questions before attending.
+        Payment is required at the time of your scan. Any outstanding fees,
+        including missed appointment fees, must be paid before further
+        appointments can be provided.
       </p>
-      <h2>Repeat scans</h2>
+      <h2>Rescans</h2>
       <p>
-        A repeat scan may sometimes be needed and does not necessarily mean
-        there is a problem. Repeat appointments depend on availability and the
-        clinical time window. Additional charges may apply.
+        Some examinations, particularly certain pregnancy scans, require
+        specific images to be obtained. Occasionally a rescan may be needed
+        because of your baby’s position or movement, bladder filling or other
+        factors.
       </p>
-      <h2>Questions or changes?</h2>
       <p>
-        <a href="tel:+6498693328" data-event="phone_click">
-          Call 09 869 3328
+        If a rescan is required, it will be offered subject to availability and
+        within the appropriate timeframe. A rescan may incur an additional fee,
+        which is the patient’s responsibility. A rescan recommendation does not
+        necessarily mean there is a problem; sometimes the required views simply
+        cannot be obtained during the original appointment.
+      </p>
+      <h2>By booking your appointment</h2>
+      <p>
+        By proceeding with your appointment, you acknowledge and agree to these
+        policies. If you have any questions, please{' '}
+        <a href={site.tel} data-event="phone_click">
+          call {site.phone}
         </a>{' '}
-        for help with your appointment.
+        before your appointment.
+      </p>
+      <p>
+        Thank you for your understanding. We look forward to seeing you at
+        Hobsonville Ultrasound.
+      </p>
+      <p class="small muted">
+        Hobsonville Ultrasound, formerly Body 2 Baby Ultrasound
       </p>
     </div>
   </section>

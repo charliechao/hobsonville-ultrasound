@@ -2,8 +2,14 @@
 import { faqs } from '../data/site';
 interface Props {
   all?: boolean;
+  questions?: string[];
 }
-const entries = Astro.props.all ? faqs : faqs.slice(0, 4);
+const { all = false, questions } = Astro.props;
+const entries = questions
+  ? faqs.filter((item) => questions.includes(item.question))
+  : all
+    ? faqs
+    : faqs.filter((item) => item.home);
 ---
 
 <div class="faq-list">
@@ -14,6 +20,24 @@ const entries = Astro.props.all ? faqs : faqs.slice(0, 4);
         <span aria-hidden="true">+</span>
       </summary>
       <p>{item.answer}</p>
+      {item.links && (
+        <p class="faq-links">
+          {item.links.map((link) =>
+            link.href.startsWith('http') ? (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-event="directions_click"
+              >
+                {link.label} ↗
+              </a>
+            ) : (
+              <a href={link.href}>{link.label}</a>
+            ),
+          )}
+        </p>
+      )}
     </details>
   ))}
 </div>

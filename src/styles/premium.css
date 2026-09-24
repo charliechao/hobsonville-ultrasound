@@ -169,13 +169,14 @@
     pointer-events: auto;
   }
   .premium-hero h1 {
-    font-size: clamp(3.5rem, 5.6vw, 5.6rem);
+    font-size: clamp(3.2rem, 5vw, 5rem);
     line-height: 1.08;
     font-weight: 500;
-    max-width: 740px;
+    max-width: 800px;
     margin: 1.75rem 0;
   }
   .premium-hero h1 span {
+    display: block;
     color: var(--accent);
   }
   .premium-hero-content > p:not(.hero-location) {
@@ -841,9 +842,82 @@
       opacity 0.65s var(--ease),
       transform 0.65s var(--ease);
   }
+  .reveal-ready[data-reveal='from-right'] {
+    transform: translateX(36px);
+  }
   .reveal-ready.is-revealed {
     opacity: 1;
     transform: none;
+  }
+  .exam-link.reveal-ready {
+    transition:
+      opacity 0.65s var(--ease),
+      transform 0.65s var(--ease),
+      background 0.3s,
+      color 0.3s;
+  }
+  .typewriter {
+    display: block;
+    margin-top: 1.5rem;
+    font: 500 clamp(1.15rem, 2vw, 1.4rem) / 1.5 var(--heading);
+    min-height: 3em;
+  }
+  .typewriter-prefix {
+    margin-right: 0.35rem;
+  }
+  .typewriter-text {
+    color: var(--icon);
+  }
+  .typewriter-cursor {
+    display: none;
+    margin-left: 0.1rem;
+    color: var(--icon);
+    font-weight: 400;
+  }
+  .typewriter.is-typing .typewriter-cursor {
+    display: inline;
+    animation: cursor-blink 0.8s steps(1) infinite;
+  }
+  @keyframes cursor-blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  .faq-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-size: 1rem;
+  }
+  .accordion details ul {
+    padding-bottom: 1rem;
+    max-width: 780px;
+  }
+  .notice-strong {
+    border-left: 4px solid var(--brand);
+    margin-top: 0;
+  }
+  .notice-strong h2 {
+    font-size: 1.5rem;
+    margin: 0 0 0.75rem;
+  }
+  .notice-urgent {
+    border-left: 4px solid var(--icon);
+  }
+  .related-list {
+    border-top: 1px solid var(--line);
+  }
+  .referrer-list {
+    columns: 2;
+    column-gap: 2.5rem;
+  }
+  .key-prices {
+    margin: 0.5rem 0 1rem;
+    font-size: 1rem;
+  }
+  .key-prices th,
+  .key-prices td {
+    padding-block: 0.6rem;
   }
   .premium-hero-content > * {
     animation: soft-appear 0.75s var(--ease) both;
@@ -924,7 +998,7 @@
       padding-block: 3.5rem 8rem;
     }
     .premium-hero h1 {
-      font-size: clamp(3.5rem, 8vw, 4.7rem);
+      font-size: clamp(3.2rem, 7vw, 4.3rem);
     }
     .hero-shade {
       background: linear-gradient(
@@ -1022,6 +1096,9 @@
     }
   }
   @media (max-width: 620px) {
+    .referrer-list {
+      columns: 1;
+    }
     .container {
       width: calc(100% - 2.5rem);
     }
@@ -1041,7 +1118,7 @@
       padding-block: 3rem 10rem;
     }
     .premium-hero h1 {
-      font-size: clamp(2.5rem, 10.5vw, 3.4rem);
+      font-size: clamp(2.2rem, 9vw, 3rem);
       margin-block: 1.5rem;
     }
     .premium-hero-content > p:not(.hero-location) {
@@ -1231,6 +1308,9 @@
     .reveal-ready {
       opacity: 1;
       transform: none;
+    }
+    .typewriter-cursor {
+      animation: none;
     }
     .premium-hero-content > * {
       animation: none;

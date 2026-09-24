@@ -1,14 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
-import Photo from '../components/Photo.astro';
 import { site } from '../data/site';
-import { images } from '../data/images';
+import { services } from '../data/services';
+
+const referrers = [
+  'Medical physicians and specialists',
+  'Sport and exercise physicians',
+  'GPs',
+  'Chiropractors',
+  'Physiotherapists',
+  'Osteopaths',
+  'Podiatrists',
+  'Nurse practitioners',
+  'LMCs and midwives',
+];
+const keyPrices = [
+  ['abdominal', 'Abdominal'],
+  ['pelvic', 'Pelvic'],
+  ['renal-tract', 'Renal tract'],
+  ['shoulder', 'MSK, one region'],
+  ['thyroid', 'Thyroid'],
+  ['dvt', 'DVT, one limb'],
+  ['carotid', 'Carotid Doppler'],
+  ['dating', 'Pregnancy scans, eligible NZ maternity'],
+].map(([slug, label]) => {
+  const service = services.find((s) => s.slug === slug)!;
+  return [
+    label,
+    `${service.pregnancyEligible ? 'From ' : ''}$${service.price}`,
+  ];
+});
+const { eReferral, form, pacs } = site.referral;
 ---
 
 <Layout
   title="Information for referrers"
-  description="Refer patients to Hobsonville Ultrasound for diagnostic ultrasound. Contact reception about referrals, examination availability and report access."
+  description="Refer patients to Hobsonville Ultrasound, formerly Body 2 Baby Ultrasound. Accepted referrers, how to refer, key prices and report information."
 >
   <PageIntro
     title="A local partner in patient care."
@@ -16,20 +44,55 @@ import { images } from '../data/images';
     description="Accessible diagnostic ultrasound in Hobsonville, with an experienced team and a personal approach to your patients’ care."
   />
   <section class="section">
-    <div class="container split split-top">
+    <div class="container two-column">
       <div class="prose">
-        <h2>Referring a patient</h2>
-        <p>
-          We accept diagnostic ultrasound referrals from registered New Zealand
-          healthcare professionals, including GPs, specialists, sports
-          physicians, chiropractors, physiotherapists, osteopaths, podiatrists,
-          nurse practitioners, LMCs and midwives.
-        </p>
-        <p>
-          Please contact reception to confirm the appropriate way to send your
-          referral. Patients can bring a completed referral if it has not
-          already been sent.
-        </p>
+        <h2>Who can refer</h2>
+        <p>We accept referrals from all NZ-based and registered:</p>
+        <ul class="referrer-list">
+          {referrers.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <h2>How to refer</h2>
+        {eReferral ? (
+          <p>
+            Referring to us is easy. Complete our eReferral form online. This
+            service is strictly for medical professionals.
+          </p>
+        ) : (
+          <p>
+            Please email your referral to{' '}
+            <a href={`mailto:${site.email}`} data-event="email_click">
+              {site.email}
+            </a>{' '}
+            or call reception to confirm the most suitable way to send it.
+            Patients can also bring a completed referral to their appointment.
+            Please call before sending sensitive patient information by email.
+          </p>
+        )}
+        <div class="actions">
+          {eReferral && (
+            <a class="button" href={eReferral}>
+              eReferral form ↗
+            </a>
+          )}
+          {form && (
+            <a class="button button-outline" href={form}>
+              Download referral form ↗
+            </a>
+          )}
+          {pacs && (
+            <a class="button button-outline" href={pacs}>
+              PACS access ↗
+            </a>
+          )}
+          <a class="button button-outline" href="/pricing/">
+            View price list
+          </a>
+          <a class="text-link" href={site.tel} data-event="phone_click">
+            Call {site.phone}
+          </a>
+        </div>
         <h2>Examinations available</h2>
         <p>
           Our services cover pregnancy, general, musculoskeletal, small parts
@@ -39,28 +102,37 @@ import { images } from '../data/images';
         <a href="/services/">Browse our examination directory</a>
         <h2>Reports and access</h2>
         <p>
-          Diagnostic images are reviewed by the reporting radiologist. Completed
-          reports are sent to the referring clinician.
+          Diagnostic images are reviewed by our reporting radiologist, and
+          completed reports are sent to the referring clinician.
         </p>
         <p>
           Contact reception for report enquiries or to discuss image access.
-          Please call before sending sensitive patient information by email.
         </p>
-        <div class="actions">
-          <a class="button" href={site.tel} data-event="phone_click">
-            Call {site.phone} ↗
-          </a>
-          <a href={`mailto:${site.email}`} data-event="email_click">
-            Email reception
+      </div>
+      <aside>
+        <div class="sidebar-panel">
+          <p class="eyebrow">Clear, upfront pricing</p>
+          <h2>Key prices</h2>
+          <table class="price-table key-prices">
+            <caption class="sr-only">Selected examination prices</caption>
+            <tbody>
+              {keyPrices.map(([name, price]) => (
+                <tr>
+                  <th scope="row">{name}</th>
+                  <td>{price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="small">
+            Eligible pregnancy scans are $30 with a Community Services Card.
+            ACC-funded examinations may have a patient contribution.
+          </p>
+          <a class="button" href="/pricing/">
+            View full price list
           </a>
         </div>
-      </div>
-      <Photo
-        src={images.probe}
-        alt="An ultrasound probe shown as an illustrative equipment detail"
-        class="editorial-photo"
-        eager
-      />
+      </aside>
     </div>
   </section>
 </Layout>

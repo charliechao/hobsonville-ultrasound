@@ -1,0 +1,49 @@
+---
+interface Props {
+  prefix: string;
+  phrases: string[];
+}
+const { prefix, phrases } = Astro.props;
+---
+
+<type-writer class="typewriter" data-phrases={JSON.stringify(phrases)}>
+  <span class="typewriter-prefix">{prefix}</span>
+  <span class="typewriter-text" aria-hidden="true" set:text={phrases[0]} />
+  <span class="typewriter-cursor" aria-hidden="true" set:text="|" />
+  <span class="sr-only">{phrases.join(', ')}</span>
+</type-writer>
+<script>
+  class TypeWriter extends HTMLElement {
+    timer?: number;
+    connectedCallback() {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const text = this.querySelector<HTMLElement>('.typewriter-text')!;
+      const phrases: string[] = JSON.parse(this.dataset.phrases || '[]');
+      let phrase = 0;
+      let chars = phrases[0].length;
+      let deleting = true;
+      const tick = () => {
+        const current = phrases[phrase];
+        chars += deleting ? -1 : 1;
+        text.textContent = current.slice(0, chars);
+        let wait = deleting ? 28 : 55;
+        if (!deleting && chars === current.length) {
+          deleting = true;
+          wait = 2200;
+        } else if (deleting && chars === 0) {
+          deleting = false;
+          phrase = (phrase + 1) % phrases.length;
+          wait = 350;
+        }
+        this.timer = window.setTimeout(tick, wait);
+      };
+      this.classList.add('is-typing');
+      this.timer = window.setTimeout(tick, 2200);
+    }
+    disconnectedCallback() {
+      clearTimeout(this.timer);
+    }
+  }
+  if (!customElements.get('type-writer'))
+    customElements.define('type-writer', TypeWriter);
+</script>

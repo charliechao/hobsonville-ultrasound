@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import Photo from '../../components/Photo.astro';
 import Callout from '../../components/Callout.astro';
+import Typewriter from '../../components/Typewriter.astro';
 import { categories, services, serviceUrl } from '../../data/services';
 import { images } from '../../data/images';
 ---
@@ -16,6 +17,10 @@ import { images } from '../../data/images';
     eyebrow="Diagnostic care, close to home"
     description="Find your examination, understand the preparation, and take the next step with confidence."
   >
+    <Typewriter
+      prefix="Select your exam and book now:"
+      phrases={categories.map((c) => c.name)}
+    />
     <div class="jump-links">
       {categories.map((c) => (
         <a href={`#${c.slug}`}>{c.short}</a>
@@ -28,7 +33,7 @@ import { images } from '../../data/images';
         {category.slug === 'general' && <span id="general-ultrasound" />}
         {category.slug === 'pregnancy' && <span id="obstetric" />}
         <div class="category-hero">
-          <div>
+          <div data-reveal>
             <p class="eyebrow">0{i + 1} / Our services</p>
             <h2>{category.name}</h2>
             <p class="lead">{category.intro}</p>
@@ -36,16 +41,23 @@ import { images } from '../../data/images';
               Explore {category.short.toLowerCase()} scans ↗
             </a>
           </div>
-          <Photo
-            src={images[category.image]}
-            alt={`Illustrative photograph for ${category.name.toLowerCase()}`}
-          />
+          <div data-reveal="from-right" data-reveal-delay="120">
+            <Photo
+              src={images[category.image]}
+              alt={`Illustrative photograph for ${category.name.toLowerCase()}`}
+            />
+          </div>
         </div>
         <div class="exam-grid">
           {services
             .filter((s) => s.category === category.slug)
-            .map((s) => (
-              <a class="exam-link" href={serviceUrl(s)}>
+            .map((s, index) => (
+              <a
+                class="exam-link"
+                href={serviceUrl(s)}
+                data-reveal
+                data-reveal-delay={Math.min(index, 5) * 70}
+              >
                 <div>
                   <h3>{s.name}</h3>
                   <p>Preparation, pricing and appointments</p>

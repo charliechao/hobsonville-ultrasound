@@ -6,13 +6,21 @@
       (entries) =>
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
+            const target = entry.target as HTMLElement;
+            target.addEventListener(
+              'transitionend',
+              () => (target.style.transitionDelay = ''),
+              { once: true },
+            );
+            target.classList.add('is-revealed');
             observer.unobserve(entry.target);
           }
         }),
       { threshold: 0.08 },
     );
     elements.forEach((element) => {
+      if (element.dataset.revealDelay)
+        element.style.transitionDelay = `${element.dataset.revealDelay}ms`;
       element.classList.add('reveal-ready');
       observer.observe(element);
     });

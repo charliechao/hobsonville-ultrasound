@@ -123,13 +123,25 @@ const details = [
           }
         });
       });
-      this.addEventListener('mouseenter', () => {
-        paused = true;
-        stop();
+      const cardFromEvent = (target: EventTarget | null) =>
+        target instanceof Element
+          ? target.closest<HTMLElement>('.service-card')
+          : null;
+      track.addEventListener('pointerover', (event) => {
+        const card = cardFromEvent(event.target);
+        const previousCard = cardFromEvent(event.relatedTarget);
+        if (card && card !== previousCard) {
+          paused = true;
+          stop();
+        }
       });
-      this.addEventListener('mouseleave', () => {
-        paused = false;
-        start();
+      track.addEventListener('pointerout', (event) => {
+        const card = cardFromEvent(event.target);
+        const nextCard = cardFromEvent(event.relatedTarget);
+        if (card && card !== nextCard) {
+          paused = false;
+          start();
+        }
       });
       const controller = new AbortController();
       document.addEventListener('visibilitychange', start, {

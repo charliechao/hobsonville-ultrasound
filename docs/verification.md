@@ -68,3 +68,7 @@ No browser/visual review or production deployment was performed for the initial 
 ## Google Maps location, 25 September 2026
 
 - Directions links now use the client-supplied Hobsonville Ultrasound Google Maps place URL. Homepage and contact-page embeds use its exact pin coordinates: -36.7977876, 174.648825.
+
+## Expertise carousel interaction, 25 September 2026
+
+- The continuous service track no longer pauses when the pointer enters the wider section. It only pauses while the pointer is over an individual service card, or when a service link receives keyboard focus. It resumes after the visitor leaves that card.

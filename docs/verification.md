@@ -64,3 +64,7 @@ No browser/visual review or production deployment was performed for the initial 
 - Sampled the current Hobsonville Ultrasound stylesheet: its primary teal is `#274246`, its darker header teal is `#1B383C`, and its warm gold is `#EEC482`.
 - Replaced the aubergine and lavender token system with OKLCH teal, blue-green and warm-gold tokens. Pale blue-green paper, mist and border values retain the lighter redesigned reading experience.
 - Removed the header logo filter so the supplied original teal-and-gold artwork appears unchanged. Updated the browser theme colour and favicon to the original deep teal and gold.
+
+## Google Maps location, 25 September 2026
+
+- Directions links now use the client-supplied Hobsonville Ultrasound Google Maps place URL. Homepage and contact-page embeds use its exact pin coordinates: -36.7977876, 174.648825.

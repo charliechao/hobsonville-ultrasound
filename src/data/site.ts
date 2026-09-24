@@ -10,7 +10,9 @@ export const site = {
   address:
     'Hobson Centre, Level 1, 124 Hobsonville Road, Hobsonville, Auckland',
   directions:
-    'https://www.google.com/maps/search/?api=1&query=Hobsonville+Ultrasound+124+Hobsonville+Road+Auckland',
+    'https://www.google.com/maps/place/Hobsonville+Ultrasound/@-36.7973592,174.6289795,14.66z/data=!3m1!5s0x6d0d3f0769ef2cb7:0xc751503cef3387e8!4m6!3m5!1s0x6d0d3fa81cd8f021:0x4758d763c15efba!8m2!3d-36.7977876!4d174.648825!16s%2Fg%2F11vx5jg8lf?entry=ttu&g_ep=EgoyMDI2MDkyMS4wIKXMDSoASAFQAw%3D%3D',
+  mapEmbed:
+    'https://www.google.com/maps?output=embed&q=-36.7977876,174.648825&z=17',
   googleReviews:
     'https://www.google.com/search?q=hobsonville+ultrasound&hl=en-NZ&gl=nz',
   openingHours: [

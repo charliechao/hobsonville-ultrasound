@@ -688,38 +688,85 @@
     flex-direction: column;
     min-height: 255px;
     padding: 1.45rem;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--white);
+    border: 1px solid #dadce0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgb(60 64 67 / 0.16);
     transition:
-      transform 0.35s var(--ease),
-      border-color 0.35s,
-      box-shadow 0.35s;
+      transform 0.25s var(--ease),
+      border-color 0.25s,
+      box-shadow 0.25s;
   }
   .review-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--icon);
-    box-shadow: 0 15px 30px oklch(25% 0.035 310 / 0.07);
+    transform: translateY(-4px);
+    border-color: #bdc1c6;
+    box-shadow: 0 7px 16px rgb(60 64 67 / 0.2);
   }
   .review-card-top {
-    display: grid;
-    gap: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
-  .review-card-top > span:last-child {
-    color: var(--muted);
-    font-size: 0.82rem;
+  .reviewer-avatar {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e8f0fe;
+    color: #1967d2;
+    font:
+      600 0.9rem/1 Arial,
+      sans-serif;
+  }
+  .reviewer-meta {
+    display: grid;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+  .reviewer-meta strong {
+    overflow: hidden;
+    color: #202124;
+    font:
+      600 0.9rem/1.1 Arial,
+      sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .reviewer-meta span {
+    color: #5f6368;
+    font:
+      400 0.78rem/1 Arial,
+      sans-serif;
+  }
+  .google-card-mark {
+    display: inline-flex;
+    margin-left: auto;
+    background: linear-gradient(
+      135deg,
+      #4285f4 0 36%,
+      #ea4335 36% 55%,
+      #fbbc05 55% 72%,
+      #34a853 72%
+    );
+    background-clip: text;
+    color: transparent;
+    font:
+      700 1.25rem/1 Arial,
+      sans-serif;
+  }
+  .review-card > .review-stars {
+    margin-top: 1.65rem;
+    color: #fbbc04;
+    font-size: 1rem;
   }
   .review-card blockquote {
-    margin: 2rem 0 1.5rem;
-    color: var(--ink);
-    font: 500 1.08rem/1.5 var(--heading);
-  }
-  .review-card > p {
-    margin: auto 0 0;
-    padding-top: 1rem;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 0.9rem;
+    margin: 1.2rem 0 0;
+    color: #3c4043;
+    font:
+      400 0.98rem/1.55 Arial,
+      sans-serif;
   }
   .reviews-all-link {
     margin-top: 2rem;

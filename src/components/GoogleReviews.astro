@@ -89,13 +89,21 @@ const reviews = [
       {reviews.map((review, index) => (
         <article class="review-card" data-reveal data-reveal-delay={index * 45}>
           <div class="review-card-top">
-            <span class="review-stars" aria-label="Five-star review">
-              ★★★★★
+            <span class="reviewer-avatar" aria-hidden="true">
+              {review.author.charAt(0).toUpperCase()}
             </span>
-            <span>Google review</span>
+            <div class="reviewer-meta">
+              <strong>{review.author}</strong>
+              <span>Google review</span>
+            </div>
+            <span class="google-card-mark" aria-label="Google">
+              G
+            </span>
           </div>
+          <span class="review-stars" aria-label="Five-star review">
+            ★★★★★
+          </span>
           <blockquote>“{review.quote}”</blockquote>
-          <p>{review.author}</p>
         </article>
       ))}
     </div>

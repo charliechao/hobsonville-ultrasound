@@ -64,13 +64,25 @@ const reviews = [
         href={site.googleReviews}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Read 31 Google reviews"
       >
-        <span class="review-stars" aria-label="4.6 out of 5 stars">
-          ★★★★★
+        <span class="google-word" aria-hidden="true">
+          <span>G</span>
+          <span>o</span>
+          <span>o</span>
+          <span>g</span>
+          <span>l</span>
+          <span>e</span>
         </span>
-        <strong>4.6 / 5</strong>
-        <span>31 Google reviews</span>
-        <Icon name="arrow" size={19} />
+        <span class="google-rating-copy">
+          <span class="review-stars" aria-hidden="true">
+            ★★★★★
+          </span>
+          <span>31 Google reviews</span>
+        </span>
+        <span class="google-rating-arrow" aria-hidden="true">
+          <Icon name="arrow" size={19} />
+        </span>
       </a>
     </div>
     <div class="reviews-grid">

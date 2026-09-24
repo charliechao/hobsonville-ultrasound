@@ -14,7 +14,7 @@ The first version was too static and visually restrained. The client references 
 - Medical and practical icons for services, preparation, appointments, contact, location, care, prices and parking. Icons supplement visible text.
 - A visible 4.5-second hero slideshow without visual controls. It pauses out of view or in a hidden browser tab; reduced-motion users see its static first photograph. Static first photograph remains available without JavaScript.
 - A continuously moving automatic service track, paced to make the motion visible without abrupt card changes. It pauses for keyboard focus, hover, out-of-view content, a hidden browser tab and reduced-motion users.
-- A home-page Google review section presents ten selected five-star reviews in a responsive card layout. The linked rating summary states the current profile rating and review count separately, so the selected cards do not imply a perfect overall rating.
+- A home-page Google review section presents ten selected five-star reviews in a responsive card layout. Its Google-style badge uses the Google wordmark colours, gold stars and the review count, without repeating an overall numeric score.
 - Restrained entrance reveals, hover photo zoom, button lift and navigation underlines. Reduced motion disables these effects. No animation hides core content when JavaScript is unavailable.
 
 - Services hub keeps the current website's typing line under the heading (“Select your exam and book now:” cycling the five categories, with a blinking cursor) and slides category photos and examination links in on scroll with a short stagger, as requested by the client. Screen readers get the full category list once; reduced-motion users see the first category without typing.

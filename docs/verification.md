@@ -56,5 +56,5 @@ No browser/visual review or production deployment was performed for the initial 
 ## Clinic hours and Google reviews, 24 September 2026
 
 - Contact page hours were transcribed from the current Hobsonville Ultrasound website: Monday–Friday, 9:30 am–6:30 pm; Saturday, 9:00 am–12:00 pm.
-- The home page presents ten reviews selected from the Google profile's highest-rated filter. Each card is labelled as a five-star Google review; the linked profile summary remains accurate at 4.6/5 from 31 Google reviews when checked on 24 September 2026.
+- The home page presents ten reviews selected from the Google profile's highest-rated filter. Each card is labelled as a five-star Google review; the Google-style profile badge links to the Google profile and shows its 31-review count without showing an overall numeric score.
 - The review cards are responsive: five columns on wide desktop screens, three at intermediate widths, two on tablet and one on mobile. The section keeps ordinary external links to the Google profile and does not load a third-party widget.

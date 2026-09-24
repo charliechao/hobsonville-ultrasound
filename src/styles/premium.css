@@ -585,6 +585,147 @@
     margin-left: auto;
     padding: 0.5rem;
   }
+  .reviews-section {
+    background: var(--paper);
+  }
+  .reviews-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .reviews-heading h2 {
+    margin-bottom: 0;
+  }
+  .review-rating {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    column-gap: 0.8rem;
+    row-gap: 0.25rem;
+    min-width: max-content;
+    padding: 1rem 0 1rem 1.35rem;
+    color: var(--ink);
+    border-left: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .review-rating .review-stars {
+    grid-column: 1 / -1;
+  }
+  .review-rating .icon {
+    grid-row: 2;
+    grid-column: 3;
+    transition: transform 0.3s var(--ease);
+  }
+  .review-rating:hover .icon {
+    transform: translateX(4px);
+  }
+  .review-rating strong {
+    font: 600 1.1rem var(--heading);
+  }
+  .review-rating span:not(.review-stars) {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+  .review-stars {
+    display: inline-block;
+    color: var(--icon);
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  .review-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 255px;
+    padding: 1.45rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--white);
+    transition:
+      transform 0.35s var(--ease),
+      border-color 0.35s,
+      box-shadow 0.35s;
+  }
+  .review-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--icon);
+    box-shadow: 0 15px 30px oklch(25% 0.035 310 / 0.07);
+  }
+  .review-card-top {
+    display: grid;
+    gap: 0.7rem;
+  }
+  .review-card-top > span:last-child {
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+  .review-card blockquote {
+    margin: 2rem 0 1.5rem;
+    color: var(--ink);
+    font: 500 1.08rem/1.5 var(--heading);
+  }
+  .review-card > p {
+    margin: auto 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .reviews-all-link {
+    margin-top: 2rem;
+  }
+  .clinic-hours {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--mist);
+  }
+  .clinic-hours-heading {
+    display: flex;
+    gap: 0.85rem;
+    align-items: start;
+  }
+  .clinic-hours-heading > .icon {
+    margin-top: 0.15rem;
+    color: var(--icon);
+  }
+  .clinic-hours-heading .eyebrow {
+    margin-bottom: 0.35rem;
+  }
+  .clinic-hours-heading h2 {
+    margin: 0;
+    font-size: 1.45rem;
+  }
+  .clinic-hours dl {
+    margin: 1.5rem 0 1rem;
+  }
+  .clinic-hours dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .clinic-hours dt {
+    font-weight: 600;
+  }
+  .clinic-hours dd {
+    margin: 0;
+    text-align: right;
+  }
+  .clinic-hours > p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
   .pricing-composition {
     display: grid;
     grid-template-columns: 0.85fr 1.3fr;
@@ -974,6 +1115,9 @@
     .hero-scroll {
       left: 2rem;
     }
+    .reviews-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
   @media (max-width: 800px) {
     html {
@@ -1073,6 +1217,17 @@
     }
     .location-composition {
       grid-template-columns: 1fr;
+    }
+    .reviews-heading {
+      align-items: start;
+      flex-direction: column;
+    }
+    .review-rating {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
     .callout-inner {
       flex-direction: row;
@@ -1270,6 +1425,22 @@
     }
     .location-map > div span {
       display: none;
+    }
+    .reviews-heading {
+      margin-bottom: 2rem;
+    }
+    .reviews-grid {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+    .review-card {
+      min-height: 0;
+    }
+    .review-card blockquote {
+      margin-block: 1.3rem;
+    }
+    .clinic-hours {
+      padding: 1.25rem;
     }
     .callout {
       padding-block: 3.2rem;

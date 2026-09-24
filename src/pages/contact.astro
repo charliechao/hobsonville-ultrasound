@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
+import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 ---
 
@@ -23,10 +24,27 @@ import { site } from '../data/site';
         <a href={`mailto:${site.email}`} data-event="email_click">
           {site.email}
         </a>
-        <p style="margin-top:1.5rem">
-          For appointments, scan availability and opening hours, please contact
-          reception or view the online appointment options.
-        </p>
+        <div class="clinic-hours" aria-labelledby="clinic-hours-heading">
+          <div class="clinic-hours-heading">
+            <Icon name="clock" size={25} />
+            <div>
+              <p class="eyebrow">Clinic hours</p>
+              <h2 id="clinic-hours-heading">When we’re open.</h2>
+            </div>
+          </div>
+          <dl>
+            {site.openingHours.map(({ days, hours }) => (
+              <div>
+                <dt>{days}</dt>
+                <dd>{hours}</dd>
+              </div>
+            ))}
+          </dl>
+          <p>
+            Please contact reception for appointment availability and scan
+            times.
+          </p>
+        </div>
         <a class="button" href="/book-online/">
           Book an ultrasound ↗
         </a>

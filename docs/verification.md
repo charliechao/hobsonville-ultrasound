@@ -52,3 +52,9 @@ No browser/visual review or production deployment was performed for the initial 
 - The track duplicates only the visual cards for a seamless loop. Original service links stay available in the document, and cloned cards are hidden from assistive technology and keyboard navigation.
 - Local browser review: at desktop, three cards were visible and the rail advanced 40.7px in 1.2 seconds; five original links and five non-focusable visual clones were present. At a 390px viewport, the 320px cards remained within a 375px document with no horizontal page overflow.
 - Browser console: no errors reported during the continuous carousel review.
+
+## Clinic hours and Google reviews, 24 September 2026
+
+- Contact page hours were transcribed from the current Hobsonville Ultrasound website: Monday–Friday, 9:30 am–6:30 pm; Saturday, 9:00 am–12:00 pm.
+- The home page presents ten reviews selected from the Google profile's highest-rated filter. Each card is labelled as a five-star Google review; the linked profile summary remains accurate at 4.6/5 from 31 Google reviews when checked on 24 September 2026.
+- The review cards are responsive: five columns on wide desktop screens, three at intermediate widths, two on tablet and one on mobile. The section keeps ordinary external links to the Google profile and does not load a third-party widget.

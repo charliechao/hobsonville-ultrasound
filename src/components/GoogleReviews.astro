@@ -1,0 +1,99 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+const reviews = [
+  {
+    author: 'Alexandra Lopez',
+    quote: 'I cannot recommend Body 2 Baby enough!',
+  },
+  {
+    author: 'Averil P',
+    quote: 'Absolutely loved getting all my scans of baby.',
+  },
+  {
+    author: 'Anuja',
+    quote: 'Darshana makes you feel extremely comfortable and relaxed.',
+  },
+  {
+    author: 'Amna Nisar',
+    quote: 'Everything was so smooth!',
+  },
+  {
+    author: 'jakson da Silva',
+    quote: 'Darshana impressed me with her excellent service and care.',
+  },
+  {
+    author: 'Leafine-maria',
+    quote: 'Darshana was very thorough and genuine.',
+  },
+  {
+    author: 'Aneia Warner Salon',
+    quote:
+      "The effort in hospitality, education and guidance as to what's happening in the baby scan.",
+  },
+  {
+    author: 'Vikee Hwang',
+    quote: 'Darshana is a very patient and gentle ultrasound technician.',
+  },
+  {
+    author: 'Natalia Walden',
+    quote: 'The clinic is friendly, inviting, clean and fresh.',
+  },
+  {
+    author: 'Sarah',
+    quote:
+      'She took the time to explain everything and was very compassionate and kind.',
+  },
+];
+---
+
+<section class="section reviews-section" aria-labelledby="reviews-heading">
+  <div class="container">
+    <div class="reviews-heading" data-reveal>
+      <div>
+        <p class="section-label">Google reviews</p>
+        <h2 id="reviews-heading">
+          Kind words from
+          <br />
+          our patients.
+        </h2>
+      </div>
+      <a
+        class="review-rating"
+        href={site.googleReviews}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="review-stars" aria-label="4.6 out of 5 stars">
+          ★★★★★
+        </span>
+        <strong>4.6 / 5</strong>
+        <span>31 Google reviews</span>
+        <Icon name="arrow" size={19} />
+      </a>
+    </div>
+    <div class="reviews-grid">
+      {reviews.map((review, index) => (
+        <article class="review-card" data-reveal data-reveal-delay={index * 45}>
+          <div class="review-card-top">
+            <span class="review-stars" aria-label="Five-star review">
+              ★★★★★
+            </span>
+            <span>Google review</span>
+          </div>
+          <blockquote>“{review.quote}”</blockquote>
+          <p>{review.author}</p>
+        </article>
+      ))}
+    </div>
+    <a
+      class="text-link reviews-all-link"
+      href={site.googleReviews}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Read all Google reviews <Icon name="arrow" size={20} />
+    </a>
+  </div>
+</section>

@@ -11,6 +11,12 @@ export const site = {
     'Hobson Centre, Level 1, 124 Hobsonville Road, Hobsonville, Auckland',
   directions:
     'https://www.google.com/maps/search/?api=1&query=Hobsonville+Ultrasound+124+Hobsonville+Road+Auckland',
+  googleReviews:
+    'https://www.google.com/search?q=hobsonville+ultrasound&hl=en-NZ&gl=nz',
+  openingHours: [
+    { days: 'Monday – Friday', hours: '9:30 am – 6:30 pm' },
+    { days: 'Saturday', hours: '9:00 am – 12:00 pm' },
+  ],
   // Referrer links show on the referrers page once the client supplies them.
   referral: {
     eReferral: '',

@@ -22,3 +22,11 @@ No browser/visual review or production deployment was performed for the initial 
 - Service carousel advances using its next control; previous control becomes enabled after movement.
 - Mobile navigation opens and Escape closes it. Photo captions and gallery controls checked for overlap; gallery label repositioned and mobile hero typography adjusted.
 - Viewport and reduced-motion emulation reset after testing. No production deployment or post-push live-site verification.
+
+## Palette revision, 24 September 2026
+
+- Replaced interface teal/gold and green-tinted neutrals with shared aubergine, lavender and porcelain tokens, including responsive styles, photographic overlays, hover states, icons, favicon and browser theme colour.
+- Calculated WCAG contrast from the OKLCH tokens in linear sRGB: ten solid text/background pairs passed 4.5:1, with the lowest sampled pair at 5.57:1. This is a token contrast check, not a claim about every photographic pixel.
+- Astro diagnostics: 0 errors, 0 warnings, 0 hints. Static build: 43 pages. Generated-output audit: 1,508 local references and 100 image elements passed.
+- Source scan found no remaining old teal/gold token names, button class or primary hexadecimal colours in `src` or `public`. Original photography and logo files are preserved; the header applies a monochrome CSS treatment to the logo.
+- No browser visual review or production deployment performed for this colour-only revision.

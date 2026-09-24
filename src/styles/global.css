@@ -1,14 +1,23 @@
 @layer base, layout, components, responsive;
 @layer base {
   :root {
-    --ink: oklch(28% 0.036 191);
-    --teal: #193b3d;
-    --paper: oklch(97.5% 0.012 88);
-    --white: #fff;
-    --muted: oklch(45% 0.022 191);
-    --line: oklch(85% 0.025 180);
-    --mist: oklch(92% 0.023 170);
-    --gold: #efd091;
+    /* Aubergine, lavender and porcelain: shared across every page. */
+    --ink: oklch(28% 0.025 310);
+    --brand: oklch(32% 0.045 310);
+    --brand-deep: oklch(25% 0.035 310);
+    --brand-hover: oklch(40% 0.05 310);
+    --paper: oklch(98% 0.006 60);
+    --white: oklch(99% 0.003 60);
+    --muted: oklch(47% 0.025 310);
+    --line: oklch(86% 0.018 310);
+    --mist: oklch(94% 0.018 310);
+    --tint: oklch(90% 0.035 310);
+    --accent: oklch(86% 0.065 310);
+    --accent-hover: oklch(92% 0.04 310);
+    --icon: oklch(48% 0.05 310);
+    --on-dark: oklch(97% 0.006 310);
+    --on-dark-muted: oklch(83% 0.025 310);
+    --focus: oklch(58% 0.13 310);
     --font: 'Source Sans 3', sans-serif;
     --heading: 'Manrope', sans-serif;
   }
@@ -74,11 +83,11 @@
     margin-top: 0.65rem;
   }
   ::selection {
-    background: var(--gold);
-    color: var(--teal);
+    background: var(--accent);
+    color: var(--brand);
   }
   :focus-visible {
-    outline: 3px solid #ad6b12;
+    outline: 3px solid var(--focus);
     outline-offset: 5px;
   }
   [hidden] {
@@ -171,14 +180,14 @@
     left: 1rem;
     z-index: 100;
     padding: 1rem;
-    background: var(--gold);
+    background: var(--accent);
   }
   .skip-link:focus {
     top: 1rem;
   }
   .utility {
-    background: var(--teal);
-    color: var(--gold);
+    background: var(--brand);
+    color: var(--accent);
     font-size: 0.9rem;
   }
   .utility-inner {
@@ -218,7 +227,7 @@
   .desktop-nav a:hover,
   .desktop-nav a[aria-current] {
     text-decoration: underline;
-    text-decoration-color: #9c731f;
+    text-decoration-color: var(--icon);
   }
   .mobile-menu {
     display: none;
@@ -229,18 +238,18 @@
     justify-content: space-between;
     gap: 2rem;
     padding: 0.95rem 1.4rem;
-    background: var(--teal);
-    color: white;
+    background: var(--brand);
+    color: var(--on-dark);
     text-decoration: none;
     font-weight: 600;
-    border: 1px solid var(--teal);
+    border: 1px solid var(--brand);
     border-radius: 3px;
     transition:
       background 0.2s,
       color 0.2s;
   }
   .button:hover {
-    background: #2c5758;
+    background: var(--brand-hover);
   }
   .button-small {
     padding: 0.7rem 1rem;
@@ -250,18 +259,18 @@
   }
   .button-outline {
     background: transparent;
-    color: var(--teal);
+    color: var(--brand);
   }
   .button-outline:hover {
     background: var(--mist);
   }
-  .button-gold {
-    background: var(--gold);
-    color: var(--teal);
-    border-color: var(--gold);
+  .button-accent {
+    background: var(--accent);
+    color: var(--brand);
+    border-color: var(--accent);
   }
-  .button-gold:hover {
-    background: #ffe3ac;
+  .button-accent:hover {
+    background: var(--accent-hover);
   }
   .hero {
     position: relative;
@@ -281,7 +290,7 @@
   }
   .hero h1 em {
     font-style: normal;
-    color: #517365;
+    color: var(--icon);
   }
   .hero .lead {
     max-width: 500px;
@@ -303,8 +312,8 @@
     left: 0;
     right: 0;
     padding: 1.1rem 1.5rem;
-    background: var(--teal);
-    color: white;
+    background: var(--brand);
+    color: var(--on-dark);
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -328,7 +337,7 @@
   .trust-inner span::before {
     content: '✓';
     margin-right: 0.7rem;
-    color: #436455;
+    color: var(--icon);
   }
   .service-list {
     border-top: 1px solid var(--line);
@@ -343,7 +352,7 @@
     text-decoration: none;
   }
   .service-row:hover {
-    color: #386d5c;
+    color: var(--icon);
   }
   .service-row h3,
   .service-row p {
@@ -355,7 +364,7 @@
   }
   .service-number {
     font-size: 0.9rem;
-    color: #637c6e;
+    color: var(--icon);
   }
   .arrow {
     font-size: 1.7rem;
@@ -457,11 +466,11 @@
   }
   .callout {
     padding-block: 4.5rem;
-    background: var(--teal);
-    color: white;
+    background: var(--brand);
+    color: var(--on-dark);
   }
   .callout .eyebrow {
-    color: var(--gold);
+    color: var(--accent);
   }
   .callout-inner {
     display: flex;
@@ -476,8 +485,8 @@
     margin-bottom: 0;
   }
   .site-footer {
-    background: #112d2f;
-    color: #edf0e9;
+    background: var(--brand-deep);
+    color: var(--on-dark);
     padding: 4rem 0 1.5rem;
   }
   .footer-grid {
@@ -492,12 +501,12 @@
     margin-bottom: 1.5rem;
   }
   .brand-period {
-    color: var(--gold);
+    color: var(--accent);
   }
   .site-footer h2 {
     font-size: 1.1rem;
     letter-spacing: 0;
-    color: var(--gold);
+    color: var(--accent);
   }
   .site-footer p,
   .site-footer a:not(.footer-name) {
@@ -513,7 +522,7 @@
     justify-content: space-between;
     margin-top: 3rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #3a5553;
+    border-top: 1px solid oklch(44% 0.025 310);
     font-size: 0.875rem;
   }
   .mobile-actions {
@@ -537,7 +546,7 @@
   .breadcrumbs li + li::before {
     content: '/';
     margin-right: 0.65rem;
-    color: #6b8277;
+    color: var(--icon);
   }
   .page-intro {
     background: var(--mist);
@@ -659,7 +668,7 @@
   }
   .jump-links a {
     padding: 0.45rem 1rem;
-    border: 1px solid #9bb1a6;
+    border: 1px solid var(--line);
     border-radius: 2px;
     font-size: 1rem;
     text-decoration: none;
@@ -712,7 +721,7 @@
     content: '0' counter(step);
     position: absolute;
     left: 0;
-    color: #567464;
+    color: var(--icon);
     font-family: var(--heading);
   }
   .steps strong {
@@ -782,7 +791,7 @@
       left: -1.5rem;
       right: -1.5rem;
       top: 100%;
-      box-shadow: 0 12px 15px #193b3d18;
+      box-shadow: 0 12px 15px oklch(25% 0.035 310 / 0.09);
       padding: 1rem 1.5rem 1.5rem;
       border-bottom: 1px solid var(--line);
     }
@@ -927,20 +936,20 @@
       left: 0;
       right: 0;
       padding-bottom: env(safe-area-inset-bottom);
-      background: var(--teal);
-      box-shadow: 0 -2px 10px #193b3d20;
+      background: var(--brand);
+      box-shadow: 0 -2px 10px oklch(25% 0.035 310 / 0.13);
     }
     .mobile-actions a {
       padding: 0.8rem;
       text-align: center;
-      color: white;
+      color: var(--on-dark);
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
     }
     .mobile-actions a + a {
-      background: var(--gold);
-      color: var(--teal);
+      background: var(--accent);
+      color: var(--brand);
     }
     .page-intro {
       padding-bottom: 3rem;

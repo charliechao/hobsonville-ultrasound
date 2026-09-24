@@ -2,6 +2,7 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const root = path.resolve('dist');
+const pagesBase = (process.env.SITE_BASE_PATH || '').replace(/\/$/, '');
 async function walk(dir) {
   return (
     await Promise.all(
@@ -64,7 +65,11 @@ for (const file of pages) {
     const url = new URL(raw, base);
     if (url.origin !== base.origin) continue;
     links++;
-    let target = path.join(root, decodeURIComponent(url.pathname));
+    const targetPath =
+      pagesBase && url.pathname.startsWith(`${pagesBase}/`)
+        ? url.pathname.slice(pagesBase.length)
+        : url.pathname;
+    let target = path.join(root, decodeURIComponent(targetPath));
     try {
       if ((await stat(target)).isDirectory())
         target = path.join(target, 'index.html');

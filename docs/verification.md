@@ -45,3 +45,10 @@ No browser/visual review or production deployment was performed for the initial 
 - CSS is explicitly emitted as two static assets from the shared layout, so the review deployment retains the global and premium visual layers.
 - Local browser review: the fresh hero advanced to slide two after 4.7 seconds; the service stage had one visible active card; a 390px viewport had no horizontal page overflow and the active card measured 375px wide inside the 375px document.
 - Browser console: no errors reported during the local homepage checks.
+
+## Continuous expertise carousel, 24 September 2026
+
+- Replaced the single-card stage with a continuous multi-card service track, modelled on the movement and visible-card density of Kiwi Web Design's Client Results carousel.
+- The track duplicates only the visual cards for a seamless loop. Original service links stay available in the document, and cloned cards are hidden from assistive technology and keyboard navigation.
+- Local browser review: at desktop, three cards were visible and the rail advanced 40.7px in 1.2 seconds; five original links and five non-focusable visual clones were present. At a 390px viewport, the 320px cards remained within a 375px document with no horizontal page overflow.
+- Browser console: no errors reported during the continuous carousel review.

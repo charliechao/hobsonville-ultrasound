@@ -430,58 +430,40 @@
   .carousel-heading-aside > .text-link {
     font-size: 1rem;
   }
-  .service-track {
+  .service-viewport {
     position: relative;
-    height: 570px;
     overflow: hidden;
-    padding: 0.5rem 1.25rem 1.5rem;
+    padding: 0.5rem 0 1.5rem;
+  }
+  .service-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    padding-inline: max(3.5rem, calc((100vw - 1280px) / 2));
+  }
+  service-carousel:not([data-ready]) .service-viewport {
+    padding-inline: max(3.5rem, calc((100vw - 1280px) / 2));
   }
   service-carousel:not([data-ready]) .service-track {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    height: auto;
-    overflow: visible;
-  }
-  service-carousel:not([data-ready]) .service-card {
-    position: static;
     width: auto;
-    min-height: 0;
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-    visibility: visible;
   }
   .service-card {
-    position: absolute;
-    top: 0.5rem;
-    left: 50%;
-    width: min(540px, calc(100% - 2.5rem));
-    min-height: 538px;
+    flex: 0 0 clamp(300px, 31vw, 420px);
+    min-height: 0;
     text-decoration: none;
     border: 1px solid var(--line);
     background: var(--white);
     border-radius: 8px;
     overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
     transition:
-      opacity 0.55s var(--ease),
-      transform 0.55s var(--ease),
+      transform 0.4s var(--ease),
       box-shadow 0.4s var(--ease),
-      border-color 0.4s,
-      visibility 0.55s;
-    transform: translateX(-50%) translateY(14px) scale(0.985);
-    visibility: hidden;
+      border-color 0.4s;
   }
-  .service-card.is-active {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(-50%);
-    visibility: visible;
-  }
-  .service-card.is-active:hover {
-    transform: translateX(-50%) translateY(-6px);
+  .service-card:hover {
+    transform: translateY(-6px);
     border-color: var(--icon);
     box-shadow: 0 16px 32px oklch(25% 0.035 310 / 0.05);
   }
@@ -1134,12 +1116,10 @@
       align-self: flex-end;
     }
     .service-track {
-      height: 530px;
-      padding-inline: 0.75rem;
+      padding-inline: 1.25rem;
     }
     .service-card {
-      width: min(100%, 430px);
-      min-height: 0;
+      flex-basis: min(82vw, 400px);
     }
     .service-card-photo {
       height: 230px;
@@ -1261,8 +1241,8 @@
     .button:hover {
       transform: none;
     }
-    .service-card.is-active:hover {
-      transform: translateX(-50%);
+    .service-card:hover {
+      transform: none;
     }
     .service-card:hover img {
       transform: none;

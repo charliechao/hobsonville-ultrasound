@@ -9,11 +9,11 @@ Manrope headings and Source Sans 3 body, self-hosted. Strong hierarchy, comforta
 The first version was too static and visually restrained. The client references and proposal call for sophisticated medical-imaging presentation with local approachability. A patient browsing at home in daylight, possibly anxious about a scan, needs welcoming photographs, confident contrast and readable controls.
 
 - Full-width photographic hero with deep aubergine readability treatment, soft lavender emphasis and persistent booking actions. Clinic pictures lead; illustrative equipment is labelled separately. It rotates automatically without visible slideshow controls.
-- Five image-led service cards in an automatic centred stage, each with a consistent medical line icon. Service links remain ordinary crawlable links; card order advances without arrows, slide numbers or drag interaction.
+- Five image-led service cards in a continuous horizontal track, each with a consistent medical line icon. The track moves smoothly while several cards remain visible; service links remain ordinary crawlable links without arrows, slide numbers or drag interaction.
 - Genuine clinic gallery and image-rich inner-page introductions, with varied section proportions and image crops.
 - Medical and practical icons for services, preparation, appointments, contact, location, care, prices and parking. Icons supplement visible text.
 - A visible 4.5-second hero slideshow without visual controls. It pauses out of view or in a hidden browser tab; reduced-motion users see its static first photograph. Static first photograph remains available without JavaScript.
-- A 4.5-second automatic service-card stage that centres one complete card at a time, with no drag interaction or visible directional controls. It pauses for keyboard focus and reduced-motion users.
+- A continuously moving automatic service track, paced to make the motion visible without abrupt card changes. It pauses for keyboard focus, hover, out-of-view content, a hidden browser tab and reduced-motion users.
 - Restrained entrance reveals, hover photo zoom, button lift and navigation underlines. Reduced motion disables these effects. No animation hides core content when JavaScript is unavailable.
 
 See `docs/design-reference-review.md` for how the five client-supplied references informed the redesign.

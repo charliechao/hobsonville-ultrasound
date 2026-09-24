@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import FAQ from '../components/FAQ.astro';
+import Callout from '../components/Callout.astro';
+---
+
+<Layout
+  title="Frequently asked questions"
+  description="Answers to common questions about referrals, preparation, support people, ultrasound results, images and appointments at Hobsonville Ultrasound."
+>
+  <PageIntro
+    title="A few helpful answers."
+    eyebrow="Frequently asked questions"
+    description="Practical information for your visit. If you still have a question, our reception team can help."
+  />
+  <section class="section">
+    <div class="container reading">
+      <FAQ all />
+    </div>
+  </section>
+  <Callout />
+</Layout>

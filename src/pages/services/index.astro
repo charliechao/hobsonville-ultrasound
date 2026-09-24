@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Photo from '../../components/Photo.astro';
+import Callout from '../../components/Callout.astro';
+import { categories, services, serviceUrl } from '../../data/services';
+import { images } from '../../data/images';
+---
+
+<Layout
+  title="Our ultrasound services"
+  description="Explore pregnancy, general, musculoskeletal, small parts and vascular ultrasound at Hobsonville Ultrasound, including preparation and pricing."
+>
+  <PageIntro
+    title="Our ultrasound services"
+    eyebrow="Diagnostic care, close to home"
+    description="Find your examination, understand the preparation, and take the next step with confidence."
+  >
+    <div class="jump-links">
+      {categories.map((c) => (
+        <a href={`#${c.slug}`}>{c.short}</a>
+      ))}
+    </div>
+  </PageIntro>
+  {categories.map((category, i) => (
+    <section id={category.slug} class={`section ${i % 2 ? 'white' : ''}`}>
+      <div class="container">
+        {category.slug === 'general' && <span id="general-ultrasound" />}
+        {category.slug === 'pregnancy' && <span id="obstetric" />}
+        <div class="category-hero">
+          <div>
+            <p class="eyebrow">0{i + 1} / Our services</p>
+            <h2>{category.name}</h2>
+            <p class="lead">{category.intro}</p>
+            <a class="text-link" href={`/services/${category.slug}/`}>
+              Explore {category.short.toLowerCase()} scans ↗
+            </a>
+          </div>
+          <Photo
+            src={images[category.image]}
+            alt={`Illustrative photograph for ${category.name.toLowerCase()}`}
+          />
+        </div>
+        <div class="exam-grid">
+          {services
+            .filter((s) => s.category === category.slug)
+            .map((s) => (
+              <a class="exam-link" href={serviceUrl(s)}>
+                <div>
+                  <h3>{s.name}</h3>
+                  <p>Preparation, pricing and appointments</p>
+                </div>
+                <span aria-hidden="true">↗</span>
+              </a>
+            ))}
+        </div>
+      </div>
+    </section>
+  ))}
+  <Callout />
+</Layout>

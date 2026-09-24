@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+---
+
+<Layout
+  title="Website privacy"
+  description="Information about website contact links, third-party booking and maps, and privacy enquiries at Hobsonville Ultrasound."
+>
+  <PageIntro
+    title="Website privacy"
+    description="Information about using this website and contacting the clinic."
+  />
+  <section class="section">
+    <div class="container reading prose">
+      <h2>Contact and health information</h2>
+      <p>
+        This website does not include a patient information upload or enquiry
+        form. Contact reception before sending sensitive medical information by
+        email, so the team can advise you on an appropriate channel.
+      </p>
+      <h2>Online booking</h2>
+      <p>
+        Online booking links open TidyCal, a separate appointment service.
+        Information entered there is handled through that service. Review{' '}
+        <a
+          href="https://tidycal.com/privacy-policy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          TidyCal’s privacy policy
+        </a>{' '}
+        before submitting your details.
+      </p>
+      <h2>Maps</h2>
+      <p>
+        The contact page includes a Google map. Loading the map connects your
+        browser to Google. You can also use the written address to plan your
+        visit. See{' '}
+        <a
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Google’s privacy policy
+        </a>
+        .
+      </p>
+      <h2>Website measurement</h2>
+      <p>
+        {import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' &&
+        import.meta.env.PUBLIC_GA4_ID
+          ? 'This website uses Google Analytics to measure page visits and clicks on booking, phone, email and directions links. These clicks do not confirm that an appointment or enquiry was completed. Do not include medical or personal information in website URLs.'
+          : 'Google Analytics is not enabled on this version of the website.'}
+      </p>
+      <h2>Privacy enquiries</h2>
+      <p>
+        For questions about clinic records, access to your information, or
+        privacy practices, contact{' '}
+        <a href="mailto:reception@hobus.co.nz" data-event="email_click">
+          reception@hobus.co.nz
+        </a>{' '}
+        or{' '}
+        <a href="tel:+6498693328" data-event="phone_click">
+          09 869 3328
+        </a>
+        .
+      </p>
+    </div>
+  </section>
+</Layout>

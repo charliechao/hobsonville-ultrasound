@@ -1,0 +1,118 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Callout from '../components/Callout.astro';
+---
+
+<Layout
+  title="Patient information and scan preparation"
+  description="Prepare for your ultrasound appointment in Hobsonville. Learn what to bring, scan preparation, support-person guidance, results and payment information."
+>
+  <PageIntro
+    title="Feel prepared for your visit."
+    eyebrow="Patient information"
+    description="A few practical details to help you arrive feeling comfortable and ready for your ultrasound."
+  />
+  <section class="section">
+    <div class="container two-column">
+      <div class="prose">
+        <h2>Before your appointment</h2>
+        <p>
+          A referral is required for diagnostic scans. Bring your completed
+          referral if it has not already been sent to us, along with any
+          relevant previous imaging or reports.
+        </p>
+        <p>
+          Preparation varies by examination. Please read your appointment
+          instructions and the preparation on your scan’s service page.
+        </p>
+        <h3>Abdominal scans</h3>
+        <p>
+          No food or drink for 6 hours before your appointment, except plain
+          water. Take prescribed medication as normal. If you have diabetes,
+          check preparation with your doctor.
+        </p>
+        <h3>Pelvic and renal tract scans</h3>
+        <p>
+          A full bladder is required. Empty your bladder 1 hour before the scan
+          and drink 3–4 glasses (approximately 800 mL) of water. If it is not
+          full 10 minutes before the appointment, drink more. If it becomes
+          uncomfortably full, you may release a small amount.
+        </p>
+        <h3>Combined abdomen and pelvis</h3>
+        <p>
+          Follow both the abdominal fasting instructions and the full-bladder
+          instructions above. Plain water is permitted.
+        </p>
+        <h3>Pregnancy scans</h3>
+        <p>
+          For dating scans before 10 weeks, follow the full-bladder instructions
+          above. Other obstetric examinations have no special preparation
+          listed; follow the individual instructions provided with your
+          appointment.
+        </p>
+        <h3>Musculoskeletal and vascular scans</h3>
+        <p>
+          No special preparation is listed. Wear clothing that allows access to
+          the area being examined. A loose top or singlet is helpful for a
+          shoulder scan; shorts or loose trousers for a knee scan.
+        </p>
+        <div class="notice">
+          <p>
+            If you have diabetes, difficulty with preparation, or questions
+            about your instructions, contact your doctor or our reception team
+            before your visit.
+          </p>
+        </div>
+        <h2>At the clinic</h2>
+        <p>
+          Find us on Level 1 of the Hobson Centre, above Unichem Pharmacy at
+          Woolworths, 124 Hobsonville Road. Free visitor parking is available.
+        </p>
+        <p>
+          You may bring one adult support person. Please avoid bringing children
+          where possible. If unavoidable, one child may attend with another
+          responsible adult to supervise them.
+        </p>
+        <h2>After your scan</h2>
+        <p>
+          For diagnostic examinations, the images are reviewed by the reporting
+          radiologist and your report is sent to your referring clinician when
+          complete. Your referrer can explain the findings and discuss next
+          steps.
+        </p>
+        <p>
+          Images may be shared using a secure email link for $10 per study where
+          not already included. Email reception for report requests.
+        </p>
+        <h2>Payment and appointment changes</h2>
+        <p>
+          Payment is due at your appointment. Please give at least 24 hours’
+          notice if you need to cancel or reschedule. Late cancellation or
+          non-attendance may incur a $50 fee.
+        </p>
+        <a href="/appointment-policy/">Read the full appointment policy</a>
+      </div>
+      <aside>
+        <div class="sidebar-panel">
+          <h2>Find your scan</h2>
+          <p>
+            Your examination page brings together preparation, pricing and
+            booking information.
+          </p>
+          <a class="button" href="/services/">
+            Explore examinations ↗
+          </a>
+          <p style="margin-top:1.5rem">
+            <a href="/pricing/">Pricing and eligibility</a>
+          </p>
+          <p>
+            <a href="/faq/">Frequently asked questions</a>
+          </p>
+          <a href="/contact/">Location and contact details</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <Callout />
+</Layout>

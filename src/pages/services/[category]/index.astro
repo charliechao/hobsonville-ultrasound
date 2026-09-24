@@ -1,0 +1,82 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Photo from '../../../components/Photo.astro';
+import Callout from '../../../components/Callout.astro';
+import { categories, services, serviceUrl } from '../../../data/services';
+import { images } from '../../../data/images';
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { category: category.slug },
+    props: { category },
+  }));
+}
+const { category } = Astro.props;
+const exams = services.filter((s) => s.category === category.slug);
+---
+
+<Layout
+  title={category.name}
+  description={`${category.intro} View examination information, preparation and prices at Hobsonville Ultrasound.`}
+>
+  <section class="page-intro">
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Services', href: '/services/' },
+          { label: category.short },
+        ]}
+      />
+      <div class="category-hero">
+        <div>
+          <p class="eyebrow">Our services</p>
+          <h1>{category.name}</h1>
+          <p class="lead">{category.intro}</p>
+        </div>
+        <Photo
+          src={images[category.image]}
+          alt={`Illustrative photograph for ${category.name.toLowerCase()}`}
+          eager
+        />
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Find your examination.</h2>
+        <p>{category.detail}</p>
+      </div>
+      <div class="exam-grid">
+        {exams.map((s) => (
+          <a class="exam-link" href={serviceUrl(s)}>
+            <div>
+              <h3>{s.name}</h3>
+              <p>
+                {s.slug === 'other-vascular' ? 'From ' : ''}${s.price}
+                {s.pregnancyEligible ? ' · eligible maternity patients' : ''}
+                {s.enquire ? ' · check availability' : ''}
+              </p>
+            </div>
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+      {category.slug === 'pregnancy' && (
+        <div class="notice">
+          <p>
+            Listed diagnostic pregnancy prices apply to eligible New Zealand
+            maternity patients. Eligible pregnancy scans are $30 with a
+            Community Services Card. Contact reception to confirm eligibility,
+            non-eligible pricing and appointment availability.
+          </p>
+        </div>
+      )}
+      <p style="margin-top:2rem">
+        <a href="/pricing/">Full pricing and payment information</a> ·{' '}
+        <a href="/patient-information/">Your appointment guide</a>
+      </p>
+    </div>
+  </section>
+  <Callout />
+</Layout>

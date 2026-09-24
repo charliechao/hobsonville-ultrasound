@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="callout">
+  <div class="container callout-inner">
+    <div>
+      <p class="eyebrow">A little guidance goes a long way</p>
+      <h2>Not sure which scan to book?</h2>
+      <p>
+        Have your referral handy and give us a call.
+        <br class="desktop-only" /> Our reception team will help you find the
+        right appointment.
+      </p>
+    </div>
+    <a class="button button-gold" href={site.tel} data-event="phone_click">
+      Call {site.phone} <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>

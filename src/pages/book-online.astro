@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Callout from '../components/Callout.astro';
+import { categories, services, bookingUrl, serviceUrl } from '../data/services';
+---
+
+<Layout
+  title="Book an ultrasound"
+  description="Choose your ultrasound examination and book through our existing TidyCal appointment system, or contact reception for help with your referral."
+>
+  <PageIntro
+    title="Let’s find your appointment."
+    eyebrow="Book an ultrasound"
+    description="Choose the examination on your referral. Online booking opens our TidyCal appointment system in a new tab."
+  >
+    <div class="jump-links">
+      {categories.map((c) => (
+        <a href={`#${c.slug}`}>{c.short}</a>
+      ))}
+    </div>
+  </PageIntro>
+  <section class="section">
+    <div class="container two-column">
+      <div>
+        {categories.map((category) => (
+          <section id={category.slug} class="booking-group">
+            <h2 style="font-size:1.8rem">{category.name}</h2>
+            {services
+              .filter((s) => s.category === category.slug)
+              .map((s) => (
+                <div class="booking-row">
+                  <div>
+                    <h3>{s.name}</h3>
+                    <p>
+                      <a href={serviceUrl(s)}>
+                        Scan information and preparation
+                      </a>
+                    </p>
+                  </div>
+                  <a
+                    href={bookingUrl(s)}
+                    target={s.booking ? '_blank' : undefined}
+                    rel={s.booking ? 'noopener noreferrer' : undefined}
+                    data-event={s.booking ? 'book_online_click' : undefined}
+                  >
+                    {s.booking ? 'Book online ↗' : 'Enquire ↗'}
+                  </a>
+                </div>
+              ))}
+          </section>
+        ))}
+      </div>
+      <aside>
+        <div class="sidebar-panel">
+          <h2>Your booking checklist</h2>
+          <ul>
+            <li>Have your referral ready for diagnostic scans.</li>
+            <li>Check the preparation for your examination.</li>
+            <li>Review the price and eligibility information.</li>
+            <li>
+              Contact reception if your scan is not listed or you need help
+              choosing.
+            </li>
+          </ul>
+          <p>
+            For anatomy and 3D / 4D scans, please confirm availability directly
+            with reception.
+          </p>
+          <a href="/pricing/">View prices</a>
+          <p style="margin-top:1.2rem">
+            <a href="/appointment-policy/">
+              Cancellation and appointment policy
+            </a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <Callout />
+</Layout>

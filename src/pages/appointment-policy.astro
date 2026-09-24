@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+---
+
+<Layout
+  title="Appointment policy"
+  description="Read Hobsonville Ultrasound’s appointment policy covering cancellations, late arrival, support people, payment and repeat scans."
+>
+  <PageIntro
+    title="Appointment policy"
+    eyebrow="Planning your visit"
+    description="Please read these details before your appointment so we can make the best use of your booked time."
+  />
+  <section class="section">
+    <div class="container reading prose">
+      <h2>Cancellations and rescheduling</h2>
+      <p>
+        Please give at least 24 hours’ notice if you need to cancel or
+        reschedule. Call reception, leave a voicemail, or reply to your
+        confirmation text.
+      </p>
+      <p>
+        Late cancellations or missed appointments may incur a $50 fee.
+        Emergencies are considered individually.
+      </p>
+      <h2>Arriving late</h2>
+      <p>
+        If you arrive 10 minutes or more after your appointment time, we may
+        need to reschedule. Where possible we may proceed with a shorter
+        session, depending on the examination and available time.
+      </p>
+      <h2>Support people and children</h2>
+      <p>
+        One adult support person may attend. Please avoid bringing children
+        where possible. If unavoidable, a maximum of one child may attend and
+        must be supervised by another responsible adult.
+      </p>
+      <h2>Payment</h2>
+      <p>
+        Payment is due at the appointment. Outstanding charges must be settled
+        before further appointments. Please contact reception with any pricing
+        or eligibility questions before attending.
+      </p>
+      <h2>Repeat scans</h2>
+      <p>
+        A repeat scan may sometimes be needed and does not necessarily mean
+        there is a problem. Repeat appointments depend on availability and the
+        clinical time window. Additional charges may apply.
+      </p>
+      <h2>Questions or changes?</h2>
+      <p>
+        <a href="tel:+6498693328" data-event="phone_click">
+          Call 09 869 3328
+        </a>{' '}
+        for help with your appointment.
+      </p>
+    </div>
+  </section>
+</Layout>

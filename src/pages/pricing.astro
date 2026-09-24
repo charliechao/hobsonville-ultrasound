@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Callout from '../components/Callout.astro';
+import { pricingGroups } from '../data/services';
+---
+
+<Layout
+  title="Ultrasound pricing"
+  description="View Hobsonville Ultrasound prices for pregnancy, general, small parts, musculoskeletal and vascular examinations, plus payment and eligibility information."
+>
+  <PageIntro
+    title="Clear pricing. Fewer surprises."
+    eyebrow="Ultrasound pricing"
+    description="Find the cost of your examination before your visit. If you are unsure which scan your referral covers, our reception team can help."
+  />
+  <section class="section">
+    <div class="container two-column">
+      <div>
+        {pricingGroups.map((group) => (
+          <table class="price-table">
+            <caption>{group.name}</caption>
+            <thead>
+              <tr>
+                <th scope="col">Examination</th>
+                <th scope="col">Price (NZD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {group.rows.map(([name, price]) => (
+                <tr>
+                  <th scope="row">{name}</th>
+                  <td>{price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ))}
+      </div>
+      <aside class="prose">
+        <div class="sidebar-panel">
+          <h2>Before you book</h2>
+          <p>
+            Payment is due at your appointment. Please confirm the final cost
+            with reception.
+          </p>
+          <h3>Pregnancy pricing</h3>
+          <p>
+            Listed diagnostic pregnancy prices apply to eligible New Zealand
+            maternity patients.
+          </p>
+          <p>
+            Eligible pregnancy scans are{' '}
+            <strong>$30 with a Community Services Card</strong>. Contact
+            reception about eligibility and pricing if you are not eligible for
+            NZ maternity funding.
+          </p>
+          <h3>ACC</h3>
+          <p>
+            An ACC referral may involve a patient contribution. Please confirm
+            your cost before attending.
+          </p>
+          <h3>Digital images</h3>
+          <p>
+            <strong>$10 per study</strong> for a secure image link, where not
+            already included.
+          </p>
+          <h3>Availability</h3>
+          <p>
+            Contact us to confirm availability for anatomy, 3D / 4D and combined
+            growth + 3D / 4D appointments.
+          </p>
+          <a class="button" href="/book-online/">
+            Find your appointment ↗
+          </a>
+        </div>
+        <h3>Changes or cancellations</h3>
+        <p>
+          Please give at least 24 hours’ notice. Late cancellations and missed
+          appointments may incur a $50 fee.
+        </p>
+        <a href="/appointment-policy/">Read our appointment policy</a>
+      </aside>
+    </div>
+  </section>
+  <Callout />
+</Layout>

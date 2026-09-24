@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Photo from '../components/Photo.astro';
+import Callout from '../components/Callout.astro';
+import { images } from '../data/images';
+---
+
+<Layout
+  title="About our Hobsonville clinic"
+  description="Get to know Hobsonville Ultrasound, formerly Body 2 Baby Ultrasound. Experienced, approachable diagnostic care for our local Auckland community."
+>
+  <PageIntro
+    title="Experienced hands. A personal approach."
+    eyebrow="About our clinic"
+    description="Professional diagnostic care in a welcoming local practice, with time for the person behind every appointment."
+  />
+  <section class="section">
+    <div class="container split">
+      <Photo
+        src={images.reception}
+        alt="Reception at Hobsonville Ultrasound with the current clinic signage"
+        class="editorial-photo"
+        eager
+      />
+      <div>
+        <p class="eyebrow">Rooted in experience</p>
+        <h2>
+          Care that starts
+          <br />
+          with you.
+        </h2>
+        <p class="lead">
+          Over 12 years of ultrasound experience, brought to our Hobsonville
+          community.
+        </p>
+        <p>
+          Our experience spans public and private healthcare in New Zealand and
+          South Africa, with training in South Africa and a commitment to
+          personal, professional care.
+        </p>
+        <p>
+          We provide a broad range of diagnostic services: pregnancy, general,
+          musculoskeletal, small parts and vascular ultrasound.
+        </p>
+        <p>
+          Whether it is your first scan or a return visit, our team will explain
+          your examination and make room for your questions.
+        </p>
+        <a class="text-link" href="/services/">
+          Explore our services ↗
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section mist">
+    <div class="container split">
+      <div>
+        <p class="eyebrow">A familiar clinic, a new name</p>
+        <h2>
+          Body 2 Baby is now
+          <br />
+          Hobsonville Ultrasound.
+        </h2>
+        <p>
+          The same ownership, team, services and clinical focus, with a name
+          that reflects the full range of diagnostic ultrasound care we provide.
+        </p>
+        <p>
+          We welcome patients from Hobsonville and neighbouring communities
+          including West Harbour, Westgate, Massey, Whenuapai, Te Atatū and
+          Greenhithe.
+        </p>
+        <a class="text-link" href="/contact/">
+          Plan your visit ↗
+        </a>
+      </div>
+      <Photo
+        src={images.room}
+        alt="The clinic’s ultrasound examination room"
+        class="editorial-photo"
+      />
+    </div>
+  </section>
+  <Callout />
+</Layout>

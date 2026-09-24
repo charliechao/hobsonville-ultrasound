@@ -1,0 +1,19 @@
+---
+import { faqs } from '../data/site';
+interface Props {
+  all?: boolean;
+}
+const entries = Astro.props.all ? faqs : faqs.slice(0, 4);
+---
+
+<div class="faq-list">
+  {entries.map((item) => (
+    <details>
+      <summary>
+        {item.question}
+        <span aria-hidden="true">+</span>
+      </summary>
+      <p>{item.answer}</p>
+    </details>
+  ))}
+</div>

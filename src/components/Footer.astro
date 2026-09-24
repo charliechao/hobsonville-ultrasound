@@ -1,0 +1,66 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a href="/" class="footer-name">
+        Hobsonville
+        <br />
+        Ultrasound<span class="brand-period">.</span>
+      </a>
+      <p>
+        Experienced ultrasound care,
+        <br />
+        right here in your neighbourhood.
+      </p>
+      <small>Formerly Body 2 Baby Ultrasound</small>
+    </div>
+    <div>
+      <h2>Visit the clinic</h2>
+      <p>
+        Hobson Centre, Level 1<br />
+        124 Hobsonville Road
+        <br />
+        Hobsonville, Auckland
+      </p>
+      <a
+        href={site.directions}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-event="directions_click"
+      >
+        Get directions ↗
+      </a>
+      <p class="small">
+        Above Unichem Pharmacy.
+        <br />
+        Free visitor parking.
+      </p>
+    </div>
+    <div>
+      <h2>Here to help</h2>
+      <a href={site.tel} data-event="phone_click">
+        {site.phone}
+      </a>
+      <a href={`mailto:${site.email}`} data-event="email_click">
+        {site.email}
+      </a>
+      <a href="/patient-information/">Prepare for your appointment</a>
+      <a href="/faq/">Frequently asked questions</a>
+      <a href="/appointment-policy/">Appointment policy</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {new Date().getFullYear()} Hobsonville Ultrasound</span>
+    <a href="/privacy/">Privacy</a>
+    <span>Diagnostic care for our local community</span>
+  </div>
+</footer>
+<div class="mobile-actions">
+  <a href={site.tel} data-event="phone_click">
+    Call reception
+  </a>
+  <a href="/book-online/">Book a scan ↗</a>
+</div>

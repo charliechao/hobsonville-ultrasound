@@ -1,0 +1,132 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import { getImage } from 'astro:assets';
+import { images } from '../data/images';
+import '@fontsource/manrope/latin-500.css';
+import '@fontsource/manrope/latin-600.css';
+import '@fontsource/manrope/latin-700.css';
+import '@fontsource/source-sans-3/latin-400.css';
+import '@fontsource/source-sans-3/latin-600.css';
+import '../styles/global.css';
+interface Props {
+  title: string;
+  description: string;
+  schema?: Record<string, unknown>;
+  noindex?: boolean;
+}
+const { title, description, schema, noindex = false } = Astro.props;
+const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
+const ga = import.meta.env.PUBLIC_GA4_ID;
+const canonical = new URL(
+  Astro.url.pathname === '/404/' ? '/404.html' : Astro.url.pathname,
+  site.url,
+).href;
+const socialImage = await getImage({
+  src: images.room,
+  width: 1200,
+  format: 'webp',
+});
+const clinic = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalClinic',
+  '@id': `${site.url}/#clinic`,
+  name: site.name,
+  url: site.url,
+  telephone: '+6498693328',
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Level 1, 124 Hobsonville Road',
+    addressLocality: 'Hobsonville, Auckland',
+    addressCountry: 'NZ',
+  },
+  areaServed: [
+    'Hobsonville',
+    'West Harbour',
+    'Westgate',
+    'Massey',
+    'Whenuapai',
+    'Te Atatū',
+    'Greenhithe',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en-NZ">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} | Hobsonville Ultrasound</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#193b3d" />
+    {!indexable && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_NZ" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={`${title} | ${site.name}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta
+      property="og:image"
+      content={new URL(socialImage.src, site.url).href}
+    />
+    <meta
+      property="og:image:alt"
+      content="The examination room at Hobsonville Ultrasound"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(clinic)}
+    ></script>
+    {schema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+      ></script>
+    )}
+    {indexable && ga && /^G-[A-Z0-9]+$/.test(ga) && (
+      <>
+        <script
+          is:inline
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${ga}`}
+        ></script>
+        <script is:inline define:vars={{ ga }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () {
+            window.dataLayer.push(arguments);
+          };
+          window.gtag('js', new Date());
+          window.gtag('config', ga, {
+            page_location: location.origin + location.pathname,
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false,
+          });
+          document.addEventListener('click', function (event) {
+            const link =
+              event.target instanceof Element
+                ? event.target.closest('[data-event]')
+                : null;
+            if (link) window.gtag('event', link.getAttribute('data-event'));
+          });
+        </script>
+      </>
+    )}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,139 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import Callout from '../../../components/Callout.astro';
+import {
+  categories,
+  services,
+  preparation,
+  bookingUrl,
+  serviceUrl,
+} from '../../../data/services';
+import { site } from '../../../data/site';
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { category: service.category, slug: service.slug },
+    props: { service },
+  }));
+}
+const { service } = Astro.props;
+const category = categories.find((c) => c.slug === service.category)!;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.name,
+  description: service.description,
+  provider: { '@id': `${site.url}/#clinic` },
+  url: site.url + serviceUrl(service),
+  areaServed: 'Auckland',
+};
+---
+
+<Layout
+  title={service.name}
+  description={`${service.name} at Hobsonville Ultrasound. View preparation instructions, pricing and appointment information.`}
+  schema={schema}
+>
+  <section class="page-intro">
+    <div class="container">
+      <Breadcrumbs
+        items={[
+          { label: 'Services', href: '/services/' },
+          { label: category.short, href: `/services/${category.slug}/` },
+          { label: service.name },
+        ]}
+      />
+      <p class="eyebrow">{category.name}</p>
+      <h1>{service.name}</h1>
+      <p class="lead">{service.description}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container two-column">
+      <div class="prose">
+        <h2>Preparing for your scan</h2>
+        <ul>
+          {preparation[service.prep].map((line) => (
+            <li>{line}</li>
+          ))}
+        </ul>
+        <p>
+          If your appointment instructions differ, or you have questions about
+          preparation, contact reception before your visit.
+        </p>
+        <h2>What to bring</h2>
+        <ul>
+          <li>
+            Your completed referral, if it has not already been sent to the
+            clinic.
+          </li>
+          <li>Relevant previous imaging or reports, where available.</li>
+          <li>
+            Your Community Services Card if it applies to your appointment.
+          </li>
+        </ul>
+        <h2>During your appointment</h2>
+        <p>
+          Our team will explain the examination and answer your questions. You
+          may bring one adult support person. Please let reception know
+          beforehand if you need any support for your visit.
+        </p>
+        <h2>Your results</h2>
+        <p>
+          For diagnostic examinations, images are reviewed by the reporting
+          radiologist and the completed report is sent to your referring
+          clinician. Your referrer will discuss the results and next steps with
+          you.
+        </p>
+        <p>
+          <a href="/patient-information/">Read our patient information</a> or{' '}
+          <a href="/appointment-policy/">view the appointment policy</a>.
+        </p>
+      </div>
+      <aside>
+        <div class="sidebar-panel">
+          <p class="eyebrow">Appointment information</p>
+          <h2>{service.name}</h2>
+          <p class="price-amount">
+            {service.slug === 'other-vascular' ? 'From ' : ''}${service.price}
+          </p>
+          {service.priceNote && <p class="small">{service.priceNote}</p>}
+          {service.pregnancyEligible && (
+            <p class="small">
+              For eligible NZ maternity patients. Eligible pregnancy scans are
+              $30 with a Community Services Card. Contact us about non-eligible
+              pricing.
+            </p>
+          )}
+          {service.enquire && (
+            <p>Please check availability with reception before booking.</p>
+          )}
+          <a
+            class="button"
+            href={bookingUrl(service)}
+            target={service.booking ? '_blank' : undefined}
+            rel={service.booking ? 'noopener noreferrer' : undefined}
+            data-event={service.booking ? 'book_online_click' : undefined}
+          >
+            {service.booking ? 'Book this scan' : 'Enquire about this scan'}{' '}
+            <span aria-hidden="true">↗</span>
+          </a>
+          {service.booking && (
+            <p class="small" style="margin-top:1rem">
+              Opens our secure TidyCal booking page in a new tab.
+            </p>
+          )}
+          <p style="margin-top:1rem">
+            <a href={site.tel} data-event="phone_click">
+              Call {site.phone}
+            </a>
+          </p>
+          <a class="small" href="/pricing/">
+            View all pricing and payment details
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <Callout />
+</Layout>

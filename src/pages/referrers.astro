@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Photo from '../components/Photo.astro';
+import { site } from '../data/site';
+import { images } from '../data/images';
+---
+
+<Layout
+  title="Information for referrers"
+  description="Refer patients to Hobsonville Ultrasound for diagnostic ultrasound. Contact reception about referrals, examination availability and report access."
+>
+  <PageIntro
+    title="A local partner in patient care."
+    eyebrow="For referring clinicians"
+    description="Accessible diagnostic ultrasound in Hobsonville, with an experienced team and a personal approach to your patients’ care."
+  />
+  <section class="section">
+    <div class="container split split-top">
+      <div class="prose">
+        <h2>Referring a patient</h2>
+        <p>
+          We accept diagnostic ultrasound referrals from registered New Zealand
+          healthcare professionals, including GPs, specialists, sports
+          physicians, chiropractors, physiotherapists, osteopaths, podiatrists,
+          nurse practitioners, LMCs and midwives.
+        </p>
+        <p>
+          Please contact reception to confirm the appropriate way to send your
+          referral. Patients can bring a completed referral if it has not
+          already been sent.
+        </p>
+        <h2>Examinations available</h2>
+        <p>
+          Our services cover pregnancy, general, musculoskeletal, small parts
+          and vascular ultrasound. Please contact us to discuss a particular
+          examination or confirm availability.
+        </p>
+        <a href="/services/">Browse our examination directory</a>
+        <h2>Reports and access</h2>
+        <p>
+          Diagnostic images are reviewed by the reporting radiologist. Completed
+          reports are sent to the referring clinician.
+        </p>
+        <p>
+          Contact reception for report enquiries or to discuss image access.
+          Please call before sending sensitive patient information by email.
+        </p>
+        <div class="actions">
+          <a class="button" href={site.tel} data-event="phone_click">
+            Call {site.phone} ↗
+          </a>
+          <a href={`mailto:${site.email}`} data-event="email_click">
+            Email reception
+          </a>
+        </div>
+      </div>
+      <Photo
+        src={images.probe}
+        alt="An ultrasound probe shown as an illustrative equipment detail"
+        class="editorial-photo"
+        eager
+      />
+    </div>
+  </section>
+</Layout>

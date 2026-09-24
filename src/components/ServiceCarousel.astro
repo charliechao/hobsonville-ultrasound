@@ -1,0 +1,138 @@
+---
+import { categories } from '../data/services';
+import { images } from '../data/images';
+import Photo from './Photo.astro';
+import Icon, { type IconName } from './Icon.astro';
+const icons: IconName[] = ['pregnancy', 'general', 'muscle', 'focus', 'pulse'];
+const details = [
+  'Dating, NT and growth scans',
+  'Abdominal, pelvic and renal scans',
+  'Joints, tendons and soft tissues',
+  'Thyroid, breast and focused scans',
+  'DVT and carotid examinations',
+];
+---
+
+<service-carousel
+  class="service-carousel"
+  role="region"
+  aria-label="Explore ultrasound services"
+>
+  <div class="container section-heading">
+    <div>
+      <p class="section-label">Our expertise</p>
+      <h2>
+        Care for every
+        <br />
+        stage of life.
+      </h2>
+    </div>
+    <div class="carousel-heading-aside">
+      <p>
+        Find your scan. Know what to expect.
+        <br />
+        Feel ready for your appointment.
+      </p>
+      <div class="rail-controls">
+        <button
+          type="button"
+          class="round-control previous"
+          data-previous
+          aria-label="Previous services"
+          aria-controls="service-track"
+        >
+          <Icon name="chevron" />
+        </button>
+        <button
+          type="button"
+          class="round-control"
+          data-next
+          aria-label="Next services"
+          aria-controls="service-track"
+        >
+          <Icon name="chevron" />
+        </button>
+        <a href="/services/" class="text-link">
+          All services <Icon name="arrow" size={20} />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    class="service-track"
+    id="service-track"
+    tabindex="0"
+    aria-label="Service cards; scroll horizontally to explore"
+  >
+    {categories.map((category, i) => (
+      <a href={`/services/${category.slug}/`} class="service-card">
+        <div class="service-card-photo">
+          <Photo
+            src={images[category.image]}
+            alt={`Illustrative ${category.short.toLowerCase()} ultrasound examination`}
+            sizes="(max-width: 620px) 82vw, 400px"
+          />
+          <span class="service-card-number">0{i + 1}</span>
+        </div>
+        <div class="service-card-info">
+          <Icon name={icons[i]} size={36} />
+          <h3>{category.name}</h3>
+          <p>{details[i]}</p>
+          <span class="service-card-link">
+            Explore scans <Icon name="arrow" size={20} />
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+  <p class="sr-only" data-rail-status aria-live="polite"></p>
+</service-carousel>
+<script>
+  class ServiceCarousel extends HTMLElement {
+    connectedCallback() {
+      this.dataset.ready = 'true';
+      const track = this.querySelector<HTMLElement>('.service-track')!;
+      const previous =
+        this.querySelector<HTMLButtonElement>('[data-previous]')!;
+      const next = this.querySelector<HTMLButtonElement>('[data-next]')!;
+      const update = () => {
+        previous.disabled = track.scrollLeft < 5;
+        next.disabled =
+          track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
+      };
+      const move = (direction: number) => {
+        const step =
+          (track.firstElementChild as HTMLElement).getBoundingClientRect()
+            .width + 24;
+        track.scrollBy({
+          left: direction * step,
+          behavior: matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? 'instant'
+            : 'smooth',
+        });
+      };
+      previous.addEventListener('click', () => move(-1));
+      next.addEventListener('click', () => move(1));
+      track.addEventListener('scroll', update, { passive: true });
+      track.addEventListener('keydown', (event) => {
+        if (
+          event.target === track &&
+          ['ArrowLeft', 'ArrowRight'].includes(event.key)
+        ) {
+          event.preventDefault();
+          move(event.key === 'ArrowRight' ? 1 : -1);
+        }
+      });
+      const observer = new ResizeObserver(update);
+      observer.observe(track);
+      this.cleanup = () => observer.disconnect();
+      update();
+    }
+    cleanup?: () => void;
+    disconnectedCallback() {
+      this.cleanup?.();
+    }
+  }
+  if (!customElements.get('service-carousel'))
+    customElements.define('service-carousel', ServiceCarousel);
+</script>

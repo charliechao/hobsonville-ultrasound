@@ -3,260 +3,342 @@ import Layout from '../layouts/Layout.astro';
 import Photo from '../components/Photo.astro';
 import FAQ from '../components/FAQ.astro';
 import Callout from '../components/Callout.astro';
+import Icon from '../components/Icon.astro';
+import ImageSlider from '../components/ImageSlider.astro';
+import ServiceCarousel from '../components/ServiceCarousel.astro';
 import { images } from '../data/images';
-import { categories, services, serviceUrl } from '../data/services';
+import { services, serviceUrl } from '../data/services';
 import { site } from '../data/site';
 const featured = ['dating', 'pelvic', 'abdominal'].map((slug) =>
   services.find((s) => s.slug === slug)!,
 );
+const heroSlides = [
+  {
+    image: images.room,
+    alt: 'The examination room at Hobsonville Ultrasound',
+    caption: 'Our clinic · Hobsonville',
+  },
+  {
+    image: images.reception,
+    alt: 'Reception and the current Hobsonville Ultrasound signage',
+    caption: 'A warm welcome · Our reception',
+  },
+  {
+    image: images.probe,
+    alt: 'An ultrasound probe, shown as an illustrative equipment detail',
+    caption: 'Detailed imaging · Equipment illustration',
+  },
+];
 ---
 
 <Layout
   title="Ultrasound care in Hobsonville, Auckland"
   description="Experienced diagnostic ultrasound care in Hobsonville. Pregnancy, general, musculoskeletal, small parts and vascular scans. View prices and book your appointment."
 >
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">Hobsonville · Auckland</p>
+  <section class="premium-hero">
+    <ImageSlider
+      id="home-hero"
+      label="Hobsonville Ultrasound clinic and imaging photographs"
+      slides={heroSlides}
+      hero
+      autoplay
+    />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="container premium-hero-content">
+      <p class="hero-location">
+        <Icon name="pin" size={18} /> Your local Hobsonville clinic
+      </p>
       <h1>
-        Experienced care.
+        Detailed imaging.
         <br />
-        <em>Close to home.</em>
+        Personal care.
+        <br />
+        <span>Right here.</span>
       </h1>
-      <p class="lead">
-        Professional diagnostic ultrasound, with the time and personal care you
-        deserve.
+      <p>
+        Experienced ultrasound care, with the time
+        <br class="desktop-only" /> and attention you deserve.
       </p>
       <div class="actions">
-        <a class="button" href="/book-online/">
-          Book an ultrasound <span aria-hidden="true">↗</span>
+        <a class="button button-gold" href="/book-online/">
+          <Icon name="calendar" size={21} /> Book an ultrasound
         </a>
-        <a class="text-link" href="/services/">
-          Explore our services
-        </a>
-      </div>
-      <p class="hero-note">Over 12 years of ultrasound experience.</p>
-    </div>
-    <div class="hero-photo">
-      <Photo
-        src={images.room}
-        alt="The examination room at Hobsonville Ultrasound, with an ultrasound machine and patient bed"
-        eager
-      />
-      <div class="photo-caption">
-        <span>Your local Hobsonville clinic</span>
-        <span>124 Hobsonville Road</span>
-      </div>
-    </div>
-  </section>
-  <div class="trust-strip">
-    <div class="container trust-inner">
-      <span>A broad range of diagnostic scans</span>
-      <span>Experienced, personal care</span>
-      <span>Free visitor parking</span>
-    </div>
-  </div>
-  <section class="section">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Our services</p>
-          <h2>
-            The scan you need.
-            <br />
-            Care you can feel comfortable with.
-          </h2>
-        </div>
-        <a class="text-link" href="/services/">
-          View all examinations ↗
+        <a class="hero-secondary" href="/services/">
+          Discover our services <Icon name="arrow" size={20} />
         </a>
       </div>
-      <div class="service-list">
-        {categories.map((category, i) => (
-          <a class="service-row" href={`/services/${category.slug}/`}>
-            <span class="service-number">0{i + 1}</span>
-            <h3>{category.name}</h3>
-            <p>{category.intro}</p>
-            <span class="arrow" aria-hidden="true">
-              ↗
-            </span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-  <section class="section mist">
-    <div class="container split">
-      <figure class="photo-frame">
-        <Photo
-          src={images.reception}
-          alt="The Hobsonville Ultrasound reception desk with the clinic’s teal and gold sign"
-          class="editorial-photo"
-        />
-        <figcaption>
-          A familiar face in your neighbourhood. A welcoming place for your
-          care.
-        </figcaption>
-      </figure>
-      <div>
-        <p class="eyebrow">Welcome to Hobsonville Ultrasound</p>
-        <h2>
-          Local people.
+      <div class="hero-assurance">
+        <Icon name="shield" size={24} />
+        <span>
+          12+ years of sonography experience
           <br />
-          Personal attention.
+          <small>New Zealand & South Africa</small>
+        </span>
+      </div>
+    </div>
+    <a
+      class="hero-scroll"
+      href="#your-care"
+      aria-label="Explore your care options"
+    >
+      <span>Explore your care</span>
+      <Icon name="arrow" size={20} />
+    </a>
+  </section>
+  <section
+    class="quick-paths container"
+    id="your-care"
+    aria-label="Plan your appointment"
+  >
+    <a href="/patient-information/">
+      <Icon name="file" size={31} />
+      <span>
+        <strong>Prepare for your scan</strong>
+        <small>A little guidance before your visit</small>
+      </span>
+      <Icon name="chevron" size={18} />
+    </a>
+    <a href="/pricing/">
+      <Icon name="wallet" size={31} />
+      <span>
+        <strong>Clear, upfront pricing</strong>
+        <small>Know your cost before you book</small>
+      </span>
+      <Icon name="chevron" size={18} />
+    </a>
+    <a href="/contact/">
+      <Icon name="pin" size={31} />
+      <span>
+        <strong>Find us in Hobsonville</strong>
+        <small>Level 1 · Free visitor parking</small>
+      </span>
+      <Icon name="chevron" size={18} />
+    </a>
+  </section>
+  <section class="services-section section">
+    <ServiceCarousel />
+  </section>
+  <section class="practice-section section">
+    <div class="container practice-grid">
+      <div class="practice-images" data-reveal>
+        <ImageSlider
+          id="clinic-gallery"
+          label="Take a look inside our clinic"
+          slides={heroSlides.slice(0, 2).reverse()}
+        />
+        <div class="practice-image-note">
+          <Icon name="care" size={30} />
+          <span>
+            Local people.
+            <br />
+            <strong>Personal attention.</strong>
+          </span>
+        </div>
+      </div>
+      <div class="practice-copy" data-reveal>
+        <p class="section-label">Welcome to your local practice</p>
+        <h2>
+          More than a scan.
+          <br />
+          <span>Care centred on you.</span>
         </h2>
         <p class="lead">
-          An experienced team, a welcoming clinic, and care centred on you.
+          A welcoming space, experienced hands, and time for your questions.
         </p>
         <p>
-          We bring more than 12 years of ultrasound experience across public and
-          private healthcare in New Zealand and South Africa to our local
-          Hobsonville practice.
+          We bring more than 12 years of sonography experience across public and
+          private healthcare in New Zealand and South Africa to our Hobsonville
+          clinic.
         </p>
         <p>
-          You may know us as Body 2 Baby Ultrasound. Our name has changed, with
-          the same ownership, team and clinical focus, and a full range of
-          diagnostic ultrasound services.
+          From your first hello to the end of your appointment, we aim to make
+          your visit professional, comfortable and straightforward.
         </p>
-        <a class="text-link" href="/about/">
-          Get to know our clinic ↗
-        </a>
-        <div class="fact-row">
-          <div>
-            <strong>12+</strong>
-            <span>years of experience</span>
-          </div>
-          <div>
-            <strong>5</strong>
-            <span>areas of ultrasound care</span>
-          </div>
+        <div class="practice-values">
+          <span>
+            <Icon name="scan" /> Detailed imaging
+          </span>
+          <span>
+            <Icon name="care" /> Personal care
+          </span>
+          <span>
+            <Icon name="pin" /> Close to home
+          </span>
         </div>
+        <a class="button button-outline" href="/about/">
+          Get to know us <Icon name="arrow" size={20} />
+        </a>
       </div>
     </div>
   </section>
-  <section class="section">
+  <div class="name-change">
     <div class="container">
-      <div class="section-heading">
+      <Icon name="care" size={25} />
+      <p>
+        <strong>A familiar clinic. A new name.</strong> Formerly Body 2 Baby
+        Ultrasound, now Hobsonville Ultrasound. Same team and care.
+      </p>
+      <a href="/about/" aria-label="Read about our name change">
+        <Icon name="arrow" />
+      </a>
+    </div>
+  </div>
+  <section class="section home-pricing">
+    <div class="container">
+      <div class="section-heading" data-reveal>
         <div>
-          <p class="eyebrow">Clear information, before you book</p>
-          <h2>Plan your appointment.</h2>
+          <p class="section-label">Clarity before your appointment</p>
+          <h2>
+            Know what to expect.
+            <br />
+            And what it costs.
+          </h2>
         </div>
         <a class="text-link" href="/pricing/">
-          See the full price list ↗
+          View all prices <Icon name="arrow" size={20} />
         </a>
       </div>
-      <div class="price-highlights">
-        {featured.map((service) => (
-          <article class="price-feature">
-            <h3>{service.name}</h3>
-            <div class="price-amount">${service.price}</div>
-            <p>
-              {service.pregnancyEligible
-                ? 'For eligible New Zealand maternity patients.'
-                : 'Referral required for diagnostic scans.'}
-            </p>
-            <a class="text-link" href={serviceUrl(service)}>
-              About this scan ↗
+      <div class="pricing-composition">
+        <div class="pricing-photo" data-reveal>
+          <Photo
+            src={images.pregnancy}
+            alt="Illustrative close-up of an ultrasound examination during pregnancy"
+            sizes="(max-width: 760px) 100vw, 40vw"
+          />
+          <div>
+            <Icon name="care" size={27} />
+            <span>
+              Here for your
+              <br />
+              <strong>important moments.</strong>
+            </span>
+          </div>
+        </div>
+        <div class="price-editorial" data-reveal>
+          {featured.map((service) => (
+            <a class="price-editorial-row" href={serviceUrl(service)}>
+              <div>
+                <h3>{service.name}</h3>
+                <p>
+                  {service.pregnancyEligible
+                    ? 'Eligible NZ maternity patients'
+                    : 'Diagnostic scan · referral required'}
+                </p>
+              </div>
+              <span class="price-value">${service.price}</span>
+              <Icon name="arrow" size={21} />
             </a>
-          </article>
-        ))}
+          ))}
+          <p class="small muted">
+            Community Services Card pricing is available for eligible pregnancy
+            scans. Confirm eligibility and your final cost with reception.
+          </p>
+        </div>
       </div>
-      <p class="small muted" style="margin-top:1.5rem">
-        Community Services Card pricing is available for eligible pregnancy
-        scans. Please confirm your eligibility and final cost with reception.
-      </p>
     </div>
   </section>
-  <section class="section white">
+  <section class="visit-section section">
     <div class="container split split-top">
-      <div>
-        <p class="eyebrow">Your visit, made simpler</p>
+      <div data-reveal>
+        <p class="section-label">Your appointment, made easier</p>
         <h2>
           A little preparation.
           <br />A more relaxed visit.
         </h2>
-        <ol class="steps">
-          <li>
-            <strong>Have your referral ready</strong>
-            <p>
-              Bring it along if your health professional has not already sent
-              it.
-            </p>
-          </li>
-          <li>
-            <strong>Check your scan preparation</strong>
-            <p>
-              Some scans require fasting or a full bladder. Your examination
-              page explains what to do.
-            </p>
-          </li>
-          <li>
-            <strong>Find us in Hobsonville</strong>
-            <p>
-              Level 1, above Unichem Pharmacy at Woolworths. Free visitor
-              parking is available.
-            </p>
-          </li>
-        </ol>
-        <a class="text-link" href="/patient-information/">
-          Your appointment guide ↗
-        </a>
+        <div class="visit-steps">
+          <a href="/patient-information/">
+            <Icon name="file" size={28} />
+            <div>
+              <h3>Have your referral ready</h3>
+              <p>
+                Bring it along if your health professional has not already sent
+                it.
+              </p>
+            </div>
+          </a>
+          <a href="/patient-information/">
+            <Icon name="clock" size={28} />
+            <div>
+              <h3>Check your preparation</h3>
+              <p>
+                Your scan may require fasting or a full bladder. Read your
+                appointment instructions.
+              </p>
+            </div>
+          </a>
+          <a href="/contact/">
+            <Icon name="parking" size={28} />
+            <div>
+              <h3>Arrive with one less worry</h3>
+              <p>
+                Find us above Unichem Pharmacy at Woolworths, with free visitor
+                parking.
+              </p>
+            </div>
+          </a>
+        </div>
       </div>
-      <div>
-        <p class="eyebrow">Good to know</p>
+      <div class="home-faq" data-reveal>
+        <p class="section-label">Good to know</p>
         <FAQ />
-        <a class="text-link" href="/faq/" style="margin-top:1.5rem">
-          More questions, answered ↗
+        <a class="text-link" href="/faq/">
+          More questions, answered <Icon name="arrow" size={20} />
         </a>
       </div>
     </div>
   </section>
-  <section class="section">
-    <div class="container split">
-      <div>
-        <p class="eyebrow">Part of your community</p>
+  <section class="section home-location">
+    <div class="container location-composition">
+      <div data-reveal>
+        <p class="section-label">Part of your community</p>
         <h2>
-          Right here
+          Your neighbourhood.
           <br />
-          in Hobsonville.
+          <span>Your ultrasound clinic.</span>
         </h2>
         <p>
           Convenient for Hobsonville, West Harbour, Westgate, Massey, Whenuapai,
           Te Atatū and Greenhithe.
         </p>
-        <ul class="location-details">
-          <li>
-            <strong>Hobson Centre, Level 1</strong>124 Hobsonville Road,
-            Hobsonville, Auckland
-          </li>
-          <li>
-            <strong>Easy to find</strong>Above Unichem Pharmacy, at Woolworths
-          </li>
-          <li>
-            <strong>Free visitor parking</strong>Contact reception for
-            appointment availability.
-          </li>
-        </ul>
+        <div class="location-address">
+          <Icon name="pin" size={29} />
+          <p>
+            <strong>Hobson Centre, Level 1</strong>
+            <br />
+            124 Hobsonville Road, Hobsonville
+            <br />
+            <small>Above Unichem Pharmacy, at Woolworths</small>
+          </p>
+        </div>
         <div class="actions">
           <a
-            class="button button-outline"
+            class="button"
             href={site.directions}
             target="_blank"
             rel="noopener noreferrer"
             data-event="directions_click"
           >
-            Get directions ↗
+            <Icon name="pin" size={20} /> Get directions
           </a>
-          <a class="text-link" href="/contact/">
-            Contact the clinic
+          <a class="text-link" href={site.tel} data-event="phone_click">
+            <Icon name="phone" size={19} /> {site.phone}
           </a>
         </div>
       </div>
-      <Photo
-        src={images.probe}
-        alt="Close-up of an ultrasound probe, shown as an illustration of diagnostic equipment"
-        class="editorial-photo"
-      />
+      <div class="location-map" data-reveal>
+        <iframe
+          class="map"
+          title="Hobsonville Ultrasound at 124 Hobsonville Road"
+          src="https://maps.google.com/maps?q=Hobsonville%20Ultrasound%20124%20Hobsonville%20Road%20Auckland&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+        <div>
+          <Icon name="parking" size={22} /> Free visitor parking{' '}
+          <span>Hobsonville, Auckland</span>
+        </div>
+      </div>
     </div>
   </section>
   <Callout />

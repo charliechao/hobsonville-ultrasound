@@ -1,20 +1,28 @@
 ---
 import { site } from '../data/site';
+import Icon from './Icon.astro';
 ---
 
 <section class="callout">
   <div class="container callout-inner">
+    <div class="callout-symbol">
+      <Icon name="scan" size={72} />
+    </div>
     <div>
-      <p class="eyebrow">A little guidance goes a long way</p>
-      <h2>Not sure which scan to book?</h2>
+      <p class="section-label">Experienced hands. Personal care.</p>
+      <h2>Let’s take the next step.</h2>
       <p>
-        Have your referral handy and give us a call.
-        <br class="desktop-only" /> Our reception team will help you find the
-        right appointment.
+        Book your ultrasound online, or call reception
+        <br class="desktop-only" /> for a little guidance with your referral.
       </p>
     </div>
-    <a class="button button-gold" href={site.tel} data-event="phone_click">
-      Call {site.phone} <span aria-hidden="true">↗</span>
-    </a>
+    <div class="callout-actions">
+      <a class="button button-gold" href="/book-online/">
+        <Icon name="calendar" size={22} /> Book an ultrasound
+      </a>
+      <a href={site.tel} data-event="phone_click">
+        <Icon name="phone" size={19} /> {site.phone}
+      </a>
+    </div>
   </div>
 </section>

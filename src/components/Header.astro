@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { images } from '../data/images';
 import { site } from '../data/site';
+import Icon from './Icon.astro';
 const links = [
   ['Services', '/services/'],
   ['Patient information', '/patient-information/'],
@@ -15,9 +16,12 @@ const current = Astro.url.pathname;
 
 <div class="utility">
   <div class="container utility-inner">
-    <span>Local care. Experienced hands.</span>
+    <span>
+      <Icon name="pin" size={15} /> Hobsonville, Auckland{' '}
+      <span class="utility-parking">· Free visitor parking</span>
+    </span>
     <a href={site.tel} data-event="phone_click">
-      Call {site.phone}
+      <Icon name="phone" size={15} /> {site.phone}
     </a>
   </div>
 </div>
@@ -43,11 +47,11 @@ const current = Astro.url.pathname;
       ))}
     </nav>
     <a class="button button-small header-book" href="/book-online/">
-      Book a scan <span aria-hidden="true">↗</span>
+      <Icon name="calendar" size={18} /> Book a scan
     </a>
     <details class="mobile-menu">
       <summary>
-        Menu <span aria-hidden="true">☰</span>
+        Menu <Icon name="menu" size={20} />
       </summary>
       <nav aria-label="Mobile navigation">
         {links.map(([label, href]) => (

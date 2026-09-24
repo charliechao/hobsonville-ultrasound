@@ -5,5 +5,6 @@ export default defineConfig({
   site: 'https://hobus.co.nz',
   output: 'static',
   trailingSlash: 'always',
+  devToolbar: { enabled: false },
   integrations: [sitemap({ filter: (page) => !page.endsWith('/404/') })],
 });

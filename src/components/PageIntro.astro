@@ -1,19 +1,48 @@
 ---
 import Breadcrumbs from './Breadcrumbs.astro';
+import Photo from './Photo.astro';
+import { images } from '../data/images';
 interface Props {
   title: string;
   eyebrow?: string;
   description?: string;
 }
 const { title, eyebrow, description } = Astro.props;
+const photo = ['/about/', '/contact/'].includes(Astro.url.pathname)
+  ? images.reception
+  : [
+        '/services/',
+        '/patient-information/',
+        '/book-online/',
+        '/referrers/',
+        '/pricing/',
+      ].includes(Astro.url.pathname)
+    ? images.probe
+    : null;
 ---
 
-<section class="page-intro">
+<section class:list={['page-intro', { 'page-intro-visual': !!photo }]}>
   <div class="container">
     <Breadcrumbs items={[{ label: title }]} />
-    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-    <h1>{title}</h1>
-    {description && <p class="lead">{description}</p>}
-    <slot />
+    <div class="intro-composition">
+      <div>
+        {eyebrow && <p class="section-label">{eyebrow}</p>}
+        <h1>{title}</h1>
+        {description && <p class="lead">{description}</p>}
+        <slot />
+      </div>
+      {photo && (
+        <Photo
+          src={photo}
+          alt={
+            photo === images.reception
+              ? 'The reception at Hobsonville Ultrasound'
+              : 'Illustrative detail of an ultrasound probe'
+          }
+          class="intro-photo"
+          eager
+        />
+      )}
+    </div>
   </div>
 </section>

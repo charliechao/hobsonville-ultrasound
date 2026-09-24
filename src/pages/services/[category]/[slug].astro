@@ -2,6 +2,9 @@
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Callout from '../../../components/Callout.astro';
+import Photo from '../../../components/Photo.astro';
+import Icon from '../../../components/Icon.astro';
+import { images } from '../../../data/images';
 import {
   categories,
   services,
@@ -43,15 +46,27 @@ const schema = {
           { label: service.name },
         ]}
       />
-      <p class="eyebrow">{category.name}</p>
-      <h1>{service.name}</h1>
-      <p class="lead">{service.description}</p>
+      <div class="intro-composition">
+        <div>
+          <p class="section-label">{category.name}</p>
+          <h1>{service.name}</h1>
+          <p class="lead">{service.description}</p>
+        </div>
+        <Photo
+          src={images[category.image]}
+          alt={`Illustrative ${category.short.toLowerCase()} ultrasound examination`}
+          class="intro-photo"
+          eager
+        />
+      </div>
     </div>
   </section>
   <section class="section">
     <div class="container two-column">
       <div class="prose">
-        <h2>Preparing for your scan</h2>
+        <h2>
+          <Icon name="clock" size={27} /> Preparing for your scan
+        </h2>
         <ul>
           {preparation[service.prep].map((line) => (
             <li>{line}</li>
@@ -61,7 +76,9 @@ const schema = {
           If your appointment instructions differ, or you have questions about
           preparation, contact reception before your visit.
         </p>
-        <h2>What to bring</h2>
+        <h2>
+          <Icon name="file" size={27} /> What to bring
+        </h2>
         <ul>
           <li>
             Your completed referral, if it has not already been sent to the
@@ -72,13 +89,17 @@ const schema = {
             Your Community Services Card if it applies to your appointment.
           </li>
         </ul>
-        <h2>During your appointment</h2>
+        <h2>
+          <Icon name="care" size={27} /> During your appointment
+        </h2>
         <p>
           Our team will explain the examination and answer your questions. You
           may bring one adult support person. Please let reception know
           beforehand if you need any support for your visit.
         </p>
-        <h2>Your results</h2>
+        <h2>
+          <Icon name="scan" size={27} /> Your results
+        </h2>
         <p>
           For diagnostic examinations, images are reviewed by the reporting
           radiologist and the completed report is sent to your referring

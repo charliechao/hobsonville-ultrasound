@@ -37,3 +37,11 @@ No browser/visual review or production deployment was performed for the initial 
 - Our expertise: removed the image numbers and all directional controls. The service cards now advance automatically while the section is visible. Native horizontal dragging is disabled; each linked service card remains keyboard accessible. Automatic motion pauses for keyboard focus, a hidden browser tab, out-of-view content and reduced-motion preferences.
 - Local browser review confirmed the hero has no buttons, service cards have no numbered overlays, the clinic gallery retains its own controls, all five service images load, and no console errors were reported.
 - Astro diagnostics: 0 errors, 0 warnings, 0 hints. Static build: 43 pages. Generated-output audit: 1,508 local references and 100 image elements passed.
+
+## Homepage motion pacing, 24 September 2026
+
+- Hero photography now advances every 4.5 seconds, making the image changes more apparent while retaining the crossfade and reduced-motion behaviour.
+- The expertise section now presents one complete, centred service card at a time. Its 4.5-second automatic transition replaces the cropped horizontal rail and retains ordinary service links, keyboard pause and reduced-motion support.
+- CSS is explicitly emitted as two static assets from the shared layout, so the review deployment retains the global and premium visual layers.
+- Local browser review: the fresh hero advanced to slide two after 4.7 seconds; the service stage had one visible active card; a 390px viewport had no horizontal page overflow and the active card measured 375px wide inside the 375px document.
+- Browser console: no errors reported during the local homepage checks.

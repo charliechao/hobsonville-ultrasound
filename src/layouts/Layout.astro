@@ -10,8 +10,8 @@ import '@fontsource/manrope/latin-600.css';
 import '@fontsource/manrope/latin-700.css';
 import '@fontsource/source-sans-3/latin-400.css';
 import '@fontsource/source-sans-3/latin-600.css';
-import '../styles/global.css';
-import '../styles/premium.css';
+import globalStyles from '../styles/global.css?url';
+import premiumStyles from '../styles/premium.css?url';
 interface Props {
   title: string;
   description: string;
@@ -76,6 +76,8 @@ const clinic = {
     <title>{title} | Hobsonville Ultrasound</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="stylesheet" href={globalStyles} />
+    <link rel="stylesheet" href={premiumStyles} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#3a2c44" />
     {!indexable && <meta name="robots" content="noindex, nofollow" />}

@@ -431,37 +431,57 @@
     font-size: 1rem;
   }
   .service-track {
-    display: flex;
-    gap: 24px;
-    overflow-x: hidden;
-    scroll-snap-type: x mandatory;
-    padding: 0.5rem max(3.5rem, calc((100vw - 1280px) / 2)) 2rem;
-    scroll-padding-inline: max(3.5rem, calc((100vw - 1280px) / 2));
-    scrollbar-width: none;
-    touch-action: pan-y;
+    position: relative;
+    height: 570px;
+    overflow: hidden;
+    padding: 0.5rem 1.25rem 1.5rem;
   }
   service-carousel:not([data-ready]) .service-track {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    height: auto;
     overflow: visible;
   }
   service-carousel:not([data-ready]) .service-card {
-    flex-grow: 1;
+    position: static;
+    width: auto;
+    min-height: 0;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    visibility: visible;
   }
   .service-card {
-    flex: 0 0 clamp(290px, 28vw, 400px);
-    scroll-snap-align: start;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    width: min(540px, calc(100% - 2.5rem));
+    min-height: 538px;
     text-decoration: none;
     border: 1px solid var(--line);
     background: var(--white);
     border-radius: 8px;
     overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
     transition:
-      transform 0.4s var(--ease),
+      opacity 0.55s var(--ease),
+      transform 0.55s var(--ease),
       box-shadow 0.4s var(--ease),
-      border-color 0.4s;
+      border-color 0.4s,
+      visibility 0.55s;
+    transform: translateX(-50%) translateY(14px) scale(0.985);
+    visibility: hidden;
   }
-  .service-card:hover {
-    transform: translateY(-6px);
+  .service-card.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%);
+    visibility: visible;
+  }
+  .service-card.is-active:hover {
+    transform: translateX(-50%) translateY(-6px);
     border-color: var(--icon);
     box-shadow: 0 16px 32px oklch(25% 0.035 310 / 0.05);
   }
@@ -898,10 +918,6 @@
     .hero-scroll {
       left: 2rem;
     }
-    .service-track {
-      padding-inline: 2rem;
-      scroll-padding-inline: 2rem;
-    }
   }
   @media (max-width: 800px) {
     html {
@@ -968,13 +984,6 @@
     }
     .section-heading {
       gap: 2rem;
-    }
-    .service-track {
-      padding-inline: 1.5rem;
-      scroll-padding-inline: 1.5rem;
-    }
-    .service-card {
-      flex-basis: 330px;
     }
     .practice-grid,
     .pricing-composition,
@@ -1125,12 +1134,12 @@
       align-self: flex-end;
     }
     .service-track {
-      padding-inline: 1.25rem;
-      scroll-padding-inline: 1.25rem;
-      gap: 24px;
+      height: 530px;
+      padding-inline: 0.75rem;
     }
     .service-card {
-      flex-basis: 82vw;
+      width: min(100%, 430px);
+      min-height: 0;
     }
     .service-card-photo {
       height: 230px;
@@ -1249,9 +1258,11 @@
     .slider-frame {
       transition: none;
     }
-    .button:hover,
-    .service-card:hover {
+    .button:hover {
       transform: none;
+    }
+    .service-card.is-active:hover {
+      transform: translateX(-50%);
     }
     .service-card:hover img {
       transform: none;

@@ -136,7 +136,7 @@ const {
       const schedule = () => {
         stop();
         if (playing && !hovered && visible && !document.hidden)
-          timer = setTimeout(() => show(current + 1), 6500);
+          timer = setTimeout(() => show(current + 1), 4500);
       };
       const show = (index: number, manual = false) => {
         current = (index + slides.length) % slides.length;

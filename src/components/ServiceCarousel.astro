@@ -44,7 +44,10 @@ const details = [
     aria-label="Ultrasound services"
   >
     {categories.map((category, i) => (
-      <a href={`/services/${category.slug}/`} class="service-card">
+      <a
+        href={`/services/${category.slug}/`}
+        class:list={['service-card', { 'is-active': i === 0 }]}
+      >
         <div class="service-card-photo">
           <Photo
             src={images[category.image]}
@@ -77,21 +80,19 @@ const details = [
       let visible = true;
       let paused = false;
       const stop = () => clearTimeout(timer);
-      const move = () => {
-        current = current === cards.length - 1 ? 0 : current + 1;
-        cards[current].scrollIntoView({
-          behavior: reduced.matches ? 'instant' : 'smooth',
-          block: 'nearest',
-          inline: 'start',
+      const show = (index: number) => {
+        current = (index + cards.length) % cards.length;
+        cards.forEach((card, i) => {
+          const active = i === current;
+          card.classList.toggle('is-active', active);
+          card.setAttribute('aria-hidden', String(!active));
         });
+        schedule();
       };
       const schedule = () => {
         stop();
         if (!reduced.matches && visible && !paused && !document.hidden)
-          timer = setTimeout(() => {
-            move();
-            schedule();
-          }, 6000);
+          timer = setTimeout(() => show(current + 1), 4500);
       };
       this.addEventListener('focusin', () => {
         paused = true;
@@ -122,7 +123,7 @@ const details = [
         observer.disconnect();
         controller.abort();
       };
-      schedule();
+      show(0);
     }
     cleanup?: () => void;
     disconnectedCallback() {

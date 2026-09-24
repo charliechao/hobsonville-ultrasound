@@ -72,3 +72,7 @@ No browser/visual review or production deployment was performed for the initial 
 ## Expertise carousel interaction, 25 September 2026
 
 - The continuous service track no longer pauses when the pointer enters the wider section. It only pauses while the pointer is over an individual service card, or when a service link receives keyboard focus. It resumes after the visitor leaves that card.
+
+## Navigation readability, 25 September 2026
+
+- Increased desktop navigation to 1.08rem (1rem on compact desktop) and increased mobile menu labels and their vertical tap targets. The existing responsive breakpoint still switches to the mobile menu below 801px.

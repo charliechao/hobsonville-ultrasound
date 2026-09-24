@@ -58,3 +58,9 @@ No browser/visual review or production deployment was performed for the initial 
 - Contact page hours were transcribed from the current Hobsonville Ultrasound website: Monday–Friday, 9:30 am–6:30 pm; Saturday, 9:00 am–12:00 pm.
 - The home page presents ten reviews selected from the Google profile's highest-rated filter. Each card is labelled as a five-star Google review; the Google-style profile badge links to the Google profile and shows its 31-review count without showing an overall numeric score.
 - The review cards are responsive: five columns on wide desktop screens, three at intermediate widths, two on tablet and one on mobile. The section keeps ordinary external links to the Google profile and does not load a third-party widget.
+
+## Palette realignment, 25 September 2026
+
+- Sampled the current Hobsonville Ultrasound stylesheet: its primary teal is `#274246`, its darker header teal is `#1B383C`, and its warm gold is `#EEC482`.
+- Replaced the aubergine and lavender token system with OKLCH teal, blue-green and warm-gold tokens. Pale blue-green paper, mist and border values retain the lighter redesigned reading experience.
+- Removed the header logo filter so the supplied original teal-and-gold artwork appears unchanged. Updated the browser theme colour and favicon to the original deep teal and gold.

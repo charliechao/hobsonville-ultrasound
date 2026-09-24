@@ -1,23 +1,23 @@
 @layer base, layout, components, responsive;
 @layer base {
   :root {
-    /* Aubergine, lavender and porcelain: shared across every page. */
-    --ink: oklch(28% 0.025 310);
-    --brand: oklch(32% 0.045 310);
-    --brand-deep: oklch(25% 0.035 310);
-    --brand-hover: oklch(40% 0.05 310);
-    --paper: oklch(98% 0.006 60);
-    --white: oklch(99% 0.003 60);
-    --muted: oklch(47% 0.025 310);
-    --line: oklch(86% 0.018 310);
-    --mist: oklch(94% 0.018 310);
-    --tint: oklch(90% 0.035 310);
-    --accent: oklch(86% 0.065 310);
-    --accent-hover: oklch(92% 0.04 310);
-    --icon: oklch(48% 0.05 310);
-    --on-dark: oklch(97% 0.006 310);
-    --on-dark-muted: oklch(83% 0.025 310);
-    --focus: oklch(58% 0.13 310);
+    /* Original teal and warm gold, softened for the redesigned reading surfaces. */
+    --ink: oklch(29% 0.03 208);
+    --brand: oklch(35.9% 0.034 207.7);
+    --brand-deep: oklch(32% 0.036 207.1);
+    --brand-hover: oklch(43% 0.052 205);
+    --paper: oklch(98% 0.008 205);
+    --white: oklch(99% 0.004 205);
+    --muted: oklch(50% 0.02 205);
+    --line: oklch(87% 0.018 205);
+    --mist: oklch(95% 0.018 205);
+    --tint: oklch(90% 0.032 205);
+    --accent: oklch(84.2% 0.096 78.2);
+    --accent-hover: oklch(90% 0.06 78);
+    --icon: oklch(55% 0.08 58);
+    --on-dark: oklch(98% 0.008 205);
+    --on-dark-muted: oklch(85% 0.022 205);
+    --focus: oklch(54% 0.085 205);
     --font: 'Source Sans 3', sans-serif;
     --heading: 'Manrope', sans-serif;
   }
@@ -522,7 +522,7 @@
     justify-content: space-between;
     margin-top: 3rem;
     padding-top: 1.5rem;
-    border-top: 1px solid oklch(44% 0.025 310);
+    border-top: 1px solid oklch(44% 0.025 205);
     font-size: 0.875rem;
   }
   .mobile-actions {
@@ -791,7 +791,7 @@
       left: -1.5rem;
       right: -1.5rem;
       top: 100%;
-      box-shadow: 0 12px 15px oklch(25% 0.035 310 / 0.09);
+      box-shadow: 0 12px 15px oklch(29% 0.03 208 / 0.09);
       padding: 1rem 1.5rem 1.5rem;
       border-bottom: 1px solid var(--line);
     }
@@ -937,7 +937,7 @@
       right: 0;
       padding-bottom: env(safe-area-inset-bottom);
       background: var(--brand);
-      box-shadow: 0 -2px 10px oklch(25% 0.035 310 / 0.13);
+      box-shadow: 0 -2px 10px oklch(29% 0.03 208 / 0.13);
     }
     .mobile-actions a {
       padding: 0.8rem;

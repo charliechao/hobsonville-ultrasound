@@ -59,8 +59,8 @@
     color: var(--accent);
   }
   .site-header {
-    background: var(--brand);
-    border-bottom: 1px solid oklch(97% 0.006 310 / 0.12);
+    background: var(--brand-deep);
+    border-bottom: 1px solid oklch(97% 0.008 205 / 0.12);
     color: var(--on-dark);
     position: sticky;
     top: 0;
@@ -69,11 +69,8 @@
   .header-inner {
     min-height: 96px;
   }
-  /* Present the original mark in one colour without altering the source asset. */
   .brand img {
-    filter: grayscale(1) contrast(2) brightness(1.5);
-    mix-blend-mode: screen;
-    opacity: 0.94;
+    opacity: 1;
   }
   .brand {
     width: 225px;
@@ -130,7 +127,7 @@
   }
   .button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 22px oklch(25% 0.035 310 / 0.09);
+    box-shadow: 0 8px 22px oklch(29% 0.03 208 / 0.09);
   }
   .button:active {
     transform: translateY(0);
@@ -202,10 +199,10 @@
     inset: 0;
     background: linear-gradient(
       90deg,
-      oklch(25% 0.035 310 / 0.95) 0%,
-      oklch(25% 0.035 310 / 0.86) 31%,
-      oklch(25% 0.035 310 / 0.4) 61%,
-      oklch(25% 0.035 310 / 0.13) 100%
+      oklch(29% 0.03 208 / 0.95) 0%,
+      oklch(29% 0.03 208 / 0.86) 31%,
+      oklch(29% 0.03 208 / 0.4) 61%,
+      oklch(29% 0.03 208 / 0.13) 100%
     );
     pointer-events: none;
   }
@@ -283,7 +280,7 @@
     left: 0;
     right: 0;
     padding: 4rem 1.6rem 5rem;
-    background: linear-gradient(transparent, oklch(25% 0.035 310 / 0.85));
+    background: linear-gradient(transparent, oklch(29% 0.03 208 / 0.85));
     font-size: 0.9rem;
     pointer-events: none;
   }
@@ -320,7 +317,7 @@
   .slider-dot span {
     display: block;
     height: 2px;
-    background: oklch(97% 0.006 310 / 0.4);
+    background: oklch(97% 0.008 205 / 0.4);
     transition: background 0.3s;
   }
   .slider-dot.is-active span {
@@ -466,7 +463,7 @@
   .service-card:hover {
     transform: translateY(-6px);
     border-color: var(--icon);
-    box-shadow: 0 16px 32px oklch(25% 0.035 310 / 0.05);
+    box-shadow: 0 16px 32px oklch(29% 0.03 208 / 0.05);
   }
   .service-card-photo {
     position: relative;
@@ -539,7 +536,7 @@
     gap: 1rem;
     background: var(--accent);
     padding: 1.35rem 1.7rem;
-    box-shadow: 0 12px 35px oklch(25% 0.035 310 / 0.1);
+    box-shadow: 0 12px 35px oklch(29% 0.03 208 / 0.1);
     border-radius: 5px;
     font-size: 1.1rem;
   }
@@ -743,15 +740,7 @@
   .google-card-mark {
     display: inline-flex;
     margin-left: auto;
-    background: linear-gradient(
-      135deg,
-      #4285f4 0 36%,
-      #ea4335 36% 55%,
-      #fbbc05 55% 72%,
-      #34a853 72%
-    );
-    background-clip: text;
-    color: transparent;
+    color: #4285f4;
     font:
       700 1.25rem/1 Arial,
       sans-serif;
@@ -838,7 +827,7 @@
     inset: auto 0 0;
     padding: 3rem 1.6rem 1.5rem;
     color: var(--on-dark);
-    background: linear-gradient(transparent, oklch(25% 0.035 310 / 0.85));
+    background: linear-gradient(transparent, oklch(29% 0.03 208 / 0.85));
     display: flex;
     gap: 0.9rem;
     align-items: center;
@@ -1237,8 +1226,8 @@
     .hero-shade {
       background: linear-gradient(
         90deg,
-        oklch(25% 0.035 310 / 0.93),
-        oklch(25% 0.035 310 / 0.47)
+        oklch(29% 0.03 208 / 0.93),
+        oklch(29% 0.03 208 / 0.47)
       );
     }
     .hero-slider .slider-frame figcaption {
@@ -1387,8 +1376,8 @@
     .hero-shade {
       background: linear-gradient(
         90deg,
-        oklch(25% 0.035 310 / 0.9),
-        oklch(25% 0.035 310 / 0.61)
+        oklch(29% 0.03 208 / 0.9),
+        oklch(29% 0.03 208 / 0.61)
       );
     }
     .hero-slider .slider-frame img {

@@ -8,8 +8,16 @@ interface Props {
   slides: { image: ImageMetadata; alt: string; caption: string }[];
   hero?: boolean;
   autoplay?: boolean;
+  controls?: boolean;
 }
-const { id, label, slides, hero = false, autoplay = false } = Astro.props;
+const {
+  id,
+  label,
+  slides,
+  hero = false,
+  autoplay = false,
+  controls = true,
+} = Astro.props;
 ---
 
 <image-slider
@@ -40,58 +48,60 @@ const { id, label, slides, hero = false, autoplay = false } = Astro.props;
       </figure>
     ))}
   </div>
-  <div class="slider-interface">
-    <div class="slider-dots" role="group" aria-label="Choose a photograph">
-      {slides.map((slide, i) => (
+  {controls && (
+    <div class="slider-interface">
+      <div class="slider-dots" role="group" aria-label="Choose a photograph">
+        {slides.map((slide, i) => (
+          <button
+            type="button"
+            class:list={['slider-dot', { 'is-active': i === 0 }]}
+            data-to={i}
+            aria-label={`Show ${slide.caption}`}
+            aria-current={i === 0 ? 'true' : undefined}
+            aria-controls={`${id}-frames`}
+          >
+            <span></span>
+          </button>
+        ))}
+      </div>
+      <div class="slider-buttons">
         <button
           type="button"
-          class:list={['slider-dot', { 'is-active': i === 0 }]}
-          data-to={i}
-          aria-label={`Show ${slide.caption}`}
-          aria-current={i === 0 ? 'true' : undefined}
+          class="round-control previous"
+          data-previous
+          aria-label="Previous photograph"
           aria-controls={`${id}-frames`}
         >
-          <span></span>
+          <Icon name="chevron" size={20} />
         </button>
-      ))}
-    </div>
-    <div class="slider-buttons">
-      <button
-        type="button"
-        class="round-control previous"
-        data-previous
-        aria-label="Previous photograph"
-        aria-controls={`${id}-frames`}
-      >
-        <Icon name="chevron" size={20} />
-      </button>
-      <button
-        type="button"
-        class="round-control"
-        data-next
-        aria-label="Next photograph"
-        aria-controls={`${id}-frames`}
-      >
-        <Icon name="chevron" size={20} />
-      </button>
-      {autoplay && (
         <button
           type="button"
           class="round-control"
-          data-play
-          aria-label="Pause slideshow"
+          data-next
+          aria-label="Next photograph"
+          aria-controls={`${id}-frames`}
         >
-          <span data-pause-icon>
-            <Icon name="pause" size={18} />
-          </span>
-          <span data-play-icon hidden>
-            <Icon name="play" size={18} />
-          </span>
+          <Icon name="chevron" size={20} />
         </button>
-      )}
+        {autoplay && (
+          <button
+            type="button"
+            class="round-control"
+            data-play
+            aria-label="Pause slideshow"
+          >
+            <span data-pause-icon>
+              <Icon name="pause" size={18} />
+            </span>
+            <span data-play-icon hidden>
+              <Icon name="play" size={18} />
+            </span>
+          </button>
+        )}
+      </div>
+      <span class="sr-only" aria-live="polite" data-status></span>
     </div>
-    <span class="sr-only" aria-live="polite" data-status></span>
-  </div>
+  )}
 </image-slider>
 <script>
   class ImageSlider extends HTMLElement {

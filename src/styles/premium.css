@@ -8,12 +8,6 @@
   html {
     scroll-padding-top: 7rem;
   }
-  .rail-controls > button {
-    display: none;
-  }
-  service-carousel[data-ready] .rail-controls > button {
-    display: inline-flex;
-  }
   h1,
   h2 {
     letter-spacing: -0.035em;
@@ -378,14 +372,8 @@
   .hero-slider .slider-frame figcaption {
     text-align: right;
     padding-right: max(3.5rem, calc((100vw - 1280px) / 2));
-    padding-bottom: 6rem;
+    padding-bottom: 2.25rem;
     padding-top: 6rem;
-  }
-  .hero-slider .slider-interface {
-    left: auto;
-    right: max(3.5rem, calc((100vw - 1280px) / 2));
-    bottom: 2rem;
-    width: 265px;
   }
   .quick-paths {
     display: grid;
@@ -439,22 +427,25 @@
     font-size: 1.1rem;
     color: var(--muted);
   }
-  .rail-controls {
-    gap: 0.6rem;
-  }
-  .rail-controls .text-link {
-    margin-left: 1rem;
+  .carousel-heading-aside > .text-link {
     font-size: 1rem;
   }
   .service-track {
     display: flex;
     gap: 24px;
-    overflow-x: auto;
+    overflow-x: hidden;
     scroll-snap-type: x mandatory;
     padding: 0.5rem max(3.5rem, calc((100vw - 1280px) / 2)) 2rem;
     scroll-padding-inline: max(3.5rem, calc((100vw - 1280px) / 2));
-    scrollbar-width: thin;
-    scrollbar-color: var(--icon) var(--mist);
+    scrollbar-width: none;
+    touch-action: pan-y;
+  }
+  service-carousel:not([data-ready]) .service-track {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+  service-carousel:not([data-ready]) .service-card {
+    flex-grow: 1;
   }
   .service-card {
     flex: 0 0 clamp(290px, 28vw, 400px);
@@ -487,19 +478,6 @@
   }
   .service-card:hover img {
     transform: scale(1.045);
-  }
-  .service-card-number {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 34px;
-    height: 34px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--paper);
-    color: var(--brand);
-    font-size: 0.8rem;
   }
   .service-card-info {
     position: relative;
@@ -957,13 +935,9 @@
         oklch(25% 0.035 310 / 0.47)
       );
     }
-    .hero-slider .slider-interface {
-      right: 1.5rem;
-      bottom: 1.4rem;
-    }
     .hero-slider .slider-frame figcaption {
       padding-right: 1.5rem;
-      padding-bottom: 5.5rem;
+      padding-bottom: 2rem;
     }
     .hero-scroll {
       left: 1.5rem;
@@ -1116,12 +1090,6 @@
       padding-top: 4rem;
       font-size: 0.82rem;
     }
-    .hero-slider .slider-interface {
-      left: 1.25rem;
-      right: 1.25rem;
-      bottom: 1.2rem;
-      width: auto;
-    }
     .hero-scroll {
       display: none;
     }
@@ -1153,8 +1121,8 @@
       font-size: 1rem;
       margin-bottom: 0.7rem;
     }
-    .rail-controls .text-link {
-      margin-left: auto;
+    .carousel-heading-aside > .text-link {
+      align-self: flex-end;
     }
     .service-track {
       padding-inline: 1.25rem;

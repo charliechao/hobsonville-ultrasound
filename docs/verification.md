@@ -30,3 +30,10 @@ No browser/visual review or production deployment was performed for the initial 
 - Astro diagnostics: 0 errors, 0 warnings, 0 hints. Static build: 43 pages. Generated-output audit: 1,508 local references and 100 image elements passed.
 - Source scan found no remaining old teal/gold token names, button class or primary hexadecimal colours in `src` or `public`. Original photography and logo files are preserved; the header applies a monochrome CSS treatment to the logo.
 - No browser visual review or production deployment performed for this colour-only revision.
+
+## Homepage motion simplification, 24 September 2026
+
+- Homepage hero: removed the visual slide selectors, previous/next arrows and pause/play control. The three supplied images continue to crossfade automatically; the static first photograph remains available when JavaScript is unavailable or reduced motion is preferred.
+- Our expertise: removed the image numbers and all directional controls. The service cards now advance automatically while the section is visible. Native horizontal dragging is disabled; each linked service card remains keyboard accessible. Automatic motion pauses for keyboard focus, a hidden browser tab, out-of-view content and reduced-motion preferences.
+- Local browser review confirmed the hero has no buttons, service cards have no numbered overlays, the clinic gallery retains its own controls, all five service images load, and no console errors were reported.
+- Astro diagnostics: 0 errors, 0 warnings, 0 hints. Static build: 43 pages. Generated-output audit: 1,508 local references and 100 image elements passed.

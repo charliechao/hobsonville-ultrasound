@@ -19,11 +19,8 @@ export const site = {
     { days: 'Monday – Friday', hours: '9:30 am – 6:30 pm' },
     { days: 'Saturday', hours: '9:00 am – 12:00 pm' },
   ],
-  // Referrer links show on the referrers page once the client supplies them.
   referral: {
-    eReferral: '',
-    form: '',
-    pacs: '',
+    form: '/downloads/hobsonville-ultrasound-referral-form.pdf',
   },
 };
 

@@ -76,3 +76,8 @@ No browser/visual review or production deployment was performed for the initial 
 ## Navigation readability, 25 September 2026
 
 - Increased desktop navigation to 1.08rem (1rem on compact desktop) and increased mobile menu labels and their vertical tap targets. The existing responsive breakpoint still switches to the mobile menu below 801px.
+
+## Referrer form and PACS information, 25 September 2026
+
+- Added the client-supplied referral PDF as the first action on the referrers page and published it at `/downloads/hobsonville-ultrasound-referral-form.pdf`.
+- Transcribed the current Hobsonville Ultrasound referrers-page PACS guidance: referring practitioners use the secure PACS portal for images and reports, and reception provides credentials and first-time registration. The site provides a reception email request rather than inventing a portal address.

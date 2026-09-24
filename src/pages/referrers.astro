@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import PageIntro from '../components/PageIntro.astro';
 import { site } from '../data/site';
 import { services } from '../data/services';
@@ -31,12 +32,12 @@ const keyPrices = [
     `${service.pregnancyEligible ? 'From ' : ''}$${service.price}`,
   ];
 });
-const { eReferral, form, pacs } = site.referral;
+const { form } = site.referral;
 ---
 
 <Layout
   title="Information for referrers"
-  description="Refer patients to Hobsonville Ultrasound, formerly Body 2 Baby Ultrasound. Accepted referrers, how to refer, key prices and report information."
+  description="Download Hobsonville Ultrasound’s referral form and find PACS image access, reporting and referral information for clinicians."
 >
   <PageIntro
     title="A local partner in patient care."
@@ -46,6 +47,20 @@ const { eReferral, form, pacs } = site.referral;
   <section class="section">
     <div class="container two-column">
       <div class="prose">
+        <div class="notice notice-strong">
+          <p class="eyebrow">Referral form</p>
+          <h2>Start with the referral form.</h2>
+          <p>
+            Download our standard referral form, complete the clinical
+            indication and examination required, then send it to us or give it
+            to your patient.
+          </p>
+          <div class="actions">
+            <a class="button" href={form} download>
+              <Icon name="file" size={20} /> Download referral form (PDF)
+            </a>
+          </div>
+        </div>
         <h2>Who can refer</h2>
         <p>We accept referrals from all NZ-based and registered:</p>
         <ul class="referrer-list">
@@ -54,38 +69,27 @@ const { eReferral, form, pacs } = site.referral;
           ))}
         </ul>
         <h2>How to refer</h2>
-        {eReferral ? (
-          <p>
-            Referring to us is easy. Complete our eReferral form online. This
-            service is strictly for medical professionals.
-          </p>
-        ) : (
-          <p>
-            Please email your referral to{' '}
+        <ol>
+          <li>
+            Complete the referral form with the clinical indication and
+            examination required.
+          </li>
+          <li>
+            Give it to your patient, or send it directly to{' '}
             <a href={`mailto:${site.email}`} data-event="email_click">
               {site.email}
-            </a>{' '}
-            or call reception to confirm the most suitable way to send it.
-            Patients can also bring a completed referral to their appointment.
-            Please call before sending sensitive patient information by email.
-          </p>
-        )}
+            </a>
+            . Please call before sending sensitive patient information by email.
+          </li>
+          <li>
+            Our team will contact the patient to arrange a suitable appointment
+            and confirm any preparation instructions.
+          </li>
+        </ol>
         <div class="actions">
-          {eReferral && (
-            <a class="button" href={eReferral}>
-              eReferral form ↗
-            </a>
-          )}
-          {form && (
-            <a class="button button-outline" href={form}>
-              Download referral form ↗
-            </a>
-          )}
-          {pacs && (
-            <a class="button button-outline" href={pacs}>
-              PACS access ↗
-            </a>
-          )}
+          <a class="button button-outline" href={form} download>
+            <Icon name="file" size={20} /> Download referral form (PDF)
+          </a>
           <a class="button button-outline" href="/pricing/">
             View price list
           </a>
@@ -103,11 +107,33 @@ const { eReferral, form, pacs } = site.referral;
         <h2>Reports and access</h2>
         <p>
           Diagnostic images are reviewed by our reporting radiologist, and
-          completed reports are sent to the referring clinician.
+          reports are delivered electronically to the referring clinician.
         </p>
         <p>
-          Contact reception for report enquiries or to discuss image access.
+          Reports are typically available within 24–48 hours of the scan. Urgent
+          findings can be communicated by phone.
         </p>
+        <h2>PACS / image access</h2>
+        <p>
+          Referring practitioners can securely access patient images and reports
+          through our PACS portal.
+        </p>
+        <p>
+          To request access credentials, or to register for the first time,
+          contact our reception team.
+        </p>
+        <div class="actions">
+          <a
+            class="button button-outline"
+            href={`mailto:${site.email}?subject=PACS%20access%20request`}
+            data-event="email_click"
+          >
+            Request PACS access
+          </a>
+          <a class="text-link" href={site.tel} data-event="phone_click">
+            Call {site.phone}
+          </a>
+        </div>
       </div>
       <aside>
         <div class="sidebar-panel">

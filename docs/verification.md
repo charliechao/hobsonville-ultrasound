@@ -85,3 +85,5 @@ No browser/visual review or production deployment was performed for the initial 
 ## Professional accreditations, 25 September 2026
 
 - Added the client-supplied MRTB, ASMIRT, ASAR and HPCSA logos to a home-page professional-accreditations section. Each mark has a visible full-name label and a concise image alternative.
+- Replaced the white-card presentation with transparent-background logo variants, fitted directly against the deep-teal accreditation band.
+- Local production-build review confirmed the white panels are absent and all four marks load against the teal background; a small brightness lift preserves visibility for the darker logos.

@@ -13,7 +13,7 @@ The first version was too static and visually restrained. The client references 
 - Genuine clinic gallery and image-rich inner-page introductions, with varied section proportions and image crops.
 - Medical and practical icons for services, preparation, appointments, contact, location, care, prices and parking. Icons supplement visible text.
 - The referrers page leads with the downloadable referral form, then presents referral steps, reporting and PACS access in clinician-friendly reading order.
-- The home page includes a deep-teal professional-accreditations band with the supplied MRTB, ASMIRT, ASAR and HPCSA logos, each paired with an accessible full-name label.
+- The home page includes a deep-teal professional-accreditations band with transparent-background MRTB, ASMIRT, ASAR and HPCSA marks, each paired with an accessible full-name label.
 - A visible 4.5-second hero slideshow without visual controls. It pauses out of view or in a hidden browser tab; reduced-motion users see its static first photograph. Static first photograph remains available without JavaScript.
 - A continuously moving automatic service track, paced to make the motion visible without abrupt card changes. It pauses when a visitor hovers or focuses an individual service card, plus out-of-view content, a hidden browser tab and reduced-motion users.
 - A home-page Google review section presents ten selected five-star reviews in a responsive card layout. Its badge and cards use a Google-style hierarchy: coloured Google marks, gold stars, reviewer avatars, clean metadata and elevated white surfaces, without repeating an overall numeric score.

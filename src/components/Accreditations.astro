@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import mrtb from '../../assets/images/Accreditation Logos/MRTB-logo.jpg';
+import asmirt from '../../assets/images/Accreditation Logos/ASMIRT-logo.png';
+import asar from '../../assets/images/Accreditation Logos/ASAR-logo.png';
+import hpcsa from '../../assets/images/Accreditation Logos/HPCSA-logo.jpg';
+
+const accreditations = [
+  {
+    acronym: 'MRTB',
+    name: 'Medical Radiation Technologist Board',
+    logo: mrtb,
+  },
+  {
+    acronym: 'ASMIRT',
+    name: 'Australian Society of Medical Imaging and Radiation Therapy',
+    logo: asmirt,
+  },
+  {
+    acronym: 'ASAR',
+    name: 'Australian Sonographer Accreditation Registry',
+    logo: asar,
+  },
+  {
+    acronym: 'HPCSA',
+    name: 'Health Professions Council of South Africa',
+    logo: hpcsa,
+  },
+];
+---
+
+<section class="accreditations" aria-labelledby="accreditations-heading">
+  <div class="container">
+    <p class="section-label">Professional recognition</p>
+    <h2 id="accreditations-heading">Professional accreditations</h2>
+    <div class="accreditation-grid">
+      {accreditations.map((accreditation) => (
+        <figure class="accreditation-card">
+          <div class="accreditation-logo">
+            <Image
+              src={accreditation.logo}
+              alt={`${accreditation.acronym} logo`}
+              width={220}
+              format="webp"
+              quality={90}
+              loading="lazy"
+            />
+          </div>
+          <figcaption>
+            <strong>{accreditation.acronym}</strong>
+            <span>{accreditation.name}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

@@ -582,6 +582,57 @@
     margin-left: auto;
     padding: 0.5rem;
   }
+  .accreditations {
+    padding-block: 5.5rem;
+    background: var(--brand-deep);
+    color: var(--on-dark);
+    text-align: center;
+  }
+  .accreditations .section-label {
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+  .accreditations h2 {
+    font-size: clamp(2rem, 3.2vw, 3.1rem);
+    margin-bottom: 2.8rem;
+  }
+  .accreditation-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .accreditation-card {
+    margin: 0;
+  }
+  .accreditation-logo {
+    display: grid;
+    place-items: center;
+    min-height: 132px;
+    padding: 1rem;
+    background: var(--white);
+    border-radius: 7px;
+    box-shadow: 0 12px 28px oklch(18% 0.025 207 / 0.16);
+  }
+  .accreditation-logo img {
+    display: block;
+    width: min(100%, 190px);
+    max-height: 96px;
+    object-fit: contain;
+  }
+  .accreditation-card figcaption {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 1.1rem;
+  }
+  .accreditation-card strong {
+    color: var(--accent);
+    font: 700 clamp(1.25rem, 2vw, 1.6rem) / 1 var(--heading);
+  }
+  .accreditation-card span {
+    color: var(--on-dark-muted);
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
   .reviews-section {
     background: var(--paper);
   }
@@ -1476,6 +1527,13 @@
     .name-change a {
       display: none;
     }
+    .accreditations {
+      padding-block: 4rem;
+    }
+    .accreditation-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.4rem 1.25rem;
+    }
     .price-editorial-row {
       gap: 0.6rem;
       padding-block: 1.4rem;
@@ -1534,6 +1592,13 @@
     }
     .intro-composition h1 {
       font-size: 2.75rem;
+    }
+    .accreditation-logo {
+      min-height: 112px;
+      padding: 0.75rem;
+    }
+    .accreditation-card span {
+      font-size: 0.9rem;
     }
     .intro-photo {
       height: 240px;

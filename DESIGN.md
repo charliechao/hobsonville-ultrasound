@@ -23,17 +23,18 @@ The first version was too static and visually restrained. The client references 
 
 See `docs/design-reference-review.md` for how the five client-supplied references informed the redesign.
 
-## Palette realignment, 25 September 2026
+## Brand identity alignment, 25 September 2026
 
-The user asked to return to the original clinic colour family. The current website's deep teal and warm-gold values now anchor the redesign, while the backgrounds and borders use lighter blue-green variations to keep the wider editorial layout calm and readable in daylight.
+The client-supplied legacy identity guide remains the source for the visual system. It identifies the former name, while all live copy, metadata and accessible labels retain **Hobsonville Ultrasound**. The supplied Hobsonville Ultrasound logo remains the only header logo and receives no CSS filter, recolouring, distortion or added effects.
 
-| Role       | Colour                           | Use                                                                 |
-| ---------- | -------------------------------- | ------------------------------------------------------------------- |
-| Brand      | Original primary teal, `#274246` | Primary buttons, map caption and booking callout                    |
-| Deep brand | Original header teal, `#1B383C`  | Header, utility bar, footer and photographic overlays               |
-| Accent     | Original warm gold, `#EEC482`    | Booking buttons on dark surfaces, hero emphasis and active controls |
-| Paper      | Pale blue-green                  | Main reading background                                             |
-| Mist       | Light blue-green                 | Inner-page introductions, preparation and clinic sections           |
-| Ink        | Deep teal                        | Headings and body text                                              |
+| Role | Colour | Use |
+| --- | --- | --- |
+| Primary teal | `#1A393C` | Header, footer, primary buttons, photographic overlays and text |
+| Gold | `#F8D08A` | Booking actions, hero emphasis and active controls on teal |
+| Warm brown | `#8D5939` | Icons, focus treatment and secondary emphasis |
+| White | `#FFFFFF` | Primary reading and navigation surfaces |
+| Black | `#000000` | Photography and high-contrast presentation only |
 
-Canonical colours are defined once in OKLCH in `src/styles/global.css`; hexadecimal values above identify the original source values. Shared semantic tokens govern hover, focus, borders, icons, captions and mobile actions. The original logo is rendered without a colour filter, and the favicon and browser theme colour use the original deep teal.
+The light mist, tint, divider and muted-text tokens are restrained derivatives for readable digital surfaces. They support the guide's teal, gold and white application without adding a competing colour family. Source Sans 3 and Manrope remain for UI readability; the guide's serif logotype is used only within the supplied logo artwork.
+
+Use real, warmly lit images of patients, families, the clinic and ultrasound care. Give images enough uncluttered space for a logo lockup only when the supplied logo remains clear and legible. Preserve clearspace around the header logo, keep its proportions unchanged and never recreate it in CSS or type.

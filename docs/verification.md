@@ -87,3 +87,10 @@ No browser/visual review or production deployment was performed for the initial 
 - Added the client-supplied MRTB, ASMIRT, ASAR and HPCSA logos to a home-page professional-accreditations section. Each mark has a visible full-name label and a concise image alternative.
 - Replaced the white-card presentation with transparent-background logo variants, fitted directly against the deep-teal accreditation band.
 - Local production-build review confirmed the white panels are absent and all four marks load against the teal background; a small brightness lift preserves visibility for the darker logos.
+
+## Brand identity guide alignment, 25 September 2026
+
+- Rendered and visually reviewed all 26 pages of the client-supplied legacy brand identity guide. It defines primary teal `#1A393C`, gold `#F8D08A`, warm brown `#8D5939`, black and white.
+- Replaced the prior current-site teal and gold approximations with the guide's exact core values in the shared global tokens, favicon and browser theme colour. Pale teal interface tones remain as derived reading surfaces.
+- Confirmed the existing Hobsonville Ultrasound header logo has no CSS recolouring or transformation. The guide's legacy name is not introduced into live copy, metadata or alternative text.
+- The guide contains no separate web typography specification. The existing self-hosted Source Sans 3 and Manrope remain for accessible site text; the decorative serif treatment remains confined to the supplied logo artwork.

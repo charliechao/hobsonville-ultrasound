@@ -1,23 +1,23 @@
 @layer base, layout, components, responsive;
 @layer base {
   :root {
-    /* Original teal and warm gold, softened for the redesigned reading surfaces. */
-    --ink: oklch(29% 0.03 208);
-    --brand: oklch(35.9% 0.034 207.7);
-    --brand-deep: oklch(32% 0.036 207.1);
-    --brand-hover: oklch(43% 0.052 205);
-    --paper: oklch(98% 0.008 205);
-    --white: oklch(99% 0.004 205);
-    --muted: oklch(50% 0.02 205);
-    --line: oklch(87% 0.018 205);
-    --mist: oklch(95% 0.018 205);
-    --tint: oklch(90% 0.032 205);
-    --accent: oklch(84.2% 0.096 78.2);
-    --accent-hover: oklch(90% 0.06 78);
-    --icon: oklch(55% 0.08 58);
-    --on-dark: oklch(98% 0.008 205);
-    --on-dark-muted: oklch(85% 0.022 205);
-    --focus: oklch(54% 0.085 205);
+    /* Identity-guide core colours. Pale interface tones are derived for reading surfaces. */
+    --ink: #1a393c;
+    --brand: #1a393c;
+    --brand-deep: #1a393c;
+    --brand-hover: #244b4f;
+    --paper: #ffffff;
+    --white: #ffffff;
+    --muted: #4d5e60;
+    --line: #d9e0df;
+    --mist: #f7faf9;
+    --tint: #eef4f2;
+    --accent: #f8d08a;
+    --accent-hover: #fbe2b3;
+    --icon: #8d5939;
+    --on-dark: #ffffff;
+    --on-dark-muted: #e8eeee;
+    --focus: #8d5939;
     --font: 'Source Sans 3', sans-serif;
     --heading: 'Manrope', sans-serif;
   }

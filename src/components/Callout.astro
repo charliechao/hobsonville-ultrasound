@@ -1,4 +1,5 @@
 ---
+import BookingButton from './BookingButton.astro';
 import { site } from '../data/site';
 import Icon from './Icon.astro';
 ---
@@ -17,9 +18,7 @@ import Icon from './Icon.astro';
       </p>
     </div>
     <div class="callout-actions">
-      <a class="button button-accent" href="/book-online/">
-        <Icon name="calendar" size={22} /> Book an ultrasound
-      </a>
+      <BookingButton />
       <a href={site.tel} data-event="phone_click">
         <Icon name="phone" size={19} /> {site.phone}
       </a>

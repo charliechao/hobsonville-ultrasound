@@ -48,7 +48,12 @@ const reviews = [
 ];
 ---
 
-<section class="section reviews-section" aria-labelledby="reviews-heading">
+<review-carousel
+  class="section reviews-section"
+  aria-labelledby="reviews-heading"
+  role="region"
+  aria-roledescription="carousel"
+>
   <div class="container">
     <div class="reviews-heading" data-reveal>
       <div>
@@ -64,7 +69,7 @@ const reviews = [
         href={site.googleReviews}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Read 31 Google reviews"
+        aria-label="Read our Google reviews"
       >
         <span class="google-word" aria-hidden="true">
           <span>G</span>
@@ -78,42 +83,196 @@ const reviews = [
           <span class="review-stars" aria-hidden="true">
             ★★★★★
           </span>
-          <span>31 Google reviews</span>
+          <span>Read our Google reviews</span>
         </span>
         <span class="google-rating-arrow" aria-hidden="true">
           <Icon name="arrow" size={19} />
         </span>
       </a>
     </div>
-    <div class="reviews-grid">
-      {reviews.map((review, index) => (
-        <article class="review-card" data-reveal data-reveal-delay={index * 45}>
-          <div class="review-card-top">
-            <span class="reviewer-avatar" aria-hidden="true">
-              {review.author.charAt(0).toUpperCase()}
-            </span>
-            <div class="reviewer-meta">
-              <strong>{review.author}</strong>
-              <span>Google review</span>
+    <div class="review-carousel-viewport" aria-label="Patient reviews">
+      <div class="reviews-grid">
+        {reviews.map((review) => (
+          <article class="review-card">
+            <div class="review-card-top">
+              <span class="reviewer-avatar" aria-hidden="true">
+                {review.author.charAt(0).toUpperCase()}
+              </span>
+              <div class="reviewer-meta">
+                <strong>{review.author}</strong>
+                <span>Google review</span>
+              </div>
+              <span class="google-card-mark" aria-label="Google">
+                G
+              </span>
             </div>
-            <span class="google-card-mark" aria-label="Google">
-              G
+            <span class="review-stars" aria-label="Five-star review">
+              ★★★★★
             </span>
-          </div>
-          <span class="review-stars" aria-label="Five-star review">
-            ★★★★★
-          </span>
-          <blockquote>“{review.quote}”</blockquote>
-        </article>
-      ))}
+            <blockquote>“{review.quote}”</blockquote>
+          </article>
+        ))}
+      </div>
     </div>
-    <a
-      class="text-link reviews-all-link"
-      href={site.googleReviews}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Read all Google reviews <Icon name="arrow" size={20} />
-    </a>
+    <div class="review-carousel-footer">
+      <a
+        class="text-link reviews-all-link"
+        href={site.googleReviews}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read all Google reviews <Icon name="arrow" size={20} />
+      </a>
+      <div class="review-carousel-controls">
+        <span class="review-carousel-position" aria-live="off">
+          1 of {reviews.length}
+        </span>
+        <button
+          type="button"
+          data-direction="previous"
+          aria-label="Previous review"
+        >
+          <Icon name="arrow" size={20} />
+        </button>
+        <button type="button" data-direction="next" aria-label="Next review">
+          <Icon name="arrow" size={20} />
+        </button>
+      </div>
+    </div>
   </div>
-</section>
+</review-carousel>
+
+<script>
+  class ReviewCarousel extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      const track = this.querySelector<HTMLElement>('.reviews-grid')!;
+      const viewport = this.querySelector<HTMLElement>(
+        '.review-carousel-viewport',
+      )!;
+      const cards = [...track.querySelectorAll<HTMLElement>('.review-card')];
+      const count = cards.length;
+      const position = this.querySelector<HTMLElement>(
+        '.review-carousel-position',
+      )!;
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      const clone = (card: HTMLElement) => {
+        const copy = card.cloneNode(true) as HTMLElement;
+        copy.setAttribute('aria-hidden', 'true');
+        copy.dataset.clone = 'true';
+        return copy;
+      };
+      track.prepend(...cards.slice(-3).map(clone));
+      track.append(...cards.slice(0, 3).map(clone));
+      let index = 0;
+      let moving = false;
+      let timer: number | undefined;
+      let hovered = false;
+      let focused = false;
+      let visible = true;
+      const offset = () =>
+        cards[0].offsetLeft -
+        (track.firstElementChild as HTMLElement).offsetLeft;
+      const step = () => cards[1].offsetLeft - cards[0].offsetLeft;
+      const render = (animate = true) => {
+        track.style.transition =
+          animate && !reducedMotion.matches ? '' : 'none';
+        track.style.transform = `translate3d(${-offset() - index * step()}px, 0, 0)`;
+        position.textContent = `${((index + count) % count) + 1} of ${count}`;
+      };
+      const stop = () => {
+        if (timer) window.clearInterval(timer);
+        timer = undefined;
+      };
+      const start = () => {
+        stop();
+        if (
+          !reducedMotion.matches &&
+          !hovered &&
+          !focused &&
+          visible &&
+          !document.hidden
+        ) {
+          timer = window.setInterval(() => advance(1), 8000);
+        }
+      };
+      const advance = (direction: number) => {
+        if (moving) return;
+        index += direction;
+        if (reducedMotion.matches) index = (index + count) % count;
+        else moving = true;
+        render();
+      };
+      track.addEventListener('transitionend', (event) => {
+        if (event.propertyName !== 'transform') return;
+        moving = false;
+        if (index >= 0 && index < count) return;
+        index = (index + count) % count;
+        render(false);
+      });
+      this.querySelectorAll<HTMLButtonElement>('[data-direction]').forEach(
+        (button) => {
+          button.addEventListener('click', () => {
+            advance(button.dataset.direction === 'next' ? 1 : -1);
+            start();
+          });
+        },
+      );
+      this.addEventListener('pointerenter', () => {
+        hovered = true;
+        stop();
+      });
+      this.addEventListener('pointerleave', () => {
+        hovered = false;
+        start();
+      });
+      this.addEventListener('focusin', () => {
+        focused = true;
+        stop();
+      });
+      this.addEventListener('focusout', () => {
+        requestAnimationFrame(() => {
+          focused = this.contains(document.activeElement);
+          start();
+        });
+      });
+      const observer = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        start();
+      });
+      observer.observe(this);
+      const resize = new ResizeObserver(() => {
+        moving = false;
+        render(false);
+      });
+      resize.observe(viewport);
+      const onVisibility = () => start();
+      const onMotion = () => {
+        moving = false;
+        render(false);
+        start();
+      };
+      document.addEventListener('visibilitychange', onVisibility);
+      reducedMotion.addEventListener('change', onMotion);
+      this.dataset.ready = 'true';
+      requestAnimationFrame(() => {
+        render(false);
+        start();
+      });
+      this.cleanup = () => {
+        stop();
+        observer.disconnect();
+        resize.disconnect();
+        document.removeEventListener('visibilitychange', onVisibility);
+        reducedMotion.removeEventListener('change', onMotion);
+      };
+    }
+    cleanup?: () => void;
+    disconnectedCallback() {
+      this.cleanup?.();
+      delete this.dataset.ready;
+    }
+  }
+  if (!customElements.get('review-carousel'))
+    customElements.define('review-carousel', ReviewCarousel);
+</script>

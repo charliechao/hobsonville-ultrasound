@@ -12,7 +12,9 @@ const prepGroups: { title: string; prep: Prep; extra?: string[] }[] = [
   {
     title: 'Pregnancy (obstetric)',
     prep: 'dating',
-    extra: ['For other pregnancy scans, no special preparation is required.'],
+    extra: [
+      'For other pregnancy scans, follow the instructions sent with your appointment. Ask reception if you have not received them.',
+    ],
   },
   {
     title: 'Musculoskeletal and nerves',
@@ -32,24 +34,23 @@ const prepGroups: { title: string; prep: Prep; extra?: string[] }[] = [
   <PageIntro
     title="Feel prepared for your visit."
     eyebrow="Patient information"
-    description="A few practical details to help you arrive feeling comfortable and ready for your ultrasound."
+    description="Find your scan preparation and what to bring."
   >
-    <div class="jump-links">
+    <nav class="jump-links patient-jump-links" aria-label="On this page">
       <a href="#prepare">How to prepare</a>
       <a href="#bring">What to bring</a>
       <a href="#clinic">At the clinic</a>
       <a href="#after">After your scan</a>
       <a href="#payment">Payment</a>
-    </div>
+    </nav>
   </PageIntro>
   <section class="section">
     <div class="container two-column">
       <div class="prose">
         <h2 id="prepare">How to prepare</h2>
         <p>
-          Preparation varies by examination. Open the section for your scan
-          below, and follow any individual instructions sent with your
-          appointment.
+          Open the section for your scan and follow any instructions sent with
+          your appointment.
         </p>
         <div class="faq-list accordion">
           {prepGroups.map((group) => (
@@ -93,7 +94,8 @@ const prepGroups: { title: string; prep: Prep; extra?: string[] }[] = [
         <p>
           Find us on Level 1 of the Hobson Centre, above Unichem Pharmacy at
           Woolworths, 124 Hobsonville Road. Free visitor parking is available.
-          Please arrive on time; most examinations take around 30 minutes.
+          Please arrive on time; most examinations take approximately 20–30
+          minutes.
         </p>
         <p>
           You may bring one adult support person. For everyone’s comfort and

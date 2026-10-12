@@ -94,3 +94,63 @@ No browser/visual review or production deployment was performed for the initial 
 - Replaced the prior current-site teal and gold approximations with the guide's exact core values in the shared global tokens, favicon and browser theme colour. Pale teal interface tones remain as derived reading surfaces.
 - Confirmed the existing Hobsonville Ultrasound header logo has no CSS recolouring or transformation. The guide's legacy name is not introduced into live copy, metadata or alternative text.
 - The guide contains no separate web typography specification. The existing self-hosted Source Sans 3 and Manrope remain for accessible site text; the decorative serif treatment remains confined to the supplied logo artwork.
+
+## Phase 1 content corrections, 12 October 2026
+
+- Local implementation only; no commit, push or deployment. Phase 2 is awaiting user review and approval. See `docs/phase-1-review.md` for changes, review routes and pending client confirmations.
+- `npm run check`: 0 errors, 0 warnings, 0 hints. `npm run build`: 43 static pages. `npm run audit`: passed 1,862 local references and 99 image elements. `git diff --check`: passed.
+- Targeted generated-output checks scanned all 43 pages for stale ACC-contribution, opening-hours and duration wording, and links promoting unavailable scans. All checks passed.
+- Verified all four unavailable-service routes render an availability notice with reception contact, without a scan price, scan booking action or Service schema. Each is noindex and excluded from the sitemap. Shared header/footer booking links still lead to the available-service directory.
+- Verified the $300 draft maternity rate renders on Pricing, the pregnancy category and the dating detail page; weekday hours and shoulder clothing/duration copy render correctly. Funding scope remains a pre-publication confirmation.
+- Local Playwright checks: Pricing, pregnancy directory and anatomy availability notice had no horizontal overflow at 390px, 768px and 1440px. Visually reviewed the new notice at desktop width. Skip-link keyboard focus and navigation into main content passed with reduced motion enabled at a 720px viewport.
+- These focused content checks do not constitute a full accessibility or 200% browser-zoom audit; those remain part of the typography/navigation redesign and final review. Existing brand styling is unchanged in Phase 1.
+
+## Phase 2 hero and shared design, 12 October 2026
+
+- Implemented locally following Phase 2 approval. The user selected the sonographer examination photograph (option A). No commit, push or deployment; Phase 3 awaits approval.
+- `npm run check`: 40 files, 0 errors, 0 warnings, 0 hints. Standard build: 43 pages. Standard audit: 1,988 local references and 97 image elements passed. `git diff --check`: passed.
+- GitHub Pages build and base-path audit passed locally: 43 pages, 1,981 local references and 90 image elements. Generated Home, Contact and nested abdominal-service pages have the expected active navigation and prefixed URLs. Restored the standard build for local preview.
+- Visually reviewed the split hero at 1440px and stacked layout at 390px. Home, Pricing, Contact and Referrers were checked at 320px, 768px and 1440px: no horizontal page or header overflow. Fixed the narrowest-screen logo width following this check.
+- Checked persistent booking access across 320px, 390px, 768px, 1024px, 1280px and 1440px layouts. Reading copy is 20px and primary booking targets exceed 48px.
+- Keyboard: mobile menu opens with Enter, Tab reaches Home, and Escape closes the menu. With JavaScript disabled, the hero image, native mobile menu and bottom booking action remain available. The static hero does not depend on motion; reduced-motion preference was enabled during the browser review.
+- These are targeted checks, not a full accessibility audit or a native 200% browser-zoom certification. Later page refinement and final review remain separate phases.
+
+## Phase 3 homepage flow, 12 October 2026
+
+- Implemented locally following Phase 3 approval. No commit, push or deployment. Phase 4 is recorded below.
+- `npm run check`: 42 files, 0 errors, 0 warnings, 0 hints. `npm run build`: 43 pages. `npm run audit`: passed 2,049 local references and 97 image elements. `git diff --check`: passed.
+- Homepage source and browser order: hero, Google reviews, booking step, category services, pricing, preparation and FAQs, location, final booking banner. The About page contains the clinic gallery and four accreditation marks.
+- Visually reviewed the reviews and gold service selector at desktop and mobile widths. Home has no horizontal overflow at 320px, 390px, 720px, 768px or 1440px. The 320px Google badge was adjusted after an initial overflow check. The 720px check covers the reflow width of a 1440px screen at approximately 200% zoom; native browser zoom has not been certified.
+- Reviews: three complete cards at 1440px, two at 768px and one at 390px. Next and previous move whole cards, including wrap from review 10 to 1 and back. Auto advance was observed after eight seconds with motion allowed; hover stopped the next advance. With reduced motion, no automatic advance occurred, while the manual control still worked.
+- Service selector: General is initially selected. Pointer selection changes the image, introduction and examination links; keyboard ArrowRight selects Pregnancy. The Vascular panel contains DVT, carotid and other vascular links. With JavaScript disabled, all five panels and their links remain visible, and all ten reviews remain in a horizontally scrollable row.
+- Browser screenshots were saved locally under `.local/phase-3-*.png` for this review. These targeted checks do not replace the final accessibility and content review.
+
+## Phase 4 patient and service pages, 12 October 2026
+
+- Implemented locally following the Phase 4 request. No commit, push or deployment. Pricing tables now precede explanatory notes; Pricing and Booking have compact introductions. Preparation has a shorter introduction and stronger native section links.
+- Booking and service detail actions retain the existing TidyCal and contact destinations. Pregnancy timing labels are drawn from shared service data. Per the user's choice, the draft uses the current website's NT 12–13-week and growth 28–40-week ranges; appointment timing remains subject to referrer guidance.
+- `npm run check`: 42 files, 0 errors, 0 warnings, 0 hints. `npm run build`: 43 static pages. `npm run audit`: 43 pages, 2,090 local references and 95 image elements passed. `git diff --check`: passed.
+- Local browser checks of Pricing, Preparation, Booking, abdominal scan detail, pregnancy category, NT detail and growth detail found no horizontal overflow at 320px, 390px, 768px or 1440px, with reduced motion enabled. The first Pricing table begins at about 405px on a 1440px-wide screen, and the first Booking row begins at about 696px on a 390px-wide screen. The Preparation `#bring` link receives its selected styling and navigates to the matching section.
+- Visually reviewed the desktop Pricing layout and mobile Booking layout. Targeted checks do not constitute a full accessibility audit or native browser-zoom certification. Timing and maternity-funding copy should be checked with the clinic before public launch.
+
+## Phase 5 About and Referrers, 12 October 2026
+
+- Implemented locally following the Phase 5 request and the user's clarification to use only confirmed existing team copy and show no live vacancies. No commit, push or deployment.
+- `npm run check`: 42 files, 0 errors, 0 warnings, 0 hints. `npm run build`: 43 static pages. `npm run audit`: 43 pages, 2,137 local references and 92 image elements passed.
+- Local browser review at 320px, 390px, 720px, 768px and 1440px found no page-level horizontal overflow on About or Referrers. Visually checked both pages at desktop and mobile widths. The 720px reflow approximates a 1440px window at 200% zoom; native browser zoom has not been certified.
+- About's genuine examination-room and reception photographs and all four accreditation marks loaded when scrolled into view. Its section link reached `#our-team`, and the gallery advanced from examination room to reception with its next control. Reduced motion was enabled for the mobile review.
+- Referrers renders one PDF download link; the local download returned HTTP 200. The PACS request action addresses `reception@hobus.co.nz` with a PACS access subject. Confirmed the sequence of referrals, three steps, reports and PACS, plus the combined services/pricing sidebar.
+- Darshana's full name, named qualifications, individual accreditation associations, a genuine team portrait and approved role details/application route remain unconfirmed. The page does not assign the practice-level marks to her or present the two roles as open vacancies. These targeted checks do not replace final clinical and accessibility review.
+
+## Monthly blog placeholder, 12 October 2026
+
+- Added a local `/blog/` page and static monthly content collection using the three sections in the client's feedback. The only collection entry is a draft template, so no dated edition or individual monthly route is published yet. No commit, push or deployment.
+- `npm run check`: 47 files, 0 errors, 0 warnings, 0 hints. `npm run build`: 44 static pages. `npm run audit`: 44 pages, 2,351 local references and 94 image elements passed. The empty-collection warnings from the first build were resolved by keeping a schema-checked draft template.
+- Local browser review found no page-level horizontal overflow at 320px, 390px, 768px, 1280px, 1440px or 1600px. The Blog navigation state was active in both desktop and mobile menus. The genuine clinic-room photograph loaded; desktop and mobile layouts were visually reviewed.
+- The placeholder has `noindex` and contains no fabricated dated clinic update. Monthly publishing instructions and a starter file are in `docs/monthly-blog.md` and `src/content/monthly/_template.yml`. Individual monthly pages will be created by the static build when an approved file has `draft: false`.
+
+## About team portrait placeholder, 12 October 2026
+
+- Added the homepage hero photograph to Darshana's profile in a portrait-format crop. The image alt text and visible caption explicitly identify it as illustrative, pending a genuine portrait.
+- `npm run check`: 47 files, 0 errors or warnings. `npm run build`: 44 static pages. `npm run audit`: 44 pages, 2,352 local references and 95 image elements passed.
+- Visually reviewed the team section at desktop and 390px mobile width. The portrait loaded, the caption remained visible, and no page-level horizontal overflow appeared at 390px or 320px. No commit, push or deployment.

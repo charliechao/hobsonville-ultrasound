@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import { site } from '../data/site';
+interface Props {
+  name: string;
+}
+const { name } = Astro.props;
+---
+
+<Layout
+  title={`${name}: currently unavailable`}
+  description={`${name} is not currently available at Hobsonville Ultrasound. Contact reception for help with your referral or view our available examinations.`}
+  noindex
+>
+  <section class="section">
+    <div class="container reading prose">
+      <Breadcrumbs
+        items={[{ label: 'Services', href: '/services/' }, { label: name }]}
+      />
+      <h1>{name}</h1>
+      <h2>This examination is not currently available.</h2>
+      <p>
+        Please contact reception if your referral requests this examination. Our
+        team can help with questions about our available services.
+      </p>
+      <div class="actions">
+        <a class="button" href={site.tel} data-event="phone_click">
+          Call {site.phone}
+        </a>
+        <a
+          class="text-link"
+          href={`mailto:${site.email}`}
+          data-event="email_click"
+        >
+          Email reception
+        </a>
+      </div>
+      <p>
+        <a href="/services/pregnancy/">View available pregnancy examinations</a>
+      </p>
+    </div>
+  </section>
+</Layout>

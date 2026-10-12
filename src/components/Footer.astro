@@ -1,4 +1,5 @@
 ---
+import BookingButton from './BookingButton.astro';
 import { site } from '../data/site';
 import Icon from './Icon.astro';
 ---
@@ -54,6 +55,7 @@ import Icon from './Icon.astro';
       </a>
       <a href="/patient-information/">Prepare for your appointment</a>
       <a href="/faq/">Frequently asked questions</a>
+      <a href="/blog/">Blog</a>
       <a href="/appointment-policy/">Appointment policy</a>
     </div>
   </div>
@@ -67,7 +69,5 @@ import Icon from './Icon.astro';
   <a href={site.tel} data-event="phone_click">
     <Icon name="phone" size={18} /> Call reception
   </a>
-  <a href="/book-online/">
-    <Icon name="calendar" size={18} /> Book a scan
-  </a>
+  <BookingButton />
 </div>

@@ -3,15 +3,27 @@ import { Image } from 'astro:assets';
 import { images } from '../data/images';
 import { site } from '../data/site';
 import Icon from './Icon.astro';
+import BookingButton from './BookingButton.astro';
 const links = [
+  ['Home', '/'],
   ['Services', '/services/'],
   ['Patient information', '/patient-information/'],
   ['Pricing', '/pricing/'],
   ['About us', '/about/'],
+  ['Blog', '/blog/'],
   ['Referrers', '/referrers/'],
   ['Contact', '/contact/'],
 ];
-const current = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL.slice(0, -1)
+  : import.meta.env.BASE_URL;
+const pathname = Astro.url.pathname;
+const current =
+  base && (pathname === base || pathname.startsWith(base + '/'))
+    ? pathname.slice(base.length) || '/'
+    : pathname;
+const isActive = (href: string) =>
+  href === '/' ? current === '/' : current.startsWith(href);
 ---
 
 <div class="utility">
@@ -38,31 +50,23 @@ const current = Astro.url.pathname;
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
       {links.map(([label, href]) => (
-        <a
-          href={href}
-          aria-current={current.startsWith(href) ? 'page' : undefined}
-        >
+        <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
           {label}
         </a>
       ))}
     </nav>
-    <a class="button button-small header-book" href="/book-online/">
-      <Icon name="calendar" size={18} /> Book a scan
-    </a>
+    <BookingButton class="header-book" />
     <details class="mobile-menu">
       <summary>
         Menu <Icon name="menu" size={20} />
       </summary>
       <nav aria-label="Mobile navigation">
         {links.map(([label, href]) => (
-          <a
-            href={href}
-            aria-current={current.startsWith(href) ? 'page' : undefined}
-          >
+          <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
             {label}
           </a>
         ))}
-        <a href="/book-online/">Book a scan ↗</a>
+        <BookingButton />
       </nav>
     </details>
   </div>

@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import unavailableSlugs from './src/data/unavailable-services.json' with { type: 'json' };
 
 const githubPages = process.env.GITHUB_PAGES === 'true';
 
@@ -9,5 +10,13 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   devToolbar: { enabled: false },
-  integrations: [sitemap({ filter: (page) => !page.endsWith('/404/') })],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.endsWith('/404/') &&
+        !unavailableSlugs.some((slug) =>
+          page.endsWith('/services/pregnancy/' + slug + '/'),
+        ),
+    }),
+  ],
 });

@@ -1,0 +1,44 @@
+---
+import Photo from './Photo.astro';
+import BookingButton from './BookingButton.astro';
+import Icon from './Icon.astro';
+import sonographer from '../../assets/images/stock/sonographer-examination.jpg';
+---
+
+<section class="home-hero" aria-labelledby="home-title">
+  <div class="container home-hero-grid">
+    <div class="home-hero-copy">
+      <p class="home-hero-location">
+        <Icon name="pin" size={20} /> Your local diagnostic ultrasound practice
+      </p>
+      <h1 id="home-title">
+        Hobsonville <span>Ultrasound</span>
+      </h1>
+      <p class="home-hero-former">Formerly Body 2 Baby Ultrasound</p>
+      <p class="home-hero-intro">Experienced care. Trusted by locals.</p>
+      <p class="home-hero-description">
+        Professional diagnostic ultrasound, with over 12 years of sonography
+        experience and a personal approach to your care. Here in Hobsonville,
+        close to home.
+      </p>
+      <div class="actions">
+        <BookingButton />
+        <a class="button hero-services" href="/services/">
+          View Our Services <Icon name="arrow" size={21} />
+        </a>
+      </div>
+      <p class="home-hero-address">
+        Hobson Centre, Level 1 · Free visitor parking
+      </p>
+    </div>
+    <figure class="home-hero-photo">
+      <Photo
+        src={sonographer}
+        alt="Illustrative stock photograph of a healthcare professional performing an ultrasound examination"
+        sizes="(max-width: 900px) 100vw, 48vw"
+        eager
+      />
+      <figcaption>Ultrasound care · Illustrative photograph</figcaption>
+    </figure>
+  </div>
+</section>

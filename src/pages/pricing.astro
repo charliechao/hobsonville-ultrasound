@@ -1,8 +1,9 @@
 ---
+import BookingButton from '../components/BookingButton.astro';
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Callout from '../components/Callout.astro';
-import { pricingGroups } from '../data/services';
+import { pricingGroups, nonEligibleMaternityPrice } from '../data/services';
 import { site } from '../data/site';
 ---
 
@@ -13,28 +14,12 @@ import { site } from '../data/site';
   <PageIntro
     title="Clear pricing. Fewer surprises."
     eyebrow="Ultrasound pricing"
-    description="Find the cost of your examination before your visit. If you are unsure which scan your referral covers, our reception team can help."
+    description="Find the cost of your examination before your visit."
+    compact
   />
-  <section class="section">
+  <section class="section pricing-page">
     <div class="container two-column">
       <div>
-        <div class="notice notice-strong" id="referral">
-          <h2>All scans require a referral</h2>
-          <p>
-            We accept referrals from registered New Zealand health
-            professionals, including GPs and medical specialists, sport and
-            exercise physicians, chiropractors, physiotherapists, osteopaths,
-            podiatrists, nurse practitioners, LMCs and midwives.
-          </p>
-          <p>
-            Already have a referral? Send a copy or clear photo to{' '}
-            <a href={`mailto:${site.email}`} data-event="email_click">
-              {site.email}
-            </a>{' '}
-            before booking, or bring it to your appointment. If you are unsure
-            whether your referral is suitable, please contact us.
-          </p>
-        </div>
         {pricingGroups.map((group) => (
           <table class="price-table">
             <caption>{group.name}</caption>
@@ -59,38 +44,36 @@ import { site } from '../data/site';
         <div class="sidebar-panel">
           <h2>Before you book</h2>
           <p>
-            Payment is due at your appointment. Please confirm the final cost
-            with reception.
+            Diagnostic scans require a referral. Send it to{' '}
+            <a href={`mailto:${site.email}`} data-event="email_click">
+              {site.email}
+            </a>{' '}
+            or bring it to your appointment.
+          </p>
+          <p>
+            Payment is due at your appointment. Confirm the final cost with
+            reception.
           </p>
           <h3>Pregnancy pricing</h3>
           <p>
-            Listed diagnostic pregnancy prices apply to eligible New Zealand
-            maternity patients.
-          </p>
-          <p>
-            Eligible pregnancy scans are{' '}
-            <strong>$30 with a Community Services Card</strong>. Contact
-            reception about eligibility and pricing if you are not eligible for
-            NZ maternity funding.
+            Listed prices apply to eligible NZ maternity patients; with a
+            Community Services Card, eligible scans are <strong>$30</strong>.
+            Diagnostic pregnancy scans cost{' '}
+            <strong>${nonEligibleMaternityPrice}</strong> if you are not
+            eligible for NZ maternity funding. Ask reception if you are unsure
+            which rate applies.
           </p>
           <h3>ACC</h3>
           <p>
-            An ACC referral may involve a patient contribution. Please confirm
-            your cost before attending.
+            There is currently no patient charge for examinations with an ACC
+            referral.
           </p>
           <h3>Digital images</h3>
           <p>
             <strong>$10 per study</strong> for a secure image link, where not
             already included.
           </p>
-          <h3>Availability</h3>
-          <p>
-            Contact us to confirm availability for anatomy, 3D / 4D and combined
-            growth + 3D / 4D appointments.
-          </p>
-          <a class="button" href="/book-online/">
-            Find your appointment ↗
-          </a>
+          <BookingButton />
         </div>
         <h3>Changes or cancellations</h3>
         <p>

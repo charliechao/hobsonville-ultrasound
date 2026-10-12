@@ -1,4 +1,5 @@
 ---
+import BookingButton from '../components/BookingButton.astro';
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Icon from '../components/Icon.astro';
@@ -45,9 +46,7 @@ import { site } from '../data/site';
             times.
           </p>
         </div>
-        <a class="button" href="/book-online/">
-          Book an ultrasound ↗
-        </a>
+        <BookingButton />
         <div class="notice">
           <p>
             To cancel or reschedule, call, leave a voicemail, or reply to your

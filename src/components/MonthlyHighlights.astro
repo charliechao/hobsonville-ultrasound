@@ -1,0 +1,32 @@
+---
+import Icon from './Icon.astro';
+import type { MonthlyHighlight } from '../data/monthly';
+
+interface Props {
+  highlights: MonthlyHighlight[];
+  detailed?: boolean;
+}
+
+const { highlights, detailed = false } = Astro.props;
+---
+
+<div class="monthly-highlights">
+  {highlights.map((item, index) => (
+    <article
+      class:list={[
+        'monthly-highlight',
+        { 'monthly-highlight-featured': index === 0 },
+      ]}
+    >
+      <div class="monthly-highlight-top">
+        <span class="monthly-highlight-icon">
+          <Icon name={item.icon} size={27} />
+        </span>
+        <span class="monthly-highlight-label">{item.label}</span>
+      </div>
+      <h3>{item.title}</h3>
+      <p>{item.summary}</p>
+      {detailed && item.details?.map((paragraph) => <p>{paragraph}</p>)}
+    </article>
+  ))}
+</div>

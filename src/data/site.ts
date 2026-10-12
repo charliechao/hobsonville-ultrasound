@@ -15,10 +15,7 @@ export const site = {
     'https://www.google.com/maps?output=embed&q=-36.7977876,174.648825&z=17',
   googleReviews:
     'https://www.google.com/search?q=hobsonville+ultrasound&hl=en-NZ&gl=nz',
-  openingHours: [
-    { days: 'Monday – Friday', hours: '9:30 am – 6:30 pm' },
-    { days: 'Saturday', hours: '9:00 am – 12:00 pm' },
-  ],
+  openingHours: [{ days: 'Monday – Friday', hours: '9:30 am – 5:00 pm' }],
   referral: {
     form: '/downloads/hobsonville-ultrasound-referral-form.pdf',
   },
@@ -68,7 +65,7 @@ export const faqs: Faq[] = [
   },
   {
     question: 'How much does an ultrasound cost?',
-    answer: `Prices are listed for every examination. Private examinations start from $${privateFrom}. Eligible NZ maternity scans start from $${pregnancyFrom}, or $30 with a Community Services Card. ACC-funded examinations may have a patient contribution.`,
+    answer: `Prices are listed for every examination. Private examinations start from $${privateFrom}. Eligible NZ maternity scans start from $${pregnancyFrom}, or $30 with a Community Services Card. There is currently no patient charge for examinations with an ACC referral.`,
     links: [{ label: 'View all prices', href: '/pricing/' }],
     home: true,
   },
@@ -82,7 +79,7 @@ export const faqs: Faq[] = [
   {
     question: 'How long does an ultrasound examination take?',
     answer:
-      'Most ultrasound examinations take around 30 minutes, although times vary with the type of examination. Please arrive on time and allow time to complete any preparation.',
+      'Most ultrasound examinations take approximately 20–30 minutes, although times vary with the type of examination. Please arrive on time and allow time to complete any preparation.',
     links: [
       { label: 'How to prepare', href: '/patient-information/' },
       { label: 'Appointment policy', href: '/appointment-policy/' },
@@ -99,7 +96,7 @@ export const faqs: Faq[] = [
   {
     question: 'Do you offer pregnancy ultrasound?',
     answer:
-      'Yes. We offer dating, nuchal translucency (NT), anatomy, growth and wellbeing scans, as well as gender and 3D / 4D scans.',
+      'Yes. We offer dating, nuchal translucency (NT), growth and wellbeing scans. View our pregnancy examinations for preparation and appointment information.',
     links: [{ label: 'Pregnancy ultrasound', href: '/services/pregnancy/' }],
     home: true,
   },

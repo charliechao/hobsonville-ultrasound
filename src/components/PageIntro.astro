@@ -6,22 +6,30 @@ interface Props {
   title: string;
   eyebrow?: string;
   description?: string;
+  compact?: boolean;
 }
-const { title, eyebrow, description } = Astro.props;
-const photo = ['/about/', '/contact/'].includes(Astro.url.pathname)
-  ? images.reception
-  : [
-        '/services/',
-        '/patient-information/',
-        '/book-online/',
-        '/referrers/',
-        '/pricing/',
-      ].includes(Astro.url.pathname)
-    ? images.probe
-    : null;
+const { title, eyebrow, description, compact = false } = Astro.props;
+const photo = compact
+  ? null
+  : ['/about/', '/contact/'].includes(Astro.url.pathname)
+    ? images.reception
+    : [
+          '/services/',
+          '/patient-information/',
+          '/book-online/',
+          '/referrers/',
+          '/pricing/',
+        ].includes(Astro.url.pathname)
+      ? images.probe
+      : null;
 ---
 
-<section class:list={['page-intro', { 'page-intro-visual': !!photo }]}>
+<section
+  class:list={[
+    'page-intro',
+    { 'page-intro-visual': !!photo, 'page-intro-compact': compact },
+  ]}
+>
   <div class="container">
     <Breadcrumbs items={[{ label: title }]} />
     <div class="intro-composition">

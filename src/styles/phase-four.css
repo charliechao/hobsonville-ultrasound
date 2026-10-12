@@ -1,0 +1,184 @@
+/* Patient journey refinements follow the unlayered Phase 2 typography rules. */
+.page-intro-compact {
+  padding-block: 1.25rem 2rem;
+}
+.page-intro-compact .breadcrumbs {
+  margin-bottom: 0.75rem;
+}
+.page-intro-compact .section-label {
+  margin-bottom: 0.5rem;
+}
+.page-intro-compact h1,
+.page-intro-compact .intro-composition h1 {
+  font-size: clamp(2.35rem, 4vw, 3.8rem);
+  margin-bottom: 0.5rem;
+}
+.page-intro-compact .lead {
+  max-width: 50ch;
+}
+.pricing-page {
+  padding-block: 1.5rem 4rem;
+}
+.pricing-page .price-table:first-child {
+  margin-top: 0;
+}
+.pricing-page .price-table:first-child caption {
+  padding-top: 0;
+}
+.pricing-page .sidebar-panel h3 {
+  margin-top: 1.5rem;
+}
+.patient-jump-links {
+  gap: 0.75rem;
+}
+.patient-jump-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0.7rem 1.25rem;
+  background: var(--paper);
+  border-color: var(--line);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+.patient-jump-links a:hover,
+.patient-jump-links a:focus-visible,
+body:has(#prepare:target) .patient-jump-links a[href='#prepare'],
+body:has(#bring:target) .patient-jump-links a[href='#bring'],
+body:has(#clinic:target) .patient-jump-links a[href='#clinic'],
+body:has(#after:target) .patient-jump-links a[href='#after'],
+body:has(#payment:target) .patient-jump-links a[href='#payment'] {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--paper);
+}
+#prepare,
+#bring,
+#clinic,
+#after,
+#payment,
+.booking-group {
+  scroll-margin-top: 9rem;
+}
+.booking-page {
+  padding-top: 3.5rem;
+}
+.booking-group h2 {
+  font-size: clamp(1.65rem, 2.4vw, 2.2rem);
+  margin-bottom: 0.5rem;
+}
+.booking-row h3,
+.service-category-page .exam-link h3,
+.related-list .exam-link h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.booking-row p {
+  margin-top: 0.35rem;
+}
+.booking-row .booking-row-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 155px;
+  max-width: none;
+  min-height: 52px;
+  padding: 0.65rem 1rem;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--brand);
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  white-space: normal;
+}
+.booking-row .booking-row-action:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+.booking-row .booking-row-enquiry {
+  background: var(--paper);
+  border-color: var(--brand);
+}
+.booking-row .booking-row-enquiry:hover {
+  background: var(--tint);
+  border-color: var(--brand);
+}
+.scan-timing,
+main p.scan-timing {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 0.7rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 3px;
+  background: var(--tint);
+  color: var(--brand);
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+.scan-timing-intro {
+  margin-bottom: 1rem;
+}
+.exam-link .icon {
+  flex: none;
+  color: var(--icon);
+  transition: transform 0.2s ease;
+}
+.exam-link:hover .icon,
+.exam-link:focus-visible .icon {
+  transform: translateX(4px);
+}
+.service-booking-action {
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 54px;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--brand);
+  font-weight: 700;
+}
+.service-booking-action:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--brand);
+}
+.service-booking-action.button-outline {
+  background: var(--paper);
+  border-color: var(--brand);
+}
+.service-booking-action.button-outline:hover {
+  background: var(--tint);
+}
+@media (max-width: 700px) {
+  .page-intro-compact {
+    padding-bottom: 1.5rem;
+  }
+  .pricing-page {
+    padding-block: 1.25rem 3rem;
+  }
+  .booking-page {
+    padding-top: 2rem;
+  }
+  .booking-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .booking-row .booking-row-action {
+    width: 100%;
+  }
+  .patient-jump-links a {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .exam-link .icon {
+    transition: none;
+  }
+}

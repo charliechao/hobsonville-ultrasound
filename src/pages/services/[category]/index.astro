@@ -3,7 +3,13 @@ import Layout from '../../../layouts/Layout.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 import Photo from '../../../components/Photo.astro';
 import Callout from '../../../components/Callout.astro';
-import { categories, services, serviceUrl } from '../../../data/services';
+import Icon from '../../../components/Icon.astro';
+import {
+  categories,
+  services,
+  serviceUrl,
+  nonEligibleMaternityPrice,
+} from '../../../data/services';
 import { images } from '../../../data/images';
 export function getStaticPaths() {
   return categories.map((category) => ({
@@ -41,7 +47,7 @@ const exams = services.filter((s) => s.category === category.slug);
       </div>
     </div>
   </section>
-  <section class="section">
+  <section class="section service-category-page">
     <div class="container">
       <div class="section-heading">
         <h2>Find your examination.</h2>
@@ -52,13 +58,14 @@ const exams = services.filter((s) => s.category === category.slug);
           <a class="exam-link" href={serviceUrl(s)}>
             <div>
               <h3>{s.name}</h3>
+              {s.timing && <p class="scan-timing">{s.timing}</p>}
               <p>
                 {s.slug === 'other-vascular' ? 'From ' : ''}${s.price}
                 {s.pregnancyEligible ? ' · eligible maternity patients' : ''}
                 {s.enquire ? ' · check availability' : ''}
               </p>
             </div>
-            <span aria-hidden="true">↗</span>
+            <Icon name="arrow" size={24} />
           </a>
         ))}
       </div>
@@ -67,8 +74,9 @@ const exams = services.filter((s) => s.category === category.slug);
           <p>
             Listed diagnostic pregnancy prices apply to eligible New Zealand
             maternity patients. Eligible pregnancy scans are $30 with a
-            Community Services Card. Contact reception to confirm eligibility,
-            non-eligible pricing and appointment availability.
+            Community Services Card. Diagnostic pregnancy scans for patients not
+            eligible for NZ maternity funding cost ${nonEligibleMaternityPrice}.
+            Contact reception to confirm eligibility.
           </p>
         </div>
       )}

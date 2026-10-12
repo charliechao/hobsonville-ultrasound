@@ -30,6 +30,12 @@ These three images are downloaded from Pexels at up to 2000 px width under the [
 | `stock/pregnancy-ultrasound.jpg` | [Pregnancy ultrasound examination](https://www.pexels.com/photo/people-woman-technology-health-7089333/) | Pregnancy service illustration. |
 | `stock/ultrasound-probe.jpg` | [Close-up of ultrasound equipment](https://www.pexels.com/photo/technology-computer-health-monitor-7089618/) | Neutral diagnostic equipment detail. |
 
-## Still needed from the client
+## Phase 2 hero selection, 12 October 2026
+
+The user selected the real sonographer examination photograph over the equipment close-up. `stock/sonographer-examination.jpg` is downloaded at 2000px from [MART PRODUCTION on Pexels](https://www.pexels.com/photo/photo-of-person-using-ultrasound-scan-7089299/), under the [Pexels license](https://www.pexels.com/license/), checked 12 October 2026. The hero includes a visible illustrative-photograph caption and descriptive stock-photo alt text; it does not identify the model as clinic staff. Astro creates local responsive WebP sizes.
+
+The favicon embeds the original `current-site/images/logos/logo.jpg` in an SVG square viewport focused on its symbol. The source image bytes, colours and proportions are preserved; the symbol is not redrawn or generated.
+
+## Still needed from the client (future pages)
 
 A genuine team or sonographer portrait and an entrance/wayfinding photo would materially improve the About and Contact pages. A wider, brighter clinic action photo would offer a stronger homepage hero than the current room photos. Use only after the client supplies and approves them, including any identifiable patient consent.

@@ -1,0 +1,139 @@
+---
+import { categories, services, serviceUrl } from '../data/services';
+import { images } from '../data/images';
+import Photo from './Photo.astro';
+import Icon, { type IconName } from './Icon.astro';
+
+const ordered = [
+  categories.find((category) => category.slug === 'general')!,
+  ...categories.filter((category) => category.slug !== 'general'),
+];
+const icons: Record<(typeof ordered)[number]['slug'], IconName> = {
+  general: 'general',
+  pregnancy: 'pregnancy',
+  musculoskeletal: 'muscle',
+  'small-parts': 'focus',
+  vascular: 'pulse',
+};
+---
+
+<home-services
+  class="home-services section"
+  aria-labelledby="home-services-title"
+>
+  <div class="container">
+    <div class="home-services-heading">
+      <div>
+        <p class="section-label">Our expertise</p>
+        <h2 id="home-services-title">Find the right ultrasound.</h2>
+      </div>
+      <p>Choose a category to explore examinations on your referral.</p>
+    </div>
+    <div
+      class="home-service-tabs"
+      role="tablist"
+      aria-label="Ultrasound categories"
+    >
+      {ordered.map((category, index) => (
+        <button
+          type="button"
+          role="tab"
+          id={`home-tab-${category.slug}`}
+          aria-controls={`home-panel-${category.slug}`}
+          aria-selected={index === 0 ? 'true' : 'false'}
+          tabindex={index === 0 ? 0 : -1}
+        >
+          <Icon name={icons[category.slug]} size={25} />
+          <span>{category.short}</span>
+        </button>
+      ))}
+    </div>
+    <div class="home-service-panels">
+      {ordered.map((category) => (
+        <section
+          class="home-service-panel"
+          id={`home-panel-${category.slug}`}
+          role="tabpanel"
+          aria-labelledby={`home-tab-${category.slug}`}
+          tabindex="0"
+        >
+          <div class="home-service-photo">
+            <Photo
+              src={images[category.image]}
+              alt={`Illustrative photograph for ${category.name.toLowerCase()}`}
+              sizes="(max-width: 900px) 100vw, 42vw"
+            />
+            <span>Illustrative photograph</span>
+          </div>
+          <div class="home-service-details">
+            <h3>{category.name}</h3>
+            <p>{category.intro}</p>
+            <ul>
+              {services
+                .filter((service) => service.category === category.slug)
+                .map((service) => (
+                  <li>
+                    <a href={serviceUrl(service)}>
+                      {service.name} <Icon name="arrow" size={19} />
+                    </a>
+                  </li>
+                ))}
+            </ul>
+            <a class="home-service-all" href={`/services/${category.slug}/`}>
+              View all {category.short.toLowerCase()} scans{' '}
+              <Icon name="arrow" size={20} />
+            </a>
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</home-services>
+
+<script>
+  class HomeServices extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      const tabs = [
+        ...this.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+      ];
+      const panels = [
+        ...this.querySelectorAll<HTMLElement>('[role="tabpanel"]'),
+      ];
+      const select = (index: number, moveFocus = false) => {
+        tabs.forEach((tab, position) => {
+          const selected = position === index;
+          tab.setAttribute('aria-selected', String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+          panels[position].hidden = !selected;
+        });
+        if (moveFocus) tabs[index].focus();
+      };
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => select(index));
+        tab.addEventListener('keydown', (event) => {
+          const next =
+            event.key === 'ArrowRight'
+              ? (index + 1) % tabs.length
+              : event.key === 'ArrowLeft'
+                ? (index - 1 + tabs.length) % tabs.length
+                : event.key === 'Home'
+                  ? 0
+                  : event.key === 'End'
+                    ? tabs.length - 1
+                    : -1;
+          if (next < 0) return;
+          event.preventDefault();
+          select(next, true);
+        });
+      });
+      select(0);
+      this.dataset.ready = 'true';
+    }
+    disconnectedCallback() {
+      delete this.dataset.ready;
+    }
+  }
+  if (!customElements.get('home-services'))
+    customElements.define('home-services', HomeServices);
+</script>

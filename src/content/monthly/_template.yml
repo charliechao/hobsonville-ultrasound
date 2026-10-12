@@ -1,0 +1,14 @@
+# Copy this file to YYYY-MM.yml and update all three sections.
+# Set draft to false only when the text is ready to appear on the website.
+draft: true
+update:
+  title: 'Clinic update title'
+  summary: 'A short, accurate update about the clinic this month.'
+  details:
+    - 'Optional extra detail for the monthly update page.'
+didYouKnow:
+  title: 'Useful ultrasound fact'
+  summary: 'One checked, patient-friendly fact about ultrasound.'
+goodToKnow:
+  title: 'A scan or patient question'
+  summary: 'A short answer that helps patients prepare or understand a scan.'

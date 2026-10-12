@@ -12,6 +12,11 @@ import '@fontsource/source-sans-3/latin-400.css';
 import '@fontsource/source-sans-3/latin-600.css';
 import globalStyles from '../styles/global.css?url';
 import premiumStyles from '../styles/premium.css?url';
+import phaseTwoStyles from '../styles/phase-two.css?url';
+import phaseThreeStyles from '../styles/phase-three.css?url';
+import phaseFourStyles from '../styles/phase-four.css?url';
+import phaseFiveStyles from '../styles/phase-five.css?url';
+import blogStyles from '../styles/blog.css?url';
 interface Props {
   title: string;
   description: string;
@@ -89,6 +94,11 @@ const clinic = {
     <link rel="canonical" href={canonical} />
     <link rel="stylesheet" href={globalStyles} />
     <link rel="stylesheet" href={premiumStyles} />
+    <link rel="stylesheet" href={phaseTwoStyles} />
+    <link rel="stylesheet" href={phaseThreeStyles} />
+    <link rel="stylesheet" href={phaseFourStyles} />
+    <link rel="stylesheet" href={phaseFiveStyles} />
+    <link rel="stylesheet" href={blogStyles} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#1A393C" />
     {!indexable && <meta name="robots" content="noindex, nofollow" />}

@@ -1,0 +1,375 @@
+@layer phase-three {
+  .reviews-section {
+    display: block;
+    padding-block: clamp(3rem, 5vw, 5rem);
+  }
+  .reviews-heading {
+    margin-bottom: 1.8rem;
+  }
+  .review-carousel-viewport {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  review-carousel[data-ready] .review-carousel-viewport {
+    overflow: hidden;
+  }
+  .reviews-grid {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 1rem;
+    transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .review-card {
+    flex: 0 0 calc((100% - 2rem) / 3);
+    min-width: 0;
+    min-height: 225px;
+  }
+  .review-card blockquote {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  .reviewer-meta strong,
+  .reviewer-meta span,
+  .google-rating-copy > span:last-child {
+    font-size: 1rem;
+  }
+  .review-carousel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .reviews-all-link {
+    margin-top: 0;
+  }
+  .review-carousel-controls {
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  review-carousel[data-ready] .review-carousel-controls {
+    display: flex;
+  }
+  .review-carousel-position {
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+    margin-right: 0.4rem;
+  }
+  .review-carousel-controls button {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    color: var(--brand);
+    background: var(--white);
+    cursor: pointer;
+    transition:
+      background 200ms,
+      border-color 200ms;
+  }
+  .review-carousel-controls button:hover {
+    background: var(--tint);
+    border-color: var(--brand);
+  }
+  .review-carousel-controls [data-direction='previous'] .icon {
+    transform: rotate(180deg);
+  }
+  .home-booking {
+    background: var(--white);
+    border-block: 1px solid var(--line);
+  }
+  .home-booking-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  .home-booking h2 {
+    font-size: clamp(1.7rem, 2.7vw, 2.7rem);
+    margin-bottom: 0.6rem;
+  }
+  .home-booking p:last-child {
+    margin-bottom: 0;
+  }
+  .home-booking .booking-button {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .home-services {
+    display: block;
+    background: var(--accent);
+  }
+  .home-services-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+    margin-bottom: 2.2rem;
+  }
+  .home-services-heading h2 {
+    margin: 0;
+  }
+  .home-services-heading > p {
+    max-width: 30ch;
+    margin: 0;
+  }
+  .home-services .section-label {
+    color: var(--brand);
+  }
+  .home-service-tabs {
+    display: none;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+  }
+  home-services[data-ready] .home-service-tabs {
+    display: grid;
+  }
+  .home-service-tabs button {
+    min-height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 1rem;
+    border: 1px solid var(--brand);
+    border-radius: 5px;
+    background: transparent;
+    color: var(--brand);
+    font: 700 1.1rem/1.2 var(--heading);
+    cursor: pointer;
+    transition:
+      background 200ms,
+      color 200ms,
+      transform 200ms;
+  }
+  .home-service-tabs button:hover {
+    transform: translateY(-3px);
+    background: #fff4dc;
+  }
+  .home-service-tabs button[aria-selected='true'] {
+    background: var(--brand);
+    color: var(--white);
+  }
+  .home-service-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    background: #fffaf1;
+    border: 1px solid #d7b97f;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+  .home-service-photo {
+    position: relative;
+    min-height: 450px;
+    overflow: hidden;
+  }
+  .home-service-photo img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .home-service-photo span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.4rem 0.7rem;
+    background: var(--brand);
+    color: var(--white);
+    font-size: 1rem;
+  }
+  .home-service-details {
+    padding: clamp(1.5rem, 3vw, 3rem);
+  }
+  .home-service-details h3 {
+    font-size: clamp(1.7rem, 2.8vw, 2.7rem);
+  }
+  .home-service-details > p {
+    max-width: 50ch;
+  }
+  .home-service-details ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 1.4rem;
+    padding: 0;
+    margin: 1.5rem 0;
+    list-style: none;
+  }
+  .home-service-details li,
+  .home-service-details li + li {
+    margin: 0;
+    border-top: 1px solid #d7cbb3;
+  }
+  .home-service-details li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.8rem 0;
+    text-decoration: none;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+  .home-service-details li a:hover,
+  .home-service-all:hover {
+    text-decoration: underline;
+  }
+  .home-service-details li .icon {
+    flex-shrink: 0;
+  }
+  .home-service-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .home-location .location-address {
+    margin: 0.4rem 0 1.6rem;
+    padding: 1rem 0;
+    border-block: 1px solid var(--line);
+  }
+  .home-final-callout {
+    background: var(--brand);
+    color: var(--white);
+  }
+  .home-final-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  .home-final-inner > div:first-child {
+    max-width: 680px;
+  }
+  .home-final-callout .section-label {
+    color: var(--accent);
+  }
+  .home-final-callout h2 {
+    font-size: clamp(2.2rem, 3.6vw, 3.8rem);
+  }
+  .home-final-callout p:last-child {
+    margin-bottom: 0;
+  }
+  .home-final-actions {
+    display: grid;
+    gap: 1.3rem;
+    justify-items: center;
+  }
+  .home-final-actions > .booking-button {
+    min-width: 260px;
+    justify-content: center;
+  }
+  .home-final-actions > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem 1.2rem;
+  }
+  .home-final-actions > div a {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+    color: var(--white);
+    font-size: 1rem;
+  }
+  .about-gallery {
+    background: var(--mist);
+  }
+  .about-gallery > .container > p:not(.section-label) {
+    max-width: 60ch;
+  }
+  .about-gallery .slider-frames {
+    height: min(58vw, 560px);
+  }
+  @media (max-width: 1000px) {
+    .home-service-tabs {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .home-booking-inner,
+    .home-final-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 900px) {
+    .review-card {
+      flex-basis: calc((100% - 1rem) / 2);
+    }
+    .home-service-panel {
+      grid-template-columns: 1fr;
+    }
+    .home-service-photo {
+      min-height: 330px;
+    }
+    .home-services-heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 620px) {
+    .reviews-heading {
+      gap: 1.2rem;
+    }
+    .review-rating {
+      min-width: 0;
+      width: 100%;
+      gap: 0.65rem;
+      padding: 0.85rem 0.75rem;
+    }
+    .google-word {
+      font-size: 1.1rem;
+      padding-right: 0.65rem;
+    }
+    .google-rating-copy > span:last-child {
+      white-space: normal;
+    }
+    .review-card {
+      flex-basis: 100%;
+    }
+    .review-carousel-footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .home-service-tabs {
+      display: none;
+      grid-template-columns: repeat(5, minmax(152px, 1fr));
+      overflow-x: auto;
+      padding: 0.2rem 0 0.6rem;
+      scroll-snap-type: x mandatory;
+    }
+    .home-service-tabs button {
+      min-height: 70px;
+      scroll-snap-align: start;
+    }
+    .home-service-details ul {
+      grid-template-columns: 1fr;
+    }
+    .home-service-photo {
+      min-height: 260px;
+    }
+    .home-final-actions {
+      justify-items: stretch;
+      width: 100%;
+    }
+    .home-final-actions > .booking-button {
+      min-width: 0;
+    }
+    .about-gallery .slider-frames {
+      height: 330px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reviews-grid,
+    .review-card,
+    .home-service-tabs button {
+      transition: none;
+    }
+  }
+}

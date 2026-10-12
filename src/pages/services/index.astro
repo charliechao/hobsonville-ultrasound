@@ -4,6 +4,7 @@ import PageIntro from '../../components/PageIntro.astro';
 import Photo from '../../components/Photo.astro';
 import Callout from '../../components/Callout.astro';
 import Typewriter from '../../components/Typewriter.astro';
+import Icon from '../../components/Icon.astro';
 import { categories, services, serviceUrl } from '../../data/services';
 import { images } from '../../data/images';
 ---
@@ -60,9 +61,10 @@ import { images } from '../../data/images';
               >
                 <div>
                   <h3>{s.name}</h3>
+                  {s.timing && <p class="scan-timing">{s.timing}</p>}
                   <p>Preparation, pricing and appointments</p>
                 </div>
-                <span aria-hidden="true">↗</span>
+                <Icon name="arrow" size={24} />
               </a>
             ))}
         </div>

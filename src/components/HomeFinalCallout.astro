@@ -1,0 +1,29 @@
+---
+import BookingButton from './BookingButton.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<section class="home-final-callout section" aria-labelledby="home-final-title">
+  <div class="container home-final-inner">
+    <div>
+      <p class="section-label">Your next step</p>
+      <h2 id="home-final-title">Ready to book your ultrasound?</h2>
+      <p>
+        Choose the examination on your referral. Our reception team can help if
+        you are unsure.
+      </p>
+    </div>
+    <div class="home-final-actions">
+      <BookingButton />
+      <div>
+        <a href={site.tel} data-event="phone_click">
+          <Icon name="phone" size={19} /> Call {site.phone}
+        </a>
+        <a href="/contact/">
+          <Icon name="mail" size={19} /> Contact us
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

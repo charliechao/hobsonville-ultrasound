@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Callout from '../../components/Callout.astro';
+import MonthlyHighlights from '../../components/MonthlyHighlights.astro';
+import Icon from '../../components/Icon.astro';
+import {
+  highlightsFor,
+  monthLabel,
+  publishedMonthlyEntries,
+} from '../../data/monthly';
+
+export async function getStaticPaths() {
+  const entries = await publishedMonthlyEntries();
+  return entries.map((entry) => ({
+    params: { month: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'monthly'> };
+const month = monthLabel(entry.id);
+---
+
+<Layout
+  title={`${month} | This Month at Hobsonville Ultrasound`}
+  description={`The ${month} clinic update, ultrasound fact and practical scan guidance from Hobsonville Ultrasound.`}
+>
+  <section class="blog-issue-hero" aria-labelledby="blog-issue-title">
+    <div class="container">
+      <Breadcrumbs
+        items={[{ label: 'Blog', href: '/blog/' }, { label: month }]}
+      />
+      <p class="section-label">This Month at Hobsonville Ultrasound</p>
+      <h1 id="blog-issue-title">{month}</h1>
+      <p class="lead">A little something useful from our clinic this month.</p>
+    </div>
+  </section>
+  <section class="section blog-issue" aria-label={`${month} updates`}>
+    <div class="container">
+      <MonthlyHighlights highlights={highlightsFor(entry)} detailed />
+      <a class="text-link blog-back-link" href="/blog/">
+        <Icon name="arrow" size={20} /> All monthly updates
+      </a>
+    </div>
+  </section>
+  <Callout />
+</Layout>

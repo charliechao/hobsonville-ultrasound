@@ -1,5 +1,9 @@
+import unavailableSlugs from './unavailable-services.json';
+
+export const nonEligibleMaternityPrice = 300;
+
 export type Prep =
-  'abdomen' | 'pelvis' | 'combined' | 'dating' | 'none' | 'msk';
+  'abdomen' | 'pelvis' | 'combined' | 'dating' | 'confirm' | 'none' | 'msk';
 export const preparation: Record<Prep, string[]> = {
   abdomen: [
     'Do not eat or drink for 6 hours before the appointment, except plain water.',
@@ -21,19 +25,22 @@ export const preparation: Record<Prep, string[]> = {
     'If your bladder is not full 10 minutes before the scan, drink more water. If uncomfortably full, you may release a small amount.',
     'Follow any individual instructions given with your appointment.',
   ],
+  confirm: [
+    'Follow the preparation instructions sent with your appointment. If you have not received them, check with reception whether a full bladder is needed.',
+  ],
   none: [
     'No special preparation is listed for this examination. Follow any individual instructions given with your appointment.',
   ],
   msk: [
     'No special preparation is required. Wear clothing that allows easy access to the area being examined.',
-    'For a shoulder scan, a loose top or singlet is helpful. For a knee scan, wear shorts or loose trousers.',
+    'For a shoulder scan, please wear a singlet, camisole, or loose-fitting top that allows easy access to the shoulder and upper arm.',
   ],
 };
 
 const scanBasics =
   'Warm gel is applied to your skin and the sonographer moves a small handheld probe over the area. Ultrasound uses sound waves, not radiation.';
 const duration =
-  'Most examinations take around 30 minutes, although times vary with the type of examination.';
+  'Most examinations take approximately 20–30 minutes, although times vary with the type of examination.';
 
 export const categories = [
   {
@@ -79,14 +86,14 @@ export const categories = [
     intro:
       'Ultrasound examinations for joints, muscles, tendons and soft tissues.',
     detail:
-      'We accept referrals for a range of musculoskeletal examinations. Contact us about your referral and any ACC patient contribution.',
+      'We accept referrals for a range of musculoskeletal examinations. There is currently no patient charge for examinations with an ACC referral.',
     expect: [
       scanBasics,
       'Because ultrasound shows tendons and muscles as they move, you may be asked to move the joint or point to where it is sore.',
       duration,
     ],
     referral:
-      'A referral is required. We accept musculoskeletal referrals from GPs, specialists, sport and exercise physicians, physiotherapists, chiropractors, osteopaths, podiatrists and nurse practitioners. If your injury is covered by ACC, please include your claim number. A patient contribution may apply.',
+      'A referral is required. We accept musculoskeletal referrals from GPs, specialists, sport and exercise physicians, physiotherapists, chiropractors, osteopaths, podiatrists and nurse practitioners. If your injury is covered by ACC, please include your claim number. There is currently no patient charge for examinations with an ACC referral.',
   },
   {
     slug: 'small-parts',
@@ -136,6 +143,7 @@ export interface Service {
   booking?: string;
   enquire?: boolean;
   pregnancyEligible?: boolean;
+  timing?: string;
   nonDiagnostic?: boolean;
   urgentNote?: string;
 }
@@ -168,7 +176,7 @@ const mskRegions = {
   ],
 } as const;
 
-export const services: Service[] = [
+export const allServices: Service[] = [
   {
     slug: 'dating',
     category: 'pregnancy',
@@ -186,23 +194,25 @@ export const services: Service[] = [
     prep: 'dating',
     booking: '1st-trimester-dating-ultrasound',
     pregnancyEligible: true,
+    timing: 'First trimester',
   },
   {
     slug: 'nuchal-translucency',
     category: 'pregnancy',
     name: 'Nuchal translucency (NT)',
     description:
-      'A pregnancy examination arranged through your midwife or referring clinician. Please check the appropriate appointment timing with your referrer.',
+      'A first-trimester screening examination, usually performed between 12 and 13 weeks. Check the right timing with your referrer.',
     assesses:
       'The NT scan measures the fluid at the back of your baby’s neck and checks early development. Combined with a blood test, it forms part of first-trimester screening.',
     reasons: [
-      'First-trimester screening, usually between 11 and 14 weeks',
+      'First-trimester screening, usually between 12 and 13 weeks',
       'Confirming dates and the number of babies',
     ],
     price: 90,
-    prep: 'none',
+    prep: 'confirm',
     booking: 'nuchal-translucency-ultrasound',
     pregnancyEligible: true,
+    timing: 'First trimester · 12–13 weeks',
   },
   {
     slug: 'anatomy',
@@ -235,6 +245,7 @@ export const services: Service[] = [
     prep: 'none',
     booking: '3rd-trimester-growth-ultrasound',
     pregnancyEligible: true,
+    timing: 'Third trimester · 28–40 weeks',
   },
   {
     slug: 'wellbeing',
@@ -523,6 +534,11 @@ export const services: Service[] = [
     prep: 'none',
   },
 ];
+// Keep direct URLs for unavailable scans, but never promote them in directories.
+export const services = allServices.filter(
+  (service) => !unavailableSlugs.includes(service.slug),
+);
+
 export const serviceUrl = (service: Service) =>
   `/services/${service.category}/${service.slug}/`;
 export const bookingUrl = (service: Service) =>

@@ -162,7 +162,7 @@ No browser/visual review or production deployment was performed for the initial 
 - Browser review at 1440px: the hero crossfaded from image 1 to image 2 after 5.2 seconds. The carousel moved exactly one 432px card step after 5.8 seconds; at rest, three complete cards appeared within its 1280px stage. Hover held its position for 5.7 seconds and movement resumed after the pointer left.
 - At 768px, the stage held two 344px cards in 704px; at 390px and 320px, one card fitted the stage. No page-level horizontal overflow was observed at 1440px, 768px, 390px or 320px. Desktop and narrow-mobile screenshots were reviewed.
 - With reduced motion, the hero stayed on its first image and all five original service cards rendered in a grid without clones. A JavaScript-disabled 390px browser likewise showed the static hero and five-card grid with no horizontal page overflow. Browser console reported no errors during the initial desktop check.
-- The phrase “Over Decades of sonography experience” includes the user's requested wording but remains a factual sign-off item before publication, since the confirmed profile copy says more than 12 years.
+- The hero experience wording was later corrected to the client-agreed “Over a decade of sonography experience”; see the follow-up below.
 
 ### Full-background hero correction, 19 October 2026
 
@@ -191,3 +191,10 @@ No browser/visual review or production deployment was performed for the initial 
 - The old examination-room image is no longer referenced by the Astro source. The user-supplied `exam-machine.png` renders in the About gallery, Insights hero and shared social preview; the captions and alternative text do not call it the clinic's actual room or equipment. The genuine reception image remains.
 - The Our Team section has zero images and no portrait placeholder or request for a future face photograph. The machine image was visually reviewed in the About gallery at 1440px and 390px and in the Insights introduction at 1440px. The gallery's desktop crop was adjusted to keep the screen and controls in view. The text-only team section was visually reviewed at both widths, with no page-level horizontal overflow.
 - `npm run check`: 51 files, 0 errors, warnings or hints. `npm run build`: 48 static pages. `npm run audit`: 48 pages, 2,601 local references and 94 image elements passed. These edits remain local; no commit, push or deployment.
+
+## Meeting follow-up fixes, 19 October 2026
+
+- Hero trust card reads “Highly trusted by locals” and “Over a decade of sonography experience” in the built homepage at 1366px and 375px.
+- Header logo `srcset` lists 1x, 2x and 3x WebP candidates; displayed width is about 230px, so 2x screens now receive the 640px file.
+- The hand-drawn service icons were replaced by Healthicons `pregnant-outline`, `liver-outline`, `joints-outline` and `varicose-vein-outline`, chosen by the user from a 72px/28px comparison. They were checked in the homepage carousel and on the Services and Booking category links at desktop and mobile widths.
+- `npm run check`: 51 files, 0 errors, warnings or hints. `npm run build`: 48 pages. `npm run audit`: 48 pages, 2,601 local references and 94 image elements passed. No commit, push or deployment.

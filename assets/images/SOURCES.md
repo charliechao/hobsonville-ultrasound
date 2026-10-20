@@ -52,3 +52,7 @@ The user authorised use of these files from `client/` for the current local draf
 | `client/hero_section (3).png` | Illustrative equipment slide. |
 | `client/ACC.jpg` | Supplied ACC badge beside the existing ACC referral charge statement. Kept close to native display size. |
 | `client/Southern Cross.jpg` | Supplied Southern Cross Health Insurance affiliated-provider badge. |
+
+## Service category icons
+
+The Pregnancy, General, Musculoskeletal and Vascular icons are `pregnant-outline`, `liver-outline`, `joints-outline` and `varicose-vein-outline` from [Healthicons](https://github.com/resolvetosavelives/healthicons) (MIT License, Copyright (c) 2021 Resolve to Save Lives), taken from the Iconify mirror on 19 October 2026. The SVG markup is inlined in `src/components/Icon.astro`, with the licence notice kept in a source comment.

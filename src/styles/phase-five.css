@@ -58,6 +58,9 @@ body:has(#work-with-us:target) .about-jump-links a[href='#work-with-us'] {
 .about-gallery .slider-frames {
   height: min(56vw, 560px);
 }
+.about-gallery .slider-frame:first-child img {
+  object-position: center top;
+}
 .about-team-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
@@ -65,28 +68,7 @@ body:has(#work-with-us:target) .about-jump-links a[href='#work-with-us'] {
   align-items: start;
 }
 .about-profile {
-  display: grid;
-  grid-template-columns: minmax(0, 230px) minmax(0, 1fr);
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  align-items: start;
   max-width: 70ch;
-}
-.about-profile-portrait {
-  margin: 0;
-}
-.about-profile-portrait img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 68% center;
-  border-radius: 8px 8px 42px 8px;
-}
-.about-profile-portrait figcaption {
-  margin-top: 0.75rem;
-  color: var(--muted);
-  font-size: 0.875rem;
-  line-height: 1.4;
 }
 .about-profile-role {
   margin-bottom: 0.2rem;
@@ -240,12 +222,6 @@ body:has(#work-with-us:target) .about-jump-links a[href='#work-with-us'] {
   }
 }
 @media (max-width: 620px) {
-  .about-profile {
-    grid-template-columns: 1fr;
-  }
-  .about-profile-portrait {
-    width: min(100%, 340px);
-  }
   .about-career-roles,
   .referrer-service-links {
     grid-template-columns: 1fr;

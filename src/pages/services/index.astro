@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import Photo from '../../components/Photo.astro';
 import Callout from '../../components/Callout.astro';
-import Typewriter from '../../components/Typewriter.astro';
+import ServiceCategoryNav from '../../components/ServiceCategoryNav.astro';
 import Icon from '../../components/Icon.astro';
 import { categories, services, serviceUrl } from '../../data/services';
 import { images } from '../../data/images';
@@ -11,23 +11,13 @@ import { images } from '../../data/images';
 
 <Layout
   title="Our ultrasound services"
-  description="Explore pregnancy, general, musculoskeletal, small parts and vascular ultrasound at Hobsonville Ultrasound, including preparation and pricing."
+  description="Explore pregnancy, general, musculoskeletal and vascular ultrasound at Hobsonville Ultrasound, including preparation and pricing."
 >
   <PageIntro
     title="Our ultrasound services"
     eyebrow="Diagnostic care, close to home"
-    description="Find your examination, understand the preparation, and take the next step with confidence."
-  >
-    <Typewriter
-      prefix="Select your exam and book now:"
-      phrases={categories.map((c) => c.name)}
-    />
-    <div class="jump-links">
-      {categories.map((c) => (
-        <a href={`#${c.slug}`}>{c.short}</a>
-      ))}
-    </div>
-  </PageIntro>
+  />
+  <ServiceCategoryNav context="services" />
   {categories.map((category, i) => (
     <section id={category.slug} class={`section ${i % 2 ? 'white' : ''}`}>
       <div class="container">

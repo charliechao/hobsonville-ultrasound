@@ -30,7 +30,7 @@ const month = monthLabel(entry.id);
   <section class="blog-issue-hero" aria-labelledby="blog-issue-title">
     <div class="container">
       <Breadcrumbs
-        items={[{ label: 'Blog', href: '/blog/' }, { label: month }]}
+        items={[{ label: 'Insights', href: '/blog/' }, { label: month }]}
       />
       <p class="section-label">This Month at Hobsonville Ultrasound</p>
       <h1 id="blog-issue-title">{month}</h1>
@@ -41,7 +41,7 @@ const month = monthLabel(entry.id);
     <div class="container">
       <MonthlyHighlights highlights={highlightsFor(entry)} detailed />
       <a class="text-link blog-back-link" href="/blog/">
-        <Icon name="arrow" size={20} /> All monthly updates
+        <Icon name="arrow" size={20} /> Back to Insights
       </a>
     </div>
   </section>

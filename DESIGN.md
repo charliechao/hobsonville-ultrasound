@@ -95,3 +95,30 @@ The client requested a monthly "This Month at Hobsonville Ultrasound" format wit
 Each edition is a dated `YYYY-MM.yml` file in Astro's build-time `monthly` content collection. The newest published edition appears on the Blog page, earlier editions form an archive, and each month gets a static page. Draft editions are excluded. No CMS, live feed or patient submission is involved. The local preview page is not indexed until the first edition is published. See `docs/monthly-blog.md` for the monthly editing steps.
 
 The About page now pairs Darshana's confirmed profile copy with a portrait-format crop of the same stock photograph used in the homepage hero. A visible caption identifies it as illustrative and says Darshana's own portrait will follow; the image does not identify the pictured person as a team member. The existing responsive image pipeline generates the portrait crop without a duplicate source asset.
+
+## Client meeting revision: homepage visual flow, 19 October 2026
+
+This local revision follows the two-part client website review. It supersedes the October 12 homepage hero, service selector and reviews placement described above. The remaining pages and later meeting phases are unchanged.
+
+- Following the user's review, the three client-supplied images fill the hero background behind a dark teal readability gradient, as in the earlier full-width design. They crossfade every 4.8 seconds with no visible controls; reduced-motion and no-JavaScript visitors see the first image. The duplicate hero logo and the visible image-origin caption are removed; the original supplied logo remains intact in the header. The background images are decorative and do not carry a claim about the clinic, its equipment or patients.
+- The hero gives concise service and care wording, former-name continuity, booking and service actions, and explicit Woolworths/Unichem wayfinding. A supporting row uses the supplied ACC and Southern Cross marks. The requested phrase “Over Decades” is a **local draft claim pending client factual sign-off**, because older confirmed copy says more than 12 years of experience.
+- The homepage again uses a multi-card service rail. Three complete cards rest in view on desktop, two on tablet and one on mobile. A 1.4-second glide advances one card, then rests for 3.6 seconds; hovering or focusing a card pauses future advances. Original category anchors remain ordinary crawlable links, while visual clones are removed from keyboard and assistive-technology navigation. Reduced-motion and no-JavaScript modes show a static grid.
+- The direct booking step is removed. Google reviews move below the location section, retaining “Kind words from our patients.” Pricing and Scan preparation use the shorter requested headings. Cream, white and pale teal surfaces alternate, and shared gold booking buttons gain a subtle gradient within the supplied brand palette.
+
+## Client meeting revision: Services and Booking, 19 October 2026
+
+Small Parts is no longer a separate patient-facing category. Thyroid, breast, scrotal and soft tissue scans sit under General in the home carousel, directories, booking list, prices, related links and service detail routes. The combined abdomen-and-inguinal listing is removed, while the separate abdominal and inguinal/groin scans remain. Old Small Parts URLs lead to the matching General pages; the former combined route explains the two individual choices. These legacy pages are excluded from the sitemap and marked noindex.
+
+Services and Booking now share four large category links with scan examples and counts. The links are ordinary anchors so they work without JavaScript and let visitors reach Musculoskeletal directly. The Services page omits the client-specified introductory sentence and the misleading booking typewriter. Booking describes the two available next steps, retains a single action per scan, and names reception explicitly when online booking is unavailable. The broader Services/Booking page architecture remains open for client review; no search function is added.
+
+## Client meeting revision: navigation and supporting pages, 19 October 2026
+
+Phase 3 presents the main navigation in the client's requested order: Home, Services, Pricing, Patient Information, Referrers, Insights, Contact and About Us. “Insights” is the public label for the existing static monthly `/blog/` route, which keeps the three-part “This Month at Hobsonville Ultrasound” template. A small homepage strip links to it without displaying placeholder articles as published posts.
+
+The musculoskeletal price table now contains its ACC no-patient-charge note immediately after the relevant rows. Contact leads its directions with the Woolworths Shopping Centre landmark, followed by the Hobson Centre level and street address. About places the four existing accreditation names beside Darshana's confirmed profile text and removes the separate practice-wide logo band. A client-supplied examination-room photograph replaces the illustrative stock portrait until the clinic provides a genuine team portrait and revised wording. The careers section continues to avoid advertising unconfirmed vacancies.
+
+These are local draft changes for Phase 3 review. The existing `/blog/` URLs remain stable, and no client-supplied logo or source asset has been altered.
+
+### Client image correction, 19 October 2026
+
+The client does not want its actual examination room or machine shown. The user-supplied `exam-machine.png` replaces the earlier room photograph in the About gallery, Insights introduction and shared social preview. The About gallery still shows the genuine reception image, but its wording distinguishes that reception from the equipment image. The team section is text-only: Darshana's portrait placeholder and the promise of a later portrait are removed. The source room file remains in the asset inventory and is not imported into the site.

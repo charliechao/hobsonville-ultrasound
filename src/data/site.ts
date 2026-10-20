@@ -49,7 +49,7 @@ export const faqs: Faq[] = [
   {
     question: 'What ultrasound examinations do you offer?',
     answer:
-      'We provide pregnancy, general (abdominal, pelvic and renal), musculoskeletal, small parts (thyroid, breast, scrotal and soft tissue) and vascular (DVT and carotid) ultrasound.',
+      'We provide pregnancy, general (abdominal, pelvic, renal, thyroid, breast, scrotal and soft tissue), musculoskeletal and vascular (DVT and carotid) ultrasound.',
     links: [{ label: 'View our services', href: '/services/' }],
     home: true,
   },

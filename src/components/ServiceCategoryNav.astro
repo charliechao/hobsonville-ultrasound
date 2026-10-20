@@ -1,0 +1,60 @@
+---
+import { categories, services } from '../data/services';
+import Icon, { type IconName } from './Icon.astro';
+
+interface Props {
+  context: 'services' | 'booking';
+}
+
+const { context } = Astro.props;
+const icons: Record<(typeof categories)[number]['slug'], IconName> = {
+  pregnancy: 'pregnancy',
+  general: 'general',
+  musculoskeletal: 'muscle',
+  vascular: 'pulse',
+};
+const descriptions: Record<(typeof categories)[number]['slug'], string> = {
+  pregnancy: 'Dating, NT and growth',
+  general: 'Abdomen, thyroid, breast and more',
+  musculoskeletal: 'Shoulder, knee and other joints',
+  vascular: 'DVT and carotid',
+};
+---
+
+<nav
+  class="service-category-nav"
+  aria-label={
+    context === 'booking'
+      ? 'Jump to a booking category'
+      : 'Jump to a service category'
+  }
+>
+  <div class="container">
+    <p class="service-category-nav-title">
+      {context === 'booking'
+        ? 'Choose your scan category'
+        : 'Find your scan category'}
+    </p>
+    <div class="service-category-nav-grid">
+      {categories.map((category) => (
+        <a href={`#${category.slug}`}>
+          <span class="service-category-nav-icon">
+            <Icon name={icons[category.slug]} size={27} />
+          </span>
+          <span class="service-category-nav-copy">
+            <strong>{category.short}</strong>
+            <span>{descriptions[category.slug]}</span>
+            <small>
+              {
+                services.filter((service) => service.category === category.slug)
+                  .length
+              }{' '}
+              scans
+            </small>
+          </span>
+          <Icon name="arrow" size={20} class="service-category-nav-arrow" />
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>

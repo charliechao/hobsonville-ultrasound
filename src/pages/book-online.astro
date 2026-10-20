@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Callout from '../components/Callout.astro';
 import Icon from '../components/Icon.astro';
+import ServiceCategoryNav from '../components/ServiceCategoryNav.astro';
 import { categories, services, bookingUrl, serviceUrl } from '../data/services';
 ---
 
@@ -13,15 +14,10 @@ import { categories, services, bookingUrl, serviceUrl } from '../data/services';
   <PageIntro
     title="Let’s find your appointment."
     eyebrow="Book an ultrasound"
-    description="Choose the examination on your referral. Online booking opens our TidyCal appointment system in a new tab."
+    description="Choose the examination on your referral. Book online where available, or contact reception to arrange your scan."
     compact
-  >
-    <div class="jump-links">
-      {categories.map((c) => (
-        <a href={`#${c.slug}`}>{c.short}</a>
-      ))}
-    </div>
-  </PageIntro>
+  />
+  <ServiceCategoryNav context="booking" />
   <section class="section booking-page">
     <div class="container two-column">
       <div>
@@ -37,7 +33,7 @@ import { categories, services, bookingUrl, serviceUrl } from '../data/services';
                     {s.timing && <p class="scan-timing">{s.timing}</p>}
                     <p>
                       <a href={serviceUrl(s)}>
-                        Scan information and preparation
+                        View scan details and preparation
                       </a>
                     </p>
                   </div>
@@ -53,7 +49,7 @@ import { categories, services, bookingUrl, serviceUrl } from '../data/services';
                     data-event={s.booking ? 'book_online_click' : undefined}
                   >
                     <Icon name={s.booking ? 'calendar' : 'mail'} size={20} />
-                    {s.booking ? 'Book online' : 'Ask reception'}
+                    {s.booking ? 'Book online' : 'Contact reception'}
                   </a>
                 </div>
               ))}

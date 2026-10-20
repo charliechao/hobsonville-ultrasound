@@ -9,7 +9,7 @@ import { site } from '../data/site';
 
 <Layout
   title="Ultrasound pricing"
-  description="View Hobsonville Ultrasound prices for pregnancy, general, small parts, musculoskeletal and vascular examinations, plus payment and eligibility information."
+  description="View Hobsonville Ultrasound prices for pregnancy, general, musculoskeletal and vascular examinations, plus payment and eligibility information."
 >
   <PageIntro
     title="Clear pricing. Fewer surprises."
@@ -37,6 +37,17 @@ import { site } from '../data/site';
                 </tr>
               ))}
             </tbody>
+            {group.slug === 'musculoskeletal' && (
+              <tfoot>
+                <tr>
+                  <td colspan="2" class="pricing-acc-note">
+                    <strong>ACC referrals:</strong> There is currently no
+                    patient charge for musculoskeletal examinations with an ACC
+                    referral. Please provide your ACC claim number when booking.
+                  </td>
+                </tr>
+              </tfoot>
+            )}
           </table>
         ))}
       </div>
@@ -62,11 +73,6 @@ import { site } from '../data/site';
             <strong>${nonEligibleMaternityPrice}</strong> if you are not
             eligible for NZ maternity funding. Ask reception if you are unsure
             which rate applies.
-          </p>
-          <h3>ACC</h3>
-          <p>
-            There is currently no patient charge for examinations with an ACC
-            referral.
           </p>
           <h3>Digital images</h3>
           <p>

@@ -1,4 +1,4 @@
-import room from '../../assets/images/client/exam-room.jpg';
+import machine from '../../assets/images/client/exam-machine.png';
 import reception from '../../assets/images/current-site/images/team/about-home.jpg';
 import logo from '../../assets/images/current-site/images/logos/logo.jpg';
 import pregnancy from '../../assets/images/stock/pregnancy-ultrasound.jpg';
@@ -9,7 +9,7 @@ import msk from '../../assets/images/current-site/images/content/musculoskeletal
 import vascular from '../../assets/images/current-site/images/content/vascular.jpg';
 
 export const images = {
-  room,
+  machine,
   reception,
   logo,
   pregnancy,

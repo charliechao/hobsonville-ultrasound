@@ -1,0 +1,105 @@
+.pricing-page .price-table .pricing-acc-note {
+  padding: 1.2rem 1.35rem;
+  background: var(--tint);
+  border-bottom: 0;
+  border-left: 4px solid var(--accent);
+  color: var(--brand);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  text-align: left;
+  white-space: normal;
+}
+
+.contact-location-title {
+  max-width: 16ch;
+  margin-bottom: 0.8rem;
+  font-size: clamp(2.15rem, 4.2vw, 3.5rem);
+  line-height: 1.13;
+}
+
+.contact-location-building {
+  margin-bottom: 0.6rem;
+  color: var(--brand);
+  font: 700 1.2rem / 1.4 var(--heading);
+}
+
+.about-profile-recognition {
+  margin-top: 1.5rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--line);
+}
+
+.about-profile-recognition h4 {
+  margin: 0 0 0.9rem;
+  color: var(--brand);
+  font: 700 1.15rem / 1.35 var(--heading);
+}
+
+.about-profile-recognition ul {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about-profile-recognition li {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.about-profile-recognition strong {
+  color: var(--brand);
+}
+
+.home-insights-strip {
+  padding-block: 1.35rem;
+  border-block: 1px solid var(--line);
+  background: #fbf6ec;
+}
+
+.home-insights-inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.home-insights-inner > .icon {
+  color: var(--icon);
+}
+
+.home-insights-inner > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  align-items: baseline;
+}
+
+.home-insights-inner strong {
+  color: var(--brand);
+  font: 700 1.1rem / 1.4 var(--heading);
+}
+
+.home-insights-inner span {
+  color: var(--muted);
+}
+
+.home-insights-inner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .home-insights-inner {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.5rem 0.9rem;
+  }
+
+  .home-insights-inner a {
+    grid-column: 2;
+    margin-top: 0.3rem;
+  }
+}

@@ -1,0 +1,37 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PageIntro from '../../../components/PageIntro.astro';
+
+export function getStaticPaths() {
+  const movedScans = [
+    { slug: 'thyroid', name: 'Thyroid ultrasound' },
+    { slug: 'soft-tissue', name: 'Soft tissue / lump ultrasound' },
+    { slug: 'scrotal', name: 'Scrotal ultrasound' },
+    { slug: 'breast', name: 'Breast ultrasound' },
+  ];
+  return movedScans.map((scan) => ({
+    params: { slug: scan.slug },
+    props: { scan },
+  }));
+}
+
+const { scan } = Astro.props;
+const destination = `/services/general/${scan.slug}/`;
+---
+
+<Layout
+  title={`${scan.name} has moved`}
+  description={`${scan.name} is now listed under General ultrasound at Hobsonville Ultrasound.`}
+  noindex
+  redirectTo={destination}
+>
+  <PageIntro
+    title={`${scan.name} is now under General`}
+    description="You can still find the same scan information and booking details at its new address."
+    compact
+  >
+    <a class="button" href={destination}>
+      View {scan.name}
+    </a>
+  </PageIntro>
+</Layout>

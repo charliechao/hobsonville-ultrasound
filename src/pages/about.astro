@@ -3,10 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Callout from '../components/Callout.astro';
 import ImageSlider from '../components/ImageSlider.astro';
-import Accreditations from '../components/Accreditations.astro';
-import Photo from '../components/Photo.astro';
 import { images } from '../data/images';
-import sonographer from '../../assets/images/stock/sonographer-examination.jpg';
 ---
 
 <Layout
@@ -38,10 +35,10 @@ import sonographer from '../../assets/images/stock/sonographer-examination.jpg';
             An independent diagnostic ultrasound practice, close to home.
           </p>
           <p>
-            We provide pregnancy, general, musculoskeletal, small parts and
-            vascular ultrasound for Hobsonville and the wider West Auckland
-            community. Our team combines detailed imaging with clear
-            explanations and a personal approach to each visit.
+            We provide pregnancy, general, musculoskeletal and vascular
+            ultrasound for Hobsonville and the wider West Auckland community.
+            Our team combines detailed imaging with clear explanations and a
+            personal approach to each visit.
           </p>
           <p>
             We changed our name from Body 2 Baby Ultrasound to better reflect
@@ -63,17 +60,17 @@ import sonographer from '../../assets/images/stock/sonographer-examination.jpg';
         </div>
       </div>
       <div class="about-gallery" aria-labelledby="about-gallery-title">
-        <p class="section-label">Inside the practice</p>
-        <h3 id="about-gallery-title">See where you’ll be welcomed.</h3>
-        <p>Genuine views of our reception and examination room.</p>
+        <p class="section-label">Our practice</p>
+        <h3 id="about-gallery-title">A glimpse of your visit.</h3>
+        <p>See our reception and an ultrasound equipment image.</p>
         <ImageSlider
           id="clinic-gallery"
-          label="Take a look inside our clinic"
+          label="Browse reception and ultrasound equipment images"
           slides={[
             {
-              image: images.room,
-              alt: 'The examination room at Hobsonville Ultrasound',
-              caption: 'Our examination room',
+              image: images.machine,
+              alt: 'Ultrasound machine in a softly lit room',
+              caption: 'Ultrasound equipment',
             },
             {
               image: images.reception,
@@ -95,16 +92,6 @@ import sonographer from '../../assets/images/stock/sonographer-examination.jpg';
       <h2 id="about-team-title">Our team</h2>
       <div class="about-team-grid">
         <div class="about-profile">
-          <figure class="about-profile-portrait">
-            <Photo
-              src={sonographer}
-              alt="Illustrative stock photograph of a sonographer performing an ultrasound; the person pictured is not Darshana"
-              sizes="(max-width: 620px) 100vw, 230px"
-            />
-            <figcaption>
-              Illustrative image · Darshana’s portrait to follow
-            </figcaption>
-          </figure>
           <div class="about-profile-copy">
             <p class="about-profile-role">Sonographer</p>
             <h3>Darshana</h3>
@@ -118,6 +105,26 @@ import sonographer from '../../assets/images/stock/sonographer-examination.jpg';
               and helping patients feel informed and comfortable through their
               visit.
             </p>
+            <div class="about-profile-recognition">
+              <h4>Professional accreditations</h4>
+              <ul>
+                <li>
+                  <strong>MRTB</strong> · Medical Radiation Technologist Board
+                </li>
+                <li>
+                  <strong>ASMIRT</strong> · Australian Society of Medical
+                  Imaging and Radiation Therapy
+                </li>
+                <li>
+                  <strong>ASAR</strong> · Australian Sonographer Accreditation
+                  Registry
+                </li>
+                <li>
+                  <strong>HPCSA</strong> · Health Professions Council of South
+                  Africa
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="about-team-support">
@@ -131,7 +138,6 @@ import sonographer from '../../assets/images/stock/sonographer-examination.jpg';
       </div>
     </div>
   </section>
-  <Accreditations />
   <section
     id="work-with-us"
     class="section about-careers"

@@ -154,3 +154,40 @@ No browser/visual review or production deployment was performed for the initial 
 - Added the homepage hero photograph to Darshana's profile in a portrait-format crop. The image alt text and visible caption explicitly identify it as illustrative, pending a genuine portrait.
 - `npm run check`: 47 files, 0 errors or warnings. `npm run build`: 44 static pages. `npm run audit`: 44 pages, 2,352 local references and 95 image elements passed.
 - Visually reviewed the team section at desktop and 390px mobile width. The portrait loaded, the caption remained visible, and no page-level horizontal overflow appeared at 390px or 320px. No commit, push or deployment.
+
+## Client meeting revision: homepage visual flow, 19 October 2026
+
+- Implemented locally for the first meeting-feedback phase. No commit, push or deployment. Later services, booking and About changes await the user's review of this phase.
+- Final local checks: `npm run check` found 0 errors, warnings or hints across 47 files; `npm run build` produced 44 static pages; `npm run audit` passed 2,380 local references and 100 image elements. Prettier and `git diff --check` also passed.
+- Browser review at 1440px: the hero crossfaded from image 1 to image 2 after 5.2 seconds. The carousel moved exactly one 432px card step after 5.8 seconds; at rest, three complete cards appeared within its 1280px stage. Hover held its position for 5.7 seconds and movement resumed after the pointer left.
+- At 768px, the stage held two 344px cards in 704px; at 390px and 320px, one card fitted the stage. No page-level horizontal overflow was observed at 1440px, 768px, 390px or 320px. Desktop and narrow-mobile screenshots were reviewed.
+- With reduced motion, the hero stayed on its first image and all five original service cards rendered in a grid without clones. A JavaScript-disabled 390px browser likewise showed the static hero and five-card grid with no horizontal page overflow. Browser console reported no errors during the initial desktop check.
+- The phrase “Over Decades of sonography experience” includes the user's requested wording but remains a factual sign-off item before publication, since the confirmed profile copy says more than 12 years.
+
+### Full-background hero correction, 19 October 2026
+
+- The three client-supplied images now cover the entire hero behind the text, with the earlier full-width composition restored. The duplicate hero logo and visible image-origin caption were removed at the user's request; the original logo remains in the shared header.
+- Desktop 1440px and mobile 390px screenshots were reviewed for image crop and text contrast. The background image group is hidden from assistive technology, while the audit-required descriptive image alternatives remain in source. All hero text and actions remain accessible HTML. No publication was requested.
+- After this correction, `npm run check` found 0 errors, warnings or hints across 47 files; `npm run build` produced 44 static pages; `npm run audit` passed 2,379 local references and 99 image elements. Prettier and `git diff --check` passed.
+
+## Client meeting revision: Services and Booking, 19 October 2026
+
+- Phase 2 remains local for user review. No commit, push or deployment. The deferred larger Services/Booking restructure and service search were not added.
+- The shared catalogue now has four patient-facing categories. General contains thyroid, breast, scrotal and soft tissue scans; the combined abdomen-and-inguinal listing is removed, while its two individual scans remain. Legacy Small Parts paths are noindex redirects to the matching General pages. The former combined URL is a noindex explanation with links to the two individual scans. Both types of legacy path are excluded from the sitemap.
+- Services and Booking use four prominent category links, and the Musculoskeletal link reached its section in a 390px browser on both pages. Browser checks also confirmed four scans moved into General, no combined scan in its directory, the old thyroid URL redirect, and the retired combined page's individual links. Desktop and mobile screenshots of both pages were reviewed; booking choices remain one direct action per scan.
+- `npm run check`: 51 files, 0 errors, warnings or hints. `npm run build`: 48 pages. `npm run audit`: 48 pages, 2,557 local references and 99 image elements. The GitHub Pages build and base-path audit also passed: 48 pages, 2,553 local references and 95 image elements. Its old thyroid redirect points to `/hobsonville-ultrasound/services/general/thyroid/`, and the sitemap includes the new General URL but excludes legacy paths.
+
+## Client meeting revision: navigation and supporting pages, 19 October 2026
+
+- Phase 3 is local for review. No commit, push or deployment.
+- The desktop and mobile menus render Home, Services, Pricing, Patient information, Referrers, Insights, Contact and About us in that order. The static monthly page remains at `/blog/`; its breadcrumb and active menu label show Insights.
+- The homepage has one small Insights link strip. The ACC no-patient-charge note appears once, directly beneath the musculoskeletal price rows. Contact gives the Woolworths Shopping Centre landmark prominence.
+- About displays four accreditation names within Darshana's profile and no standalone accreditation band. The initial Phase 3 draft used the client-supplied room photograph as a profile placeholder; this was superseded by the image correction below. Careers still shows no live vacancies.
+- `npm run check`: 51 files, 0 errors, warnings or hints. `npm run build`: 48 static pages. `npm run audit`: 48 pages, 2,602 local references and 95 image elements passed.
+- Local browser checks of Home, About, Contact, Pricing and Insights at 320px, 390px, 768px, 1280px and 1440px found no page-level horizontal overflow. Desktop and mobile screenshots of the About profile, Contact directions and Pricing note were reviewed after lazy images loaded. These targeted checks do not replace the final accessibility or clinical-copy review.
+
+### Client image correction, 19 October 2026
+
+- The old examination-room image is no longer referenced by the Astro source. The user-supplied `exam-machine.png` renders in the About gallery, Insights hero and shared social preview; the captions and alternative text do not call it the clinic's actual room or equipment. The genuine reception image remains.
+- The Our Team section has zero images and no portrait placeholder or request for a future face photograph. The machine image was visually reviewed in the About gallery at 1440px and 390px and in the Insights introduction at 1440px. The gallery's desktop crop was adjusted to keep the screen and controls in view. The text-only team section was visually reviewed at both widths, with no page-level horizontal overflow.
+- `npm run check`: 51 files, 0 errors, warnings or hints. `npm run build`: 48 static pages. `npm run audit`: 48 pages, 2,601 local references and 94 image elements passed. These edits remain local; no commit, push or deployment.

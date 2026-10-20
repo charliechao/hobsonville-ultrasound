@@ -1,44 +1,141 @@
 ---
+import { Image } from 'astro:assets';
 import Photo from './Photo.astro';
 import BookingButton from './BookingButton.astro';
 import Icon from './Icon.astro';
-import sonographer from '../../assets/images/stock/sonographer-examination.jpg';
+import heroExamination from '../../assets/images/client/hero_section (1).png';
+import heroWelcome from '../../assets/images/client/hero_section (2).png';
+import heroEquipment from '../../assets/images/client/hero_section (3).png';
+import southernCross from '../../assets/images/client/Southern Cross.jpg';
+import acc from '../../assets/images/client/ACC.jpg';
+
+const slides = [
+  { image: heroExamination, alt: 'Ultrasound examination' },
+  { image: heroEquipment, alt: 'Ultrasound equipment' },
+  { image: heroWelcome, alt: 'Healthcare reception setting' },
+];
 ---
 
-<section class="home-hero" aria-labelledby="home-title">
-  <div class="container home-hero-grid">
+<home-hero class="home-hero" aria-labelledby="home-title">
+  <div class="home-hero-media" aria-hidden="true">
+    {slides.map((slide, index) => (
+      <div
+        class="home-hero-slide"
+        data-active={index === 0 ? 'true' : undefined}
+      >
+        <Photo
+          src={slide.image}
+          alt={slide.alt}
+          sizes="100vw"
+          eager={index === 0}
+        />
+      </div>
+    ))}
+  </div>
+  <div class="container home-hero-content">
     <div class="home-hero-copy">
       <p class="home-hero-location">
-        <Icon name="pin" size={20} /> Your local diagnostic ultrasound practice
+        <Icon name="scan" size={20} /> Comprehensive ultrasound services in
+        Hobsonville
       </p>
       <h1 id="home-title">
-        Hobsonville <span>Ultrasound</span>
+        Premium care,
+        <span>close to home.</span>
       </h1>
       <p class="home-hero-former">Formerly Body 2 Baby Ultrasound</p>
-      <p class="home-hero-intro">Experienced care. Trusted by locals.</p>
-      <p class="home-hero-description">
-        Professional diagnostic ultrasound, with over 12 years of sonography
-        experience and a personal approach to your care. Here in Hobsonville,
-        close to home.
-      </p>
       <div class="actions">
         <BookingButton />
         <a class="button hero-services" href="/services/">
-          View Our Services <Icon name="arrow" size={21} />
+          Explore our services <Icon name="arrow" size={21} />
         </a>
       </div>
-      <p class="home-hero-address">
-        Hobson Centre, Level 1 · Free visitor parking
-      </p>
+      <a class="home-hero-address" href="/contact/">
+        <Icon name="pin" size={22} />
+        <span>
+          <strong>Find us above Unichem Pharmacy at Woolworths</strong>
+          <small>Hobson Centre, Level 1 · Free visitor parking</small>
+        </span>
+      </a>
     </div>
-    <figure class="home-hero-photo">
-      <Photo
-        src={sonographer}
-        alt="Illustrative stock photograph of a healthcare professional performing an ultrasound examination"
-        sizes="(max-width: 900px) 100vw, 48vw"
-        eager
-      />
-      <figcaption>Ultrasound care · Illustrative photograph</figcaption>
-    </figure>
   </div>
-</section>
+  <div
+    class="container home-hero-trust"
+    aria-label="Patient information and provider affiliations"
+  >
+    <p class="home-hero-experience">
+      <Icon name="care" size={28} />
+      <span>
+        <strong>Trusted by locals</strong>
+        <small>Over Decades of sonography experience</small>
+      </span>
+    </p>
+    <div class="home-hero-provider">
+      <Image src={acc} alt="ACC" width={97} format="webp" loading="lazy" />
+      <span>
+        Currently no patient charge for examinations with an ACC referral.
+      </span>
+    </div>
+    <div class="home-hero-provider">
+      <Image
+        src={southernCross}
+        alt="Southern Cross Health Insurance affiliated provider"
+        width={170}
+        format="webp"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</home-hero>
+
+<script>
+  class HomeHero extends HTMLElement {
+    connectedCallback() {
+      if (this.dataset.ready) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+      if (reduced.matches) return;
+      const slides = [
+        ...this.querySelectorAll<HTMLElement>('.home-hero-slide'),
+      ];
+      if (slides.length < 2) return;
+      this.dataset.ready = 'true';
+      let active = 0;
+      let timer: number | undefined;
+      let visible = true;
+      const stop = () => {
+        if (timer) window.clearInterval(timer);
+        timer = undefined;
+      };
+      const start = () => {
+        stop();
+        if (!visible || document.hidden || reduced.matches) return;
+        timer = window.setInterval(() => {
+          slides[active].removeAttribute('data-active');
+          active = (active + 1) % slides.length;
+          slides[active].dataset.active = 'true';
+        }, 4800);
+      };
+      const observer = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        start();
+      });
+      observer.observe(this);
+      const controller = new AbortController();
+      document.addEventListener('visibilitychange', start, {
+        signal: controller.signal,
+      });
+      reduced.addEventListener('change', start, { signal: controller.signal });
+      this.cleanup = () => {
+        stop();
+        observer.disconnect();
+        controller.abort();
+      };
+    }
+    cleanup?: () => void;
+    disconnectedCallback() {
+      this.cleanup?.();
+      delete this.dataset.ready;
+    }
+  }
+  if (!customElements.get('home-hero'))
+    customElements.define('home-hero', HomeHero);
+</script>

@@ -17,12 +17,16 @@ import phaseThreeStyles from '../styles/phase-three.css?url';
 import phaseFourStyles from '../styles/phase-four.css?url';
 import phaseFiveStyles from '../styles/phase-five.css?url';
 import blogStyles from '../styles/blog.css?url';
+import meetingPhaseOneStyles from '../styles/meeting-phase-one.css?url';
+import meetingPhaseTwoStyles from '../styles/meeting-phase-two.css?url';
+import meetingPhaseThreeStyles from '../styles/meeting-phase-three.css?url';
 interface Props {
   title: string;
   description: string;
   schema?: Record<string, unknown>;
   noindex?: boolean;
   fullTitle?: boolean;
+  redirectTo?: string;
 }
 const {
   title,
@@ -30,6 +34,7 @@ const {
   schema,
   noindex = false,
   fullTitle = false,
+  redirectTo,
 } = Astro.props;
 const pageTitle = fullTitle ? title : `${title} | ${site.name}`;
 const indexable = import.meta.env.PUBLIC_SITE_INDEXABLE === 'true' && !noindex;
@@ -43,11 +48,12 @@ const pagePath =
     ? Astro.url.pathname.slice(basePath.length) || '/'
     : Astro.url.pathname;
 const canonical = new URL(
-  pagePath === '/404/' ? '/404.html' : pagePath,
+  redirectTo || (pagePath === '/404/' ? '/404.html' : pagePath),
   site.url,
 ).href;
+const redirectPath = redirectTo ? `${basePath}${redirectTo}` : null;
 const socialImage = await getImage({
-  src: images.room,
+  src: images.machine,
   width: 1200,
   format: 'webp',
 });
@@ -92,6 +98,9 @@ const clinic = {
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {redirectPath && (
+      <meta http-equiv="refresh" content={`0;url=${redirectPath}`} />
+    )}
     <link rel="stylesheet" href={globalStyles} />
     <link rel="stylesheet" href={premiumStyles} />
     <link rel="stylesheet" href={phaseTwoStyles} />
@@ -99,6 +108,9 @@ const clinic = {
     <link rel="stylesheet" href={phaseFourStyles} />
     <link rel="stylesheet" href={phaseFiveStyles} />
     <link rel="stylesheet" href={blogStyles} />
+    <link rel="stylesheet" href={meetingPhaseOneStyles} />
+    <link rel="stylesheet" href={meetingPhaseTwoStyles} />
+    <link rel="stylesheet" href={meetingPhaseThreeStyles} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="theme-color" content="#1A393C" />
     {!indexable && <meta name="robots" content="noindex, nofollow" />}
@@ -114,7 +126,7 @@ const clinic = {
     />
     <meta
       property="og:image:alt"
-      content="The examination room at Hobsonville Ultrasound"
+      content="Ultrasound machine in a softly lit room"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <script

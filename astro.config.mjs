@@ -14,6 +14,8 @@ export default defineConfig({
     sitemap({
       filter: (page) =>
         !page.endsWith('/404/') &&
+        !page.includes('/services/small-parts/') &&
+        !page.endsWith('/services/general/abdomen-and-inguinal/') &&
         !unavailableSlugs.some((slug) =>
           page.endsWith('/services/pregnancy/' + slug + '/'),
         ),

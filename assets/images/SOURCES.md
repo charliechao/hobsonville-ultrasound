@@ -6,7 +6,8 @@ Collected 24 September 2026, before starting the Astro build. These are source i
 
 | Local file | Source | Notes |
 | --- | --- | --- |
-| `client/exam-room.jpg` | [Client Drive file](https://drive.google.com/file/d/1qI7oUF-BhlWmjj76muXREBbyfS-cSK4B/view) | Genuine examination room. Suitable for an interior or service section. |
+| `client/exam-room.jpg` | [Client Drive file](https://drive.google.com/file/d/1qI7oUF-BhlWmjj76muXREBbyfS-cSK4B/view) | Genuine examination room. Retained as source material but excluded from the website at the client's request. |
+| `client/exam-machine.png` | User-supplied local asset | Ultrasound machine image used on About, Insights and social previews. It is not identified as the clinic's actual machine or room. |
 | `client/reception.jpg` | [Client Drive file](https://drive.google.com/file/d/1kv49hbYuwBumvc08C8XNIWki6edmTvsB/view) | Genuine current reception and branding. |
 
 ## Existing website
@@ -38,4 +39,16 @@ The favicon embeds the original `current-site/images/logos/logo.jpg` in an SVG s
 
 ## Still needed from the client (future pages)
 
-A genuine team or sonographer portrait and an entrance/wayfinding photo would materially improve the About and Contact pages. A wider, brighter clinic action photo would offer a stronger homepage hero than the current room photos. Use only after the client supplies and approves them, including any identifiable patient consent.
+An entrance/wayfinding photo could improve the Contact page if the client supplies and approves one. The client does not want an identifiable face in the About team section or the actual examination room and machine shown on the website. Do not add a team portrait or restore that room photograph without a new client instruction.
+
+## New client-supplied homepage assets, 19 October 2026
+
+The user authorised use of these files from `client/` for the current local draft. The three `hero_section` PNGs are composite-looking scenes; their origin as real clinic or equipment photography is unverified. They are decorative full-width hero backgrounds with no visible image-origin caption, as requested. The site does not name the pictured equipment model or claim that it depicts this clinic.
+
+| Local file | Use |
+| --- | --- |
+| `client/hero_section (1).png` | Illustrative examination slide. |
+| `client/hero_section (2).png` | Illustrative reception slide. |
+| `client/hero_section (3).png` | Illustrative equipment slide. |
+| `client/ACC.jpg` | Supplied ACC badge beside the existing ACC referral charge statement. Kept close to native display size. |
+| `client/Southern Cross.jpg` | Supplied Southern Cross Health Insurance affiliated-provider badge. |

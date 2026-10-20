@@ -66,7 +66,8 @@ export const categories = [
     name: 'General ultrasound',
     short: 'General',
     image: 'general',
-    intro: 'Abdominal, pelvic and renal examinations, close to home.',
+    intro:
+      'Abdominal, pelvic, renal and focused thyroid, breast, scrotal and soft tissue examinations, close to home.',
     detail:
       'Find information about your requested examination, the cost and how to prepare. Your referral helps us arrange the appropriate scan.',
     expect: [
@@ -94,23 +95,6 @@ export const categories = [
     ],
     referral:
       'A referral is required. We accept musculoskeletal referrals from GPs, specialists, sport and exercise physicians, physiotherapists, chiropractors, osteopaths, podiatrists and nurse practitioners. If your injury is covered by ACC, please include your claim number. There is currently no patient charge for examinations with an ACC referral.',
-  },
-  {
-    slug: 'small-parts',
-    name: 'Small parts ultrasound',
-    short: 'Small parts',
-    image: 'smallParts',
-    intro:
-      'Focused examinations of the thyroid, breast, scrotum and superficial soft tissues.',
-    detail:
-      'Personal, professional care for your requested examination. Our reception team can help you choose the appropriate appointment.',
-    expect: [
-      scanBasics,
-      'The examination is focused on the area described in your referral. Please let the sonographer know if anything is tender.',
-      duration,
-    ],
-    referral:
-      'A referral from your GP, specialist, nurse practitioner or another registered New Zealand health professional is required.',
   },
   {
     slug: 'vascular',
@@ -385,20 +369,6 @@ export const allServices: Service[] = [
     prep: 'none',
     booking: 'groin-hernia',
   },
-  {
-    slug: 'abdomen-and-inguinal',
-    category: 'general',
-    name: 'Abdomen & inguinal ultrasound',
-    description:
-      'A combined abdominal and groin examination requested by your clinician.',
-    assesses:
-      'A combined scan of the upper abdominal organs and the groin, including a check for hernia.',
-    reasons: [
-      'Abdominal symptoms together with a groin lump or suspected hernia',
-    ],
-    price: 450,
-    prep: 'abdomen',
-  },
   ...(Object.keys(mskRegions) as (keyof typeof mskRegions)[]).map((name) => ({
     slug: name.toLowerCase(),
     category: 'musculoskeletal' as const,
@@ -413,7 +383,7 @@ export const allServices: Service[] = [
   })),
   {
     slug: 'thyroid',
-    category: 'small-parts',
+    category: 'general',
     name: 'Thyroid ultrasound',
     description:
       'A focused diagnostic thyroid examination requested by your referring clinician.',
@@ -430,7 +400,7 @@ export const allServices: Service[] = [
   },
   {
     slug: 'soft-tissue',
-    category: 'small-parts',
+    category: 'general',
     name: 'Soft tissue / lump ultrasound',
     description:
       'An examination of a superficial lump or soft tissue area identified in your referral.',
@@ -447,7 +417,7 @@ export const allServices: Service[] = [
   },
   {
     slug: 'scrotal',
-    category: 'small-parts',
+    category: 'general',
     name: 'Scrotal ultrasound',
     description:
       'A diagnostic scrotal examination with a personal, professional approach. Contact reception with any questions before your visit.',
@@ -465,7 +435,7 @@ export const allServices: Service[] = [
   },
   {
     slug: 'breast',
-    category: 'small-parts',
+    category: 'general',
     name: 'Breast ultrasound',
     description:
       'A referred breast examination. Contact reception to confirm whether your referral is for one or both sides.',
@@ -549,14 +519,9 @@ export const lowestPrice = (predicate: (service: Service) => boolean) =>
   Math.min(...services.filter(predicate).map((s) => s.price));
 
 export const pricingGroups = (
-  [
-    'general',
-    'small-parts',
-    'musculoskeletal',
-    'vascular',
-    'pregnancy',
-  ] as CategorySlug[]
+  ['general', 'musculoskeletal', 'vascular', 'pregnancy'] as CategorySlug[]
 ).map((slug) => ({
+  slug,
   name: categories.find((c) => c.slug === slug)!.name,
   rows:
     slug === 'musculoskeletal'

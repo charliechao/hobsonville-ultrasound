@@ -198,3 +198,22 @@ No browser/visual review or production deployment was performed for the initial 
 - Header logo `srcset` lists 1x, 2x and 3x WebP candidates; displayed width is about 230px, so 2x screens now receive the 640px file.
 - The hand-drawn service icons were replaced by Healthicons `pregnant-outline`, `liver-outline`, `joints-outline` and `varicose-vein-outline`, chosen by the user from a 72px/28px comparison. They were checked in the homepage carousel and on the Services and Booking category links at desktop and mobile widths.
 - `npm run check`: 51 files, 0 errors, warnings or hints. `npm run build`: 48 pages. `npm run audit`: 48 pages, 2,601 local references and 94 image elements passed. No commit, push or deployment.
+
+## Second client revision, 9 November 2026
+
+- Local draft in a separate worktree based on current remote main; the shared checkout and its uncommitted changes are preserved. The scan dropdown layout was initially deferred and subsequently implemented after user approval, as recorded below.
+- The supplied referral PNG is embedded unchanged in a one-page A4 PDF. Per user direction it is used as supplied despite differences from the draft's service availability and hours. The clinician PACS registration link and access note appear directly after the referral form.
+- The new `/thank-you/` page is noindex and excluded from the sitemap. TidyCal's existing redirect points to the clinic domain and will reach this page after that domain serves the new site.
+- `npm run check`: 52 files, no errors or warnings. `npm run build`: 49 pages. `npm run audit`: 49 pages, 2,689 local references and 94 image elements passed.
+- Local browser checks of Home, Services, Pricing, Patient Information, Referrers, About and Thank You showed no horizontal overflow at 320px, 390px or 1440px. At 1440px and 390px the carousel advanced a complete card; category links and the typing animation were checked. About retains a text-only team section. The desktop hero and mobile About introduction were visually reviewed.
+
+### About page floral background
+
+- The same locally hosted floral photograph and pale overlay extend behind the About introduction, story, team and careers. A dark translucent teal treatment keeps the booking banner legible. The clinic reception image and team text remain intact.
+- Local browser checks at 320px, 390px and 1440px found no page-level horizontal overflow. The introduction and team sections were visually reviewed at desktop and mobile widths, and the existing gallery image was confirmed to load.
+
+### Services category booking layout
+
+- All four category pages provide native expandable scan summaries, preparation, price and existing booking or reception links, plus links to the original detailed scan pages. Existing urgent advice and maternity or ACC notes are retained. The general booking checklist is beside the scan list on desktop and follows it on smaller screens.
+- Local browser checks at 320px, 390px, 768px and 1440px opened the first scan using Enter for all four categories and checked the action destinations. A narrow-screen overflow in the Musculoskeletal heading was corrected. The Pregnancy accordion was also opened with JavaScript disabled and reduced motion; its detailed page loaded. No unavailable scans appeared in the category lists.
+- `npm run check`: 52 files, no errors or warnings. `npm run build`: 49 pages. `npm run audit`: 49 pages, 2,703 local references and 94 image elements passed. No live booking was made.

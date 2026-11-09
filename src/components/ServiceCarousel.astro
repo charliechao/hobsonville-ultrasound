@@ -24,19 +24,9 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
 >
   <div class="container section-heading">
     <div>
-      <p class="section-label">Our expertise</p>
-      <h2>
-        Ultrasound services,
-        <br />
-        close to home.
-      </h2>
+      <h2>Ultrasound services</h2>
     </div>
     <div class="carousel-heading-aside">
-      <p>
-        Find your scan. Know what to expect.
-        <br />
-        Feel ready for your appointment.
-      </p>
       <a href="/services/" class="text-link">
         All services <Icon name="arrow" size={20} />
       </a>
@@ -122,7 +112,7 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
           frame
         )
           return;
-        timer = window.setTimeout(advance, 3600);
+        timer = window.setTimeout(advance, 2700);
       };
       const advance = () => {
         timer = undefined;
@@ -132,7 +122,7 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
         let started = 0;
         const animate = (time: number) => {
           if (!started) started = time;
-          const progress = Math.min((time - started) / 1400, 1);
+          const progress = Math.min((time - started) / 1200, 1);
           const eased = progress * progress * (3 - 2 * progress);
           viewport.scrollLeft = from + (to - from) * eased;
           if (progress < 1) {

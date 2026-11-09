@@ -37,7 +37,13 @@ const descriptions: Record<(typeof categories)[number]['slug'], string> = {
     </p>
     <div class="service-category-nav-grid">
       {categories.map((category) => (
-        <a href={`#${category.slug}`}>
+        <a
+          href={
+            context === 'services'
+              ? `/services/${category.slug}/`
+              : `#${category.slug}`
+          }
+        >
           <span class="service-category-nav-icon">
             <Icon name={icons[category.slug]} size={27} />
           </span>

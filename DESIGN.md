@@ -128,3 +128,13 @@ The client does not want its actual examination room or machine shown. The user-
 - The header logo keeps the supplied artwork unchanged but now ships 1x, 2x and 3x WebP files (320, 640 and 960px) from the 1024px source, so high-density screens no longer upscale a 320px file. A sharper master file from the client would still help.
 - The four service category icons use the open-source Healthicons outline set (MIT): `pregnant-outline` for Pregnancy, `liver-outline` for General, `joints-outline` for Musculoskeletal and `varicose-vein-outline` for Vascular. The user chose them from a side-by-side comparison after rejecting hand-drawn versions. They are inlined at build time through `Icon.astro` and inherit the current text colour, so all service components share them with no extra requests or runtime JavaScript. Other interface icons keep the existing 24px line style.
 - The three-message hero slides and the careers copy are unchanged while the client supplies direction and wording.
+
+## Second client revision, 9 November 2026
+
+The homepage uses the supplied hero wording and a full-width, slightly faster service rail; three whole cards rest in view on desktop and one on mobile. The Services page restores the typing prompt and enlarges its category links, which open the existing category pages. Shared callouts use the shorter client wording without the large scan symbol.
+
+About uses the client's new story, Darshana Jivan's biography and registration list, and expressions-of-interest wording, with a restrained botanical background and no team portrait. Referrers links to the supplied PACS registration page and places its clinician-only note immediately below the new printable referral form. The PNG supplied by the user is embedded unchanged in an A4 PDF; it is a printable form rather than an interactive form. A noindex confirmation page is available at `/thank-you/`.
+
+The About page now carries a real floral photograph through the introduction, story, team and careers sections, with a pale warm overlay for legibility. The booking banner uses a deep teal overlay over the same backdrop. Header and footer retain the established brand treatment. The image is decorative and no team portrait is used.
+
+Category pages use native expandable examination panels with the existing scan description, preparation, price, urgent guidance where applicable, and booking or reception action. A separate link leads to each existing detailed scan page. A general booking checklist sits alongside the list on desktop and follows it on mobile. The accordions work without JavaScript and preserve the current available-service list and appointment destinations.

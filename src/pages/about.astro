@@ -10,163 +10,181 @@ import { images } from '../data/images';
   title="About us, formerly Body 2 Baby Ultrasound"
   description="Get to know Hobsonville Ultrasound, formerly Body 2 Baby Ultrasound. Experienced, approachable diagnostic care for our local Auckland community."
 >
-  <PageIntro
-    title="About Hobsonville Ultrasound"
-    eyebrow="Our clinic"
-    description="Formerly Body 2 Baby Ultrasound. The same independent practice and team, with a name that reflects our wider diagnostic care in Hobsonville."
-  >
-    <nav class="jump-links about-jump-links" aria-label="On this page">
-      <a href="#our-story">Our story</a>
-      <a href="#our-team">Our team</a>
-      <a href="#work-with-us">Work with us</a>
-    </nav>
-  </PageIntro>
-  <section
-    id="our-story"
-    class="section about-story"
-    aria-labelledby="about-story-title"
-  >
-    <div class="container">
-      <div class="about-story-grid">
-        <div>
-          <p class="section-label">About Hobsonville Ultrasound</p>
-          <h2 id="about-story-title">Our story</h2>
-          <p class="lead">
-            An independent diagnostic ultrasound practice, close to home.
-          </p>
-          <p>
-            We provide pregnancy, general, musculoskeletal and vascular
-            ultrasound for Hobsonville and the wider West Auckland community.
-            Our team combines detailed imaging with clear explanations and a
-            personal approach to each visit.
-          </p>
-          <p>
-            We changed our name from Body 2 Baby Ultrasound to better reflect
-            our location and the breadth of our work. Our ownership, team,
-            services and clinical focus remain the same.
-          </p>
-          <a class="text-link" href="/services/">
-            Explore our services
-          </a>
-        </div>
-        <div class="about-approach">
-          <h3>What to expect from us</h3>
-          <p>
-            We explain the examination, make room for your questions and send
-            diagnostic reports to your referring health professional once
-            reviewed.
-          </p>
-          <a href="/patient-information/">Plan your visit</a>
-        </div>
-      </div>
-      <div class="about-gallery" aria-labelledby="about-gallery-title">
-        <p class="section-label">Our practice</p>
-        <h3 id="about-gallery-title">A glimpse of your visit.</h3>
-        <p>See our reception and an ultrasound equipment image.</p>
-        <ImageSlider
-          id="clinic-gallery"
-          label="Browse reception and ultrasound equipment images"
-          slides={[
-            {
-              image: images.machine,
-              alt: 'Ultrasound machine in a softly lit room',
-              caption: 'Ultrasound equipment',
-            },
-            {
-              image: images.reception,
-              alt: 'Reception and current Hobsonville Ultrasound signage',
-              caption: 'Our reception',
-            },
-          ]}
-        />
-      </div>
-    </div>
-  </section>
-  <section
-    id="our-team"
-    class="section mist about-team"
-    aria-labelledby="about-team-title"
-  >
-    <div class="container">
-      <p class="section-label">The people behind the practice</p>
-      <h2 id="about-team-title">Our team</h2>
-      <div class="about-team-grid">
-        <div class="about-profile">
-          <div class="about-profile-copy">
-            <p class="about-profile-role">Sonographer</p>
-            <h3>Darshana</h3>
-            <p>
-              Darshana brings more than 12 years of sonography experience, with
-              South African training and work in public and private healthcare
-              in New Zealand and South Africa.
+  <div class="about-page">
+    <PageIntro
+      title="About Hobsonville Ultrasound"
+      eyebrow="Our clinic"
+      description="Formerly Body 2 Baby Ultrasound. The same independent practice and team, with a name that reflects our wider diagnostic care in Hobsonville."
+    >
+      <nav class="jump-links about-jump-links" aria-label="On this page">
+        <a href="#our-story">Our story</a>
+        <a href="#our-team">Our team</a>
+        <a href="#work-with-us">Work with us</a>
+      </nav>
+    </PageIntro>
+    <section
+      id="our-story"
+      class="section about-story"
+      aria-labelledby="about-story-title"
+    >
+      <div class="container">
+        <div class="about-story-grid">
+          <div>
+            <p class="section-label">About Hobsonville Ultrasound</p>
+            <h2 id="about-story-title">Our story</h2>
+            <p class="lead">
+              Hobsonville Ultrasound is a locally owned ultrasound practice
+              based in the heart of Hobsonville, Auckland.
             </p>
             <p>
-              At Hobsonville Ultrasound, Darshana focuses on detailed imaging
-              and helping patients feel informed and comfortable through their
-              visit.
+              Previously known as Body 2 Baby Ultrasound, we changed our name to
+              better reflect the wider range of ultrasound services we now
+              offer, beyond pregnancy scans.
             </p>
-            <div class="about-profile-recognition">
-              <h4>Professional accreditations</h4>
-              <ul>
-                <li>
-                  <strong>MRTB</strong> · Medical Radiation Technologist Board
-                </li>
-                <li>
-                  <strong>ASMIRT</strong> · Australian Society of Medical
-                  Imaging and Radiation Therapy
-                </li>
-                <li>
-                  <strong>ASAR</strong> · Australian Sonographer Accreditation
-                  Registry
-                </li>
-                <li>
-                  <strong>HPCSA</strong> · Health Professions Council of South
-                  Africa
-                </li>
-              </ul>
-            </div>
+            <p>
+              Although our name has changed, our commitment to providing
+              quality, personalised patient care remains the same.
+            </p>
+            <p>
+              We aim to make every visit comfortable and welcoming, while
+              providing professional ultrasound services to our local community.
+            </p>
+            <a class="text-link" href="/services/">
+              Explore our services
+            </a>
+          </div>
+          <div class="about-approach">
+            <h3>What to expect from us</h3>
+            <p>
+              We explain the examination, make room for your questions and send
+              diagnostic reports to your referring health professional once
+              reviewed.
+            </p>
+            <a href="/patient-information/">Plan your visit</a>
           </div>
         </div>
-        <div class="about-team-support">
-          <h3>Here to help you prepare</h3>
-          <p>
-            Our reception team can help with referrals, the right appointment,
-            preparation instructions and practical questions before your scan.
-          </p>
-          <a href="/contact/">Contact our team</a>
+        <div class="about-gallery" aria-labelledby="about-gallery-title">
+          <p class="section-label">Our practice</p>
+          <h3 id="about-gallery-title">A glimpse of your visit.</h3>
+          <p>See our reception and an ultrasound equipment image.</p>
+          <ImageSlider
+            id="clinic-gallery"
+            label="Browse reception and ultrasound equipment images"
+            slides={[
+              {
+                image: images.machine,
+                alt: 'Ultrasound machine in a softly lit room',
+                caption: 'Ultrasound equipment',
+              },
+              {
+                image: images.reception,
+                alt: 'Reception and current Hobsonville Ultrasound signage',
+                caption: 'Our reception',
+              },
+            ]}
+          />
         </div>
       </div>
-    </div>
-  </section>
-  <section
-    id="work-with-us"
-    class="section about-careers"
-    aria-labelledby="about-careers-title"
-  >
-    <div class="container">
-      <p class="section-label">Join the practice</p>
-      <h2 id="about-careers-title">Work at Hobsonville Ultrasound</h2>
-      <p class="lead">
-        We value people who care about clear, personal diagnostic care.
-      </p>
-      <div class="about-career-roles">
-        <div>
-          <h3>Sonographer</h3>
-          <p>Sonographers are central to the care we provide.</p>
-        </div>
-        <div>
-          <h3>Receptionist</h3>
-          <p>Our reception team helps patients prepare for their visit.</p>
+    </section>
+    <section
+      id="our-team"
+      class="section mist about-team"
+      aria-labelledby="about-team-title"
+    >
+      <div class="container">
+        <p class="section-label">The people behind the practice</p>
+        <h2 id="about-team-title">Our team</h2>
+        <div class="about-team-grid">
+          <div class="about-profile">
+            <div class="about-profile-copy">
+              <p class="about-profile-role">Director &amp; Lead Sonographer</p>
+              <h3>Darshana Jivan</h3>
+              <p>
+                Darshana began her career in medical imaging, qualifying in
+                Diagnostic Radiography in South Africa in 2008. She went on to
+                complete postgraduate studies in Diagnostic Medical Ultrasound
+                in 2013, further specialising in diagnostic imaging.
+              </p>
+              <p>
+                With over 12 years of clinical experience across both public and
+                private healthcare in South Africa and New Zealand, Darshana
+                brings a strong foundation of knowledge and expertise across a
+                wide range of ultrasound examinations. She is committed to
+                maintaining high professional standards and providing accurate
+                imaging with a personal, patient-centred approach.
+              </p>
+              <p>
+                Outside work, Darshana enjoys spending time outdoors with her
+                two beautiful daughters. Family is very important to her.
+              </p>
+              <div class="about-profile-recognition">
+                <h4>Professional registration &amp; accreditations</h4>
+                <ul>
+                  <li>
+                    <strong>MRTB</strong> · New Zealand
+                  </li>
+                  <li>
+                    <strong>ASMIRT</strong> · Australian Society of Medical
+                    Imaging and Radiation Therapy
+                  </li>
+                  <li>
+                    <strong>ASAR</strong> · Australian Sonographer Accreditation
+                    Registry
+                  </li>
+                  <li>
+                    <strong>HPCSA</strong> · South Africa
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="about-team-support">
+            <h3>Here to help you prepare</h3>
+            <p>
+              Our reception team can help with referrals, the right appointment,
+              preparation instructions and practical questions before your scan.
+            </p>
+            <a href="/contact/">Contact our team</a>
+          </div>
         </div>
       </div>
-      <p class="about-careers-note">
-        No roles are being advertised here at present. For general enquiries
-        about future opportunities, contact the clinic.
-      </p>
-      <a class="button button-outline" href="/contact/">
-        Contact the clinic
-      </a>
-    </div>
-  </section>
-  <Callout />
+    </section>
+    <section
+      id="work-with-us"
+      class="section about-careers"
+      aria-labelledby="about-careers-title"
+    >
+      <div class="container">
+        <p class="section-label">Join the practice</p>
+        <h2 id="about-careers-title">Join our team</h2>
+        <p class="lead">
+          We are always happy to hear from people who share our passion for
+          quality patient care.
+        </p>
+        <div class="about-career-roles">
+          <div>
+            <h3>Sonographer</h3>
+            <p>
+              We welcome expressions of interest from qualified sonographers.
+            </p>
+          </div>
+          <div>
+            <h3>Receptionist</h3>
+            <p>
+              We are interested in hearing from friendly, organised people with
+              good communication skills.
+            </p>
+          </div>
+        </div>
+        <p class="about-careers-note">
+          To express your interest, email your CV to{' '}
+          <a href="mailto:careers@hobus.co.nz">careers@hobus.co.nz</a>.
+        </p>
+        <a class="button button-outline" href="mailto:careers@hobus.co.nz">
+          Email your expression of interest
+        </a>
+      </div>
+    </section>
+    <Callout />
+  </div>
 </Layout>

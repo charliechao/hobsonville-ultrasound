@@ -56,3 +56,7 @@ The user authorised use of these files from `client/` for the current local draf
 ## Service category icons
 
 The Pregnancy, General, Musculoskeletal and Vascular icons are `pregnant-outline`, `liver-outline`, `joints-outline` and `varicose-vein-outline` from [Healthicons](https://github.com/resolvetosavelives/healthicons) (MIT License, Copyright (c) 2021 Resolve to Save Lives), taken from the Iconify mirror on 19 October 2026. The SVG markup is inlined in `src/components/Icon.astro`, with the licence notice kept in a source comment.
+
+## About page background, 9 November 2026
+
+`stock/about-floral.jpg` is a photograph by [Nadezhda Moryak on Pexels](https://www.pexels.com/photo/a-white-flowers-with-green-leaves-6206366/), downloaded at 1600px under the [Pexels licence](https://www.pexels.com/license/). It is a decorative backdrop, not a photograph of the clinic.

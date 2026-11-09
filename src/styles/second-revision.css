@@ -1,0 +1,220 @@
+.home-hero .home-hero-former {
+  margin-bottom: 1rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-hero .hero-introduction {
+  max-width: 54ch;
+  color: var(--white);
+  font-size: 1.18rem;
+}
+
+.service-carousel {
+  --service-stage-width: 100vw;
+}
+
+.service-carousel .service-viewport {
+  width: 100%;
+}
+
+.carousel-heading-aside > .text-link {
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--brand);
+  border-radius: 4px;
+  color: var(--brand);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.service-category-nav-grid a {
+  min-height: 175px;
+  padding: 1.4rem;
+}
+
+.callout .callout-inner {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.referrer-pacs {
+  background: var(--tint);
+}
+
+.referrer-pacs p {
+  max-width: 75ch;
+}
+
+.category-page-intro .category-hero > div {
+  min-width: 0;
+}
+
+.category-page-intro h1 {
+  overflow-wrap: anywhere;
+}
+
+.category-booking-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.75fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.category-examinations {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.category-exam {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  overflow: hidden;
+  scroll-margin-top: 9rem;
+}
+
+.category-exam summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 76px;
+  padding: 1.15rem 1.4rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--brand);
+}
+
+.category-exam summary::-webkit-details-marker {
+  display: none;
+}
+
+.category-exam summary:hover,
+.category-exam[open] summary {
+  background: var(--tint);
+}
+
+.category-exam summary:focus-visible {
+  outline: 3px solid var(--icon);
+  outline-offset: -4px;
+}
+
+.category-exam summary strong {
+  display: block;
+  font: 700 1.2rem / 1.35 var(--heading);
+}
+
+.category-exam-timing {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.category-exam-toggle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.category-exam-toggle::before {
+  content: '+';
+}
+
+.category-exam[open] .category-exam-toggle::before {
+  content: '−';
+}
+
+.category-exam-content {
+  padding: 1.4rem;
+}
+
+.category-exam-content h3 {
+  margin: 1.3rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.category-exam-content ul {
+  padding-left: 1.3rem;
+}
+
+.category-exam-content li {
+  margin-bottom: 0.5rem;
+}
+
+.category-exam-urgent {
+  padding: 1rem;
+  border-left: 4px solid var(--icon);
+  background: var(--tint);
+  font-weight: 600;
+}
+
+.category-exam-price {
+  margin-top: 1.2rem;
+}
+
+.category-exam-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.category-exam-actions .button,
+.category-exam-actions .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.category-booking-aside .sidebar-panel p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .category-booking-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-page {
+  background-color: #fbf8f1;
+  background-image:
+    linear-gradient(rgb(255 251 244 / 0.82), rgb(255 251 244 / 0.82)),
+    url('../../assets/images/stock/about-floral.jpg');
+  background-size:
+    auto,
+    max(100%, 950px) auto;
+  background-position:
+    center,
+    right -450px;
+  background-repeat: repeat, repeat-y;
+}
+
+.about-page .page-intro,
+.about-page .about-story,
+.about-page .about-team,
+.about-page .about-careers {
+  background: transparent;
+}
+
+.about-page .about-approach {
+  background: rgb(255 255 255 / 0.86);
+}
+
+.about-page .callout {
+  background: rgb(26 57 60 / 0.94);
+}
+
+@media (max-width: 620px) {
+  .service-category-nav-grid a {
+    min-height: 135px;
+  }
+}

@@ -5,6 +5,7 @@ import Photo from '../../components/Photo.astro';
 import Callout from '../../components/Callout.astro';
 import ServiceCategoryNav from '../../components/ServiceCategoryNav.astro';
 import Icon from '../../components/Icon.astro';
+import Typewriter from '../../components/Typewriter.astro';
 import { categories, services, serviceUrl } from '../../data/services';
 import { images } from '../../data/images';
 ---
@@ -13,10 +14,12 @@ import { images } from '../../data/images';
   title="Our ultrasound services"
   description="Explore pregnancy, general, musculoskeletal and vascular ultrasound at Hobsonville Ultrasound, including preparation and pricing."
 >
-  <PageIntro
-    title="Our ultrasound services"
-    eyebrow="Diagnostic care, close to home"
-  />
+  <PageIntro title="Ultrasound services" compact>
+    <Typewriter
+      prefix="Select your exam and book now:"
+      phrases={categories.map((category) => category.short)}
+    />
+  </PageIntro>
   <ServiceCategoryNav context="services" />
   {categories.map((category, i) => (
     <section id={category.slug} class={`section ${i % 2 ? 'white' : ''}`}>

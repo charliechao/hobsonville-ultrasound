@@ -1,28 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 ---
 
-<Layout
-  title="Thank you"
-  description="Thank you for choosing Hobsonville Ultrasound."
-  noindex
->
-  <section class="section">
-    <div class="container reading">
-      <p class="section-label">Hobsonville Ultrasound</p>
-      <h1>Thank you</h1>
-      <p class="lead">
-        Thank you for choosing Hobsonville Ultrasound for your imaging needs.
-      </p>
-      <p>Your booking has been successfully received.</p>
-      <p>
-        Kindly email your referral form to{' '}
-        <a href={`mailto:${site.email}`}>{site.email}</a>.
-      </p>
-      <a class="button booking-button" href="/services/">
-        Explore our services
-      </a>
+<Layout title="Thank you" description="Thank you for choosing Hobsonville Ultrasound." noindex>
+  <section class="section thank-you-page">
+    <div class="container thank-you-layout">
+      <div class="thank-you-intro">
+        <p class="eyebrow">Hobsonville Ultrasound</p>
+        <h1>Thank you.</h1>
+        <p class="lead">Your booking has been successfully received.</p>
+        <p>Thank you for choosing us for your ultrasound. We look forward to seeing you.</p>
+      </div>
+      <div class="thank-you-next">
+        <p class="eyebrow">Your next step</p>
+        <h2>Please send your referral.</h2>
+        <p>Email a copy or clear photo of your referral form to our reception team before your appointment.</p>
+        <a class="button booking-button" href={`mailto:${site.email}`} data-event="email_click">
+          <Icon name="mail" size={20} /> Email your referral
+        </a>
+        <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p>Questions? Call <a href={site.tel} data-event="phone_click">{site.phone}</a>.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section-tight mist">
+    <div class="container thank-you-links">
+      <h2>Prepare for your visit</h2>
+      <p>Find out how to prepare for your scan and what to bring with you.</p>
+      <a class="text-link" href="/patient-information/">Patient information <Icon name="arrow" size={20} /></a>
+      <a class="text-link" href="/services/">Explore services <Icon name="arrow" size={20} /></a>
     </div>
   </section>
 </Layout>
+
+<style>
+  .thank-you-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .thank-you-intro { max-width: 36rem; }
+  .thank-you-intro .eyebrow, .thank-you-next .eyebrow { color: var(--icon); }
+  .thank-you-next { padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--line); border-top: 4px solid var(--accent); background: var(--mist); }
+  .thank-you-next h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+  .thank-you-next .button { margin: 0.5rem 0; }
+  .thank-you-next p:last-child { margin-bottom: 0; }
+  .thank-you-links .text-link { margin: 0 0.5rem 0.5rem 0; }
+  @media (max-width: 767px) { .thank-you-layout { grid-template-columns: 1fr; } }
+</style>

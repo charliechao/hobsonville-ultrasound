@@ -83,8 +83,10 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
       let loopWidth = 0;
       let stepWidth = 0;
       let position = 0;
-      let visible = true;
-      let paused = false;
+      let visible = false;
+      let hovering = false;
+      let focused = false;
+      const isPaused = () => hovering || focused;
       const clearTimer = () => {
         if (timer) window.clearTimeout(timer);
         timer = undefined;
@@ -101,29 +103,30 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
         stepWidth = cards[1].offsetLeft - cards[0].offsetLeft;
         settle();
       };
-      const schedule = () => {
+      const schedule = (delay = 2700) => {
         clearTimer();
         if (
           !visible ||
-          paused ||
+          isPaused() ||
           document.hidden ||
           reduced.matches ||
           !stepWidth ||
           frame
         )
           return;
-        timer = window.setTimeout(advance, 2700);
+        timer = window.setTimeout(advance, delay);
       };
       const advance = () => {
         timer = undefined;
-        if (!visible || paused || document.hidden || reduced.matches) return;
+        if (!visible || isPaused() || document.hidden || reduced.matches)
+          return;
         const from = viewport.scrollLeft;
         const to = from + stepWidth;
         let started = 0;
         const animate = (time: number) => {
           if (!started) started = time;
           const progress = Math.min((time - started) / 1200, 1);
-          const eased = progress * progress * (3 - 2 * progress);
+          const eased = 1 - (1 - progress) ** 3;
           viewport.scrollLeft = from + (to - from) * eased;
           if (progress < 1) {
             frame = requestAnimationFrame(animate);
@@ -145,25 +148,23 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
           settle();
           return;
         }
-        schedule();
+        schedule(450);
       };
       const controller = new AbortController();
-      this.addEventListener(
+      track.addEventListener(
         'focusin',
         () => {
-          paused = true;
+          focused = true;
           clearTimer();
         },
         { signal: controller.signal },
       );
-      this.addEventListener(
+      track.addEventListener(
         'focusout',
         () => {
           requestAnimationFrame(() => {
-            if (!this.contains(document.activeElement)) {
-              paused = false;
-              schedule();
-            }
+            focused = track.contains(document.activeElement);
+            if (!focused) schedule(550);
           });
         },
         { signal: controller.signal },
@@ -177,8 +178,8 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
         (event) => {
           const card = cardFromEvent(event.target);
           const previousCard = cardFromEvent(event.relatedTarget);
-          if (card && card !== previousCard) {
-            paused = true;
+          if (event.pointerType === 'mouse' && card && card !== previousCard) {
+            hovering = true;
             clearTimer();
           }
         },
@@ -189,9 +190,9 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
         (event) => {
           const card = cardFromEvent(event.target);
           const nextCard = cardFromEvent(event.relatedTarget);
-          if (card && card !== nextCard) {
-            paused = false;
-            schedule();
+          if (event.pointerType === 'mouse' && card && !nextCard) {
+            hovering = false;
+            schedule(550);
           }
         },
         { signal: controller.signal },
@@ -207,7 +208,7 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
       observer.observe(this);
       const resize = new ResizeObserver(() => {
         measure();
-        schedule();
+        schedule(450);
       });
       resize.observe(track);
       this.cleanup = () => {
@@ -219,7 +220,7 @@ const details: Record<(typeof categories)[number]['slug'], string> = {
       };
       requestAnimationFrame(() => {
         measure();
-        schedule();
+        schedule(450);
       });
     }
     cleanup?: () => void;

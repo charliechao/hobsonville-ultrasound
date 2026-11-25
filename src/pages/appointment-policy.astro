@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
+import SupportPersonPolicy from '../components/SupportPersonPolicy.astro';
 import { site } from '../data/site';
 ---
 
@@ -37,7 +38,7 @@ import { site } from '../data/site';
       </p>
       <p>
         To cancel or reschedule, please call us or reply to your appointment
-        confirmation text. If we are unable to answer, you may leave a
+        confirmation email. If we are unable to answer, you may leave a
         voicemail.
       </p>
       <h2>Late arrivals</h2>
@@ -53,27 +54,7 @@ import { site } from '../data/site';
         other patients.
       </p>
       <h2>Support person and children</h2>
-      <p>
-        You are welcome to bring one adult support person to your scan. For
-        health, safety and privacy reasons, we prefer that children do not
-        attend appointments.
-      </p>
-      <p>If a child must attend:</p>
-      <ul>
-        <li>Only one child may attend.</li>
-        <li>
-          The child must be supervised by another adult who is not the patient.
-        </li>
-        <li>Children must not be left unattended in the waiting room.</li>
-        <li>
-          If the child becomes unsettled, the accompanying adult may be asked to
-          take them outside.
-        </li>
-        <li>
-          For longer or more detailed examinations, we strongly recommend making
-          other childcare arrangements where possible.
-        </li>
-      </ul>
+      <SupportPersonPolicy />
       <h2>Payment</h2>
       <p>
         Payment is required at the time of your scan. Any outstanding fees,

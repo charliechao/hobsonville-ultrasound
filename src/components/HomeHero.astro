@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Photo from './Photo.astro';
 import BookingButton from './BookingButton.astro';
+import { site } from '../data/site';
 import Icon from './Icon.astro';
 import heroExamination from '../../assets/images/client/hero_section (1).png';
 import heroWelcome from '../../assets/images/client/hero_section (2).png';
@@ -46,7 +47,13 @@ const slides = [
           Explore our services <Icon name="arrow" size={21} />
         </a>
       </div>
-      <a class="home-hero-address" href="/contact/">
+      <a
+        class="home-hero-address"
+        href={site.directions}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-event="directions_click"
+      >
         <Icon name="pin" size={22} />
         <span>
           <strong>Find us above Unichem Pharmacy at Woolworths</strong>
@@ -69,7 +76,8 @@ const slides = [
     <div class="home-hero-provider">
       <Image src={acc} alt="ACC" width={97} format="webp" loading="lazy" />
       <span>
-        Currently no patient charge for examinations with an ACC referral.
+        Currently no patient charge for musculoskeletal examinations with an ACC
+        referral.
       </span>
     </div>
     <div class="home-hero-provider">

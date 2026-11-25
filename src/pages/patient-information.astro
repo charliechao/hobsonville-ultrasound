@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Callout from '../components/Callout.astro';
+import SupportPersonPolicy from '../components/SupportPersonPolicy.astro';
 import { preparation, type Prep } from '../data/services';
 import { site } from '../data/site';
 
@@ -13,11 +14,12 @@ const prepGroups: { title: string; prep: Prep; extra?: string[] }[] = [
     title: 'Pregnancy (obstetric)',
     prep: 'dating',
     extra: [
+      'For an NT scan, follow the full-bladder instructions above.',
       'For other pregnancy scans, follow the instructions sent with your appointment. Ask reception if you have not received them.',
     ],
   },
   {
-    title: 'Musculoskeletal and nerves',
+    title: 'Musculoskeletal',
     prep: 'msk',
     extra: [
       'The same applies to other joints: wear clothing that lets you uncover the area easily.',
@@ -39,8 +41,10 @@ const prepGroups: { title: string; prep: Prep; extra?: string[] }[] = [
       <a href="#prepare">How to prepare</a>
       <a href="#bring">What to bring</a>
       <a href="#clinic">At the clinic</a>
+      <a href="#support">Support person and children</a>
       <a href="#after">After your scan</a>
       <a href="#payment">Payment</a>
+      <a href="/faq/">FAQ</a>
     </nav>
   </PageIntro>
   <section class="section">
@@ -91,17 +95,30 @@ const prepGroups: { title: string; prep: Prep; extra?: string[] }[] = [
         </ul>
         <h2 id="clinic">At the clinic</h2>
         <p>
-          Find us on Level 1 of the Hobson Centre, above Unichem Pharmacy at
-          Woolworths, 124 Hobsonville Road. Free visitor parking is available.
-          Please arrive on time; most examinations take approximately 20–30
-          minutes.
+          <a
+            href={site.directions}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-event="directions_click"
+          >
+            Find us on Level 1 of the Hobson Centre, above Unichem Pharmacy at
+            Woolworths, 124 Hobsonville Road.
+          </a>{' '}
+          Free visitor parking is available. Please arrive on time; most
+          examinations take approximately 20–30 minutes.
         </p>
         <p>
-          You may bring one adult support person. For everyone’s comfort and
-          privacy, please avoid bringing children where possible. If this is
-          unavoidable, one child may attend and must be supervised by another
-          responsible adult.
+          <a
+            href={site.directions}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-event="directions_click"
+          >
+            Open clinic location in Google Maps ↗
+          </a>
         </p>
+        <h2 id="support">Support person and children</h2>
+        <SupportPersonPolicy />
         <h2 id="after">After your scan</h2>
         <p>
           Your images are reviewed by our reporting radiologist, and the report

@@ -50,14 +50,30 @@ import { site } from '../data/site';
         <div class="notice">
           <p>
             To cancel or reschedule, call, leave a voicemail, or reply to your
-            confirmation text at least 24 hours before your appointment.
+            confirmation email at least 24 hours before your appointment.
           </p>
         </div>
       </div>
       <div>
-        <p class="eyebrow">Visit the clinic</p>
+        <p class="eyebrow">
+          <a
+            href={site.directions}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-event="directions_click"
+          >
+            Visit the clinic
+          </a>
+        </p>
         <h2 class="contact-location-title">
-          Find us at the Woolworths Shopping Centre.
+          <a
+            href={site.directions}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-event="directions_click"
+          >
+            Find us at the Woolworths Shopping Centre.
+          </a>
         </h2>
         <p class="contact-location-building">Hobson Centre · Level 1</p>
         <p>

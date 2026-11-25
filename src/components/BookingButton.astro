@@ -2,10 +2,11 @@
 import Icon from './Icon.astro';
 interface Props {
   class?: string;
+  href?: string;
 }
-const { class: className = '' } = Astro.props;
+const { class: className = '', href = '/book-online/' } = Astro.props;
 ---
 
-<a class={`button booking-button ${className}`} href="/book-online/">
+<a class={`button booking-button ${className}`} href={href}>
   <Icon name="calendar" size={21} /> <span>Book an Ultrasound</span>
 </a>

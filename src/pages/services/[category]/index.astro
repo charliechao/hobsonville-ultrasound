@@ -13,6 +13,7 @@ import {
   nonEligibleMaternityPrice,
 } from '../../../data/services';
 import { images } from '../../../data/images';
+import { site } from '../../../data/site';
 export function getStaticPaths() {
   return categories.map((category) => ({
     params: { category: category.slug },
@@ -70,6 +71,12 @@ const exams = services.filter((s) => s.category === category.slug);
               </summary>
               <div class="category-exam-content">
                 <p>{s.description}</p>
+                {s.slug === 'anatomy' && (
+                  <p>
+                    To book, call <a href={site.tel}>{site.phone}</a> or email{' '}
+                    <a href={`mailto:${site.email}`}>{site.email}</a>.
+                  </p>
+                )}
                 {s.urgentNote && (
                   <p class="category-exam-urgent">{s.urgentNote}</p>
                 )}

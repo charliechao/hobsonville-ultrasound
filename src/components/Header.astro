@@ -4,6 +4,7 @@ import { images } from '../data/images';
 import { site } from '../data/site';
 import Icon from './Icon.astro';
 import BookingButton from './BookingButton.astro';
+import { categories, services, serviceUrl } from '../data/services';
 const links = [
   ['Home', '/'],
   ['Services', '/services/'],
@@ -24,14 +25,29 @@ const current =
     : pathname;
 const isActive = (href: string) =>
   href === '/' ? current === '/' : current.startsWith(href);
+const patientLinks = [
+  ['How to prepare', '/patient-information/#prepare'],
+  ['What to bring', '/patient-information/#bring'],
+  ['At the clinic', '/patient-information/#clinic'],
+  ['Support person and children', '/patient-information/#support'],
+  ['After your scan', '/patient-information/#after'],
+  ['Payment and appointment changes', '/patient-information/#payment'],
+  ['Frequently asked questions', '/faq/'],
+];
 ---
 
 <div class="utility">
   <div class="container utility-inner">
-    <span>
+    <a
+      class="utility-location"
+      href={site.directions}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-event="directions_click"
+    >
       <Icon name="pin" size={15} /> Hobsonville, Auckland{' '}
       <span class="utility-parking">· Free visitor parking</span>
-    </span>
+    </a>
     <a href={site.tel} data-event="phone_click">
       <Icon name="phone" size={15} /> {site.phone}
     </a>
@@ -50,25 +66,153 @@ const isActive = (href: string) =>
       />
     </a>
     <nav class="desktop-nav" aria-label="Main navigation">
-      {links.map(([label, href]) => (
-        <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
-          {label}
-        </a>
-      ))}
+      {links.map(([label, href]) =>
+        href === '/services/' || href === '/patient-information/' ? (
+          <details class="nav-dropdown">
+            <summary aria-current={isActive(href) ? 'location' : undefined}>
+              {label}
+              <span class="nav-chevron" aria-hidden="true"></span>
+            </summary>
+            <div
+              class:list={[
+                'nav-dropdown-panel',
+                { 'nav-services-panel': href === '/services/' },
+              ]}
+            >
+              <a class="nav-dropdown-overview" href={href}>
+                All {href === '/services/' ? 'services' : 'patient information'}
+              </a>
+              {href === '/services/' ? (
+                <div class="nav-services-grid">
+                  {categories.map((category) => (
+                    <div class="nav-service-group">
+                      <a
+                        class="nav-category-link"
+                        href={`/services/${category.slug}/`}
+                      >
+                        {category.short}
+                      </a>
+                      {services
+                        .filter((service) => service.category === category.slug)
+                        .map((service) => (
+                          <a
+                            href={serviceUrl(service)}
+                            aria-current={
+                              current === serviceUrl(service)
+                                ? 'page'
+                                : undefined
+                            }
+                          >
+                            {service.name}
+                          </a>
+                        ))}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div class="nav-patient-links">
+                  {patientLinks.map(([name, url]) => (
+                    <a href={url}>{name}</a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </details>
+        ) : (
+          <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
+            {label}
+          </a>
+        ),
+      )}
     </nav>
-    <BookingButton class="header-book" />
+    <BookingButton
+      class="header-book"
+      href={current === '/' ? '/services/' : '/book-online/'}
+    />
     <details class="mobile-menu">
       <summary>
         Menu <Icon name="menu" size={20} />
       </summary>
       <nav aria-label="Mobile navigation">
-        {links.map(([label, href]) => (
-          <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
-            {label}
-          </a>
-        ))}
-        <BookingButton />
+        {links.map(([label, href]) =>
+          href === '/services/' || href === '/patient-information/' ? (
+            <details class="mobile-nav-group">
+              <summary>
+                {label}
+                <span aria-hidden="true">+</span>
+              </summary>
+              <div class="mobile-nav-submenu">
+                <a href={href}>
+                  All{' '}
+                  {href === '/services/' ? 'services' : 'patient information'}
+                </a>
+                {href === '/services/'
+                  ? categories.map((category) => (
+                      <details class="mobile-nav-category">
+                        <summary>
+                          {category.short}
+                          <span aria-hidden="true">+</span>
+                        </summary>
+                        <a href={`/services/${category.slug}/`}>
+                          All {category.short.toLowerCase()} scans
+                        </a>
+                        {services
+                          .filter(
+                            (service) => service.category === category.slug,
+                          )
+                          .map((service) => (
+                            <a href={serviceUrl(service)}>{service.name}</a>
+                          ))}
+                      </details>
+                    ))
+                  : patientLinks.map(([name, url]) => <a href={url}>{name}</a>)}
+              </div>
+            </details>
+          ) : (
+            <a href={href} aria-current={isActive(href) ? 'page' : undefined}>
+              {label}
+            </a>
+          ),
+        )}
+        <BookingButton
+          href={current === '/' ? '/services/' : '/book-online/'}
+        />
       </nav>
     </details>
   </div>
 </header>
+
+<script>
+  const dropdowns =
+    document.querySelectorAll<HTMLDetailsElement>('.nav-dropdown');
+  dropdowns.forEach((menu) => {
+    menu.addEventListener('pointerenter', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      dropdowns.forEach((other) => {
+        if (other !== menu) other.open = false;
+      });
+      menu.open = true;
+    });
+    menu.addEventListener('pointerleave', () => {
+      if (!menu.contains(document.activeElement)) menu.open = false;
+    });
+    menu.addEventListener('focusout', () => {
+      requestAnimationFrame(() => {
+        if (!menu.contains(document.activeElement) && !menu.matches(':hover'))
+          menu.open = false;
+      });
+    });
+  });
+  document
+    .querySelectorAll<HTMLDetailsElement>(
+      '.nav-dropdown, .mobile-nav-group, .mobile-nav-category',
+    )
+    .forEach((menu) => {
+      menu.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape' || !menu.open) return;
+        event.stopPropagation();
+        menu.open = false;
+        menu.querySelector<HTMLElement>('summary')?.focus();
+      });
+    });
+</script>

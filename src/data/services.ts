@@ -10,18 +10,18 @@ export const preparation: Record<Prep, string[]> = {
     'Take prescribed medication as normal. If you have diabetes, check preparation with your doctor.',
   ],
   pelvis: [
-    'A full bladder is required. Empty your bladder 1 hour before the appointment, then drink 3–4 glasses (approximately 800 mL) of water.',
+    'A full bladder is required. Empty your bladder 2 hours before the appointment, then drink 4–5 glasses of water 40–60 minutes before the scan.',
     'If your bladder is not full 10 minutes before the scan, drink more water. If it becomes uncomfortably full, you may release a small amount.',
     'Take prescribed medication as normal. If you have diabetes, check preparation with your doctor.',
   ],
   combined: [
     'Do not eat or drink for 6 hours before the appointment, except plain water.',
-    'A full bladder is also required. Empty your bladder 1 hour before the appointment, then drink 3–4 glasses (approximately 800 mL) of water.',
+    'A full bladder is also required. Empty your bladder 2 hours before the appointment, then drink 4–5 glasses of water 40–60 minutes before the scan.',
     'If your bladder is not full 10 minutes before the scan, drink more water. If uncomfortably full, you may release a small amount.',
     'Take prescribed medication as normal. If you have diabetes, check preparation with your doctor.',
   ],
   dating: [
-    'For a dating scan before 10 weeks, attend with a full bladder. Empty your bladder 1 hour before the appointment, then drink 3–4 glasses (approximately 800 mL) of water.',
+    'For a dating scan, attend with a full bladder. Empty your bladder 2 hours before the appointment, then drink 4–5 glasses of water 40–60 minutes before the scan.',
     'If your bladder is not full 10 minutes before the scan, drink more water. If uncomfortably full, you may release a small amount.',
     'Follow any individual instructions given with your appointment.',
   ],
@@ -193,7 +193,7 @@ export const allServices: Service[] = [
       'Confirming dates and the number of babies',
     ],
     price: 90,
-    prep: 'confirm',
+    prep: 'pelvis',
     booking: 'nuchal-translucency-ultrasound',
     pregnancyEligible: true,
     timing: 'First trimester · 12–13 weeks',
@@ -203,7 +203,7 @@ export const allServices: Service[] = [
     category: 'pregnancy',
     name: 'Anatomy ultrasound',
     description:
-      'The 20-week anatomy examination. Please contact reception to confirm current availability before making plans.',
+      'The 20-week anatomy examination. Contact reception to arrange your appointment.',
     assesses:
       'A detailed check of your baby’s development, including the brain, heart, spine, organs and limbs, as well as growth, the placenta and amniotic fluid.',
     reasons: ['The routine mid-pregnancy anatomy scan, around 18–20 weeks'],
@@ -246,8 +246,6 @@ export const allServices: Service[] = [
     price: 80,
     prep: 'none',
     pregnancyEligible: true,
-    urgentNote:
-      'If you notice reduced or changed baby movements, contact your midwife or maternity unit straight away. Do not wait for a scheduled scan.',
   },
   {
     slug: 'gender',
@@ -311,7 +309,7 @@ export const allServices: Service[] = [
   {
     slug: 'pelvic',
     category: 'general',
-    name: 'Pelvic ultrasound',
+    name: 'Female/Male pelvic ultrasound',
     description:
       'A diagnostic pelvic examination based on your referral. Our team will explain the examination and discuss any questions with you.',
     assesses:
@@ -384,7 +382,7 @@ export const allServices: Service[] = [
   {
     slug: 'thyroid',
     category: 'general',
-    name: 'Thyroid ultrasound',
+    name: 'Thyroid/Neck ultrasound',
     description:
       'A focused diagnostic thyroid examination requested by your referring clinician.',
     assesses:
@@ -397,6 +395,19 @@ export const allServices: Service[] = [
     price: 300,
     prep: 'none',
     booking: 'thyroid-or-salivary-gland-ultrasound',
+  },
+  {
+    slug: 'foreign-body',
+    category: 'general',
+    name: 'Foreign Body Ultrasound',
+    description:
+      'The use of ultrasound to detect foreign objects, such as fragments of glass, metal, or other materials, that may have become lodged or embedded in the body tissues.',
+    assesses:
+      'Ultrasound can help locate foreign objects, such as fragments of glass, metal or other materials, within body tissues.',
+    reasons: ['A suspected foreign object embedded in body tissues'],
+    price: 300,
+    priceNote: 'ACC $30',
+    prep: 'none',
   },
   {
     slug: 'soft-tissue',
@@ -545,6 +556,8 @@ export const pricingGroups = (
                 ['DVT — one limb', `$${s.price}`],
                 ['DVT — both limbs', '$450'],
               ];
+            if (s.slug === 'foreign-body')
+              return [[s.name, `$${s.price} · ACC $30`]];
             return [
               [
                 s.name,

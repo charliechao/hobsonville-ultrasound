@@ -2,15 +2,22 @@
 import BookingButton from './BookingButton.astro';
 import { site } from '../data/site';
 import Icon from './Icon.astro';
+import { Image } from 'astro:assets';
+import { images } from '../data/images';
 ---
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
       <a href="/" class="footer-name">
-        Hobsonville
-        <br />
-        Ultrasound<span class="brand-period">.</span>
+        <Image
+          src={images.logo}
+          alt="Hobsonville Ultrasound"
+          width={320}
+          densities={[1, 2, 3]}
+          format="webp"
+          loading="lazy"
+        />
       </a>
       <p>
         Experienced ultrasound care,
@@ -21,7 +28,14 @@ import Icon from './Icon.astro';
     </div>
     <div>
       <h2>
-        <Icon name="pin" size={20} /> Visit the clinic
+        <a
+          href={site.directions}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-event="directions_click"
+        >
+          <Icon name="pin" size={20} /> Visit the clinic
+        </a>
       </h2>
       <p>
         Hobson Centre, Level 1<br />

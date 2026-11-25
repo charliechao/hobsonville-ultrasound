@@ -65,7 +65,7 @@ export const faqs: Faq[] = [
   },
   {
     question: 'How much does an ultrasound cost?',
-    answer: `Prices are listed for every examination. Private examinations start from $${privateFrom}. Eligible NZ maternity scans start from $${pregnancyFrom}, or $30 with a Community Services Card. There is currently no patient charge for examinations with an ACC referral.`,
+    answer: `Prices are listed for every examination. Private examinations start from $${privateFrom}. Eligible NZ maternity scans start from $${pregnancyFrom}, or $30 with a Community Services Card. There is currently no patient charge for musculoskeletal examinations with an ACC referral.`,
     links: [{ label: 'View all prices', href: '/pricing/' }],
     home: true,
   },
@@ -96,7 +96,7 @@ export const faqs: Faq[] = [
   {
     question: 'Do you offer pregnancy ultrasound?',
     answer:
-      'Yes. We offer dating, nuchal translucency (NT), growth and wellbeing scans. View our pregnancy examinations for preparation and appointment information.',
+      'Yes. We offer dating, nuchal translucency (NT), anatomy, growth and wellbeing scans. View our pregnancy examinations for preparation and appointment information.',
     links: [{ label: 'Pregnancy ultrasound', href: '/services/pregnancy/' }],
     home: true,
   },
@@ -109,8 +109,8 @@ export const faqs: Faq[] = [
   {
     question: 'Can I bring someone with me?',
     answer:
-      'You may bring one adult support person. Please avoid bringing children where possible. If this is unavoidable, one child may attend with another responsible adult to supervise them.',
-    links: [{ label: 'Appointment policy', href: '/appointment-policy/' }],
+      'You may bring one adult support person. We prefer that children do not attend. If a child must attend, only one child may come and another adult who is not the patient must supervise them. Children must not be left unattended in the waiting room.',
+    links: [{ label: 'Support person and children policy', href: '/patient-information/#support' }],
   },
   {
     question: 'Can I get a copy of my images?',
@@ -120,7 +120,7 @@ export const faqs: Faq[] = [
   {
     question: 'What if I need to cancel?',
     answer:
-      'Please give at least 24 hours’ notice by phone, voicemail or by replying to your confirmation text. Late cancellations or missed appointments may incur a $50 fee. Emergencies are considered individually.',
+      'Please give at least 24 hours’ notice by phone, voicemail or by replying to your confirmation email. Late cancellations or missed appointments may incur a $50 fee. Emergencies are considered individually.',
     links: [{ label: 'Appointment policy', href: '/appointment-policy/' }],
   },
   {

@@ -19,7 +19,7 @@ const referrers = [
 const keyPrices = [
   ['abdominal', 'Abdominal'],
   ['shoulder', 'MSK, one region'],
-  ['thyroid', 'Thyroid'],
+  ['thyroid', 'Thyroid/Neck'],
   ['dvt', 'DVT, one limb'],
   ['dating', 'Pregnancy scans, eligible NZ maternity'],
 ].map(([slug, label]) => {
@@ -150,8 +150,8 @@ const { form } = site.referral;
           </table>
           <p class="small">
             Eligible pregnancy scans are $30 with a Community Services Card.
-            There is currently no patient charge for examinations with an ACC
-            referral.
+            There is currently no patient charge for musculoskeletal
+            examinations with an ACC referral.
           </p>
           <a class="button button-outline" href="/pricing/">
             View all prices <Icon name="arrow" size={20} />

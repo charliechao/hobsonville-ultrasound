@@ -2,21 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Callout from '../components/Callout.astro';
-import Icon from '../components/Icon.astro';
 import ServiceCategoryNav from '../components/ServiceCategoryNav.astro';
-import { categories, services, bookingUrl, serviceUrl } from '../data/services';
+import Icon from '../components/Icon.astro';
+import { categories } from '../data/services';
 ---
 
-<Layout
-  title="Book an ultrasound"
-  description="Choose your ultrasound examination and book through our existing TidyCal appointment system, or contact reception for help with your referral."
->
-  <PageIntro
-    title="Let’s find your appointment."
-    eyebrow="Book an ultrasound"
-    description="Choose the examination on your referral. Book online where available, or contact reception to arrange your scan."
-    compact
-  />
+<Layout title="Book an ultrasound" description="Choose your ultrasound category, check scan preparation and pricing, and book online or contact reception.">
+  <PageIntro title="Let’s find your appointment." eyebrow="Book an ultrasound" description="Choose a category, then open the examination on your referral to see preparation, pricing and booking options." compact />
   <ServiceCategoryNav context="booking" />
   <section class="section booking-page">
     <div class="container two-column">
@@ -24,35 +16,10 @@ import { categories, services, bookingUrl, serviceUrl } from '../data/services';
         {categories.map((category) => (
           <section id={category.slug} class="booking-group">
             <h2>{category.name}</h2>
-            {services
-              .filter((s) => s.category === category.slug)
-              .map((s) => (
-                <div class="booking-row">
-                  <div>
-                    <h3>{s.name}</h3>
-                    {s.timing && <p class="scan-timing">{s.timing}</p>}
-                    <p>
-                      <a href={serviceUrl(s)}>
-                        View scan details and preparation
-                      </a>
-                    </p>
-                  </div>
-                  <a
-                    class:list={[
-                      'button',
-                      'booking-row-action',
-                      { 'booking-row-enquiry': !s.booking },
-                    ]}
-                    href={bookingUrl(s)}
-                    target={s.booking ? '_blank' : undefined}
-                    rel={s.booking ? 'noopener noreferrer' : undefined}
-                    data-event={s.booking ? 'book_online_click' : undefined}
-                  >
-                    <Icon name={s.booking ? 'calendar' : 'mail'} size={20} />
-                    {s.booking ? 'Book online' : 'Contact reception'}
-                  </a>
-                </div>
-              ))}
+            <p>{category.intro}</p>
+            <a class="text-link" href={`/services/${category.slug}/`}>
+              Choose a {category.short.toLowerCase()} scan <Icon name="arrow" size={20} />
+            </a>
           </section>
         ))}
       </div>
@@ -63,17 +30,10 @@ import { categories, services, bookingUrl, serviceUrl } from '../data/services';
             <li>Have your referral ready for diagnostic scans.</li>
             <li>Check the preparation for your examination.</li>
             <li>Review the price and eligibility information.</li>
-            <li>
-              Contact reception if your scan is not listed or you need help
-              choosing.
-            </li>
+            <li>Contact reception if you need help choosing your scan.</li>
           </ul>
           <a href="/pricing/">View prices</a>
-          <p style="margin-top:1.2rem">
-            <a href="/appointment-policy/">
-              Cancellation and appointment policy
-            </a>
-          </p>
+          <p style="margin-top:1.2rem"><a href="/appointment-policy/">Cancellation and appointment policy</a></p>
         </div>
       </aside>
     </div>

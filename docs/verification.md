@@ -217,3 +217,31 @@ No browser/visual review or production deployment was performed for the initial 
 - All four category pages provide native expandable scan summaries, preparation, price and existing booking or reception links, plus links to the original detailed scan pages. Existing urgent advice and maternity or ACC notes are retained. The general booking checklist is beside the scan list on desktop and follows it on smaller screens.
 - Local browser checks at 320px, 390px, 768px and 1440px opened the first scan using Enter for all four categories and checked the action destinations. A narrow-screen overflow in the Musculoskeletal heading was corrected. The Pregnancy accordion was also opened with JavaScript disabled and reduced motion; its detailed page loaded. No unavailable scans appeared in the category lists.
 - `npm run check`: 52 files, no errors or warnings. `npm run build`: 49 pages. `npm run audit`: 49 pages, 2,703 local references and 94 image elements passed. No live booking was made.
+
+## Third revision: shared website elements, 24 November 2026
+
+- Local draft only. Services and Patient Information use native dropdown disclosures, including direct available-scan links, section links and overview links. The mobile menu uses nested disclosures. Hover, moving the pointer into each desktop menu, keyboard opening and Escape were checked; desktop and mobile disclosures also opened with JavaScript disabled.
+- The footer displays the supplied logo. Checked location links against the previously supplied Google Maps place and verified the patient information section link. Replaced confirmation-text wording with confirmation-email wording in shared FAQ data, Contact and Appointment Policy.
+- Desktop and mobile menu screenshots were reviewed. Home, Services, a Pregnancy category, Patient Information, Contact, About and Insights were checked at 320px, 390px, 768px, 1280px, 1401px and 1440px with no horizontal overflow after fixing a narrow-screen reveal transform. The 1280px header was adjusted to fit the dropdown controls.
+- Clinical service names, preparation and pricing revisions were not part of this shared-elements pass and remain for their page-specific stages.
+
+### Third revision: homepage
+
+- Local draft only. The desktop header and mobile-menu booking actions on the homepage link to `/services/`; the header on inner pages retains `/book-online/`. The homepage ACC statement now specifies musculoskeletal examinations. Existing homepage location actions continue to use the supplied Google Maps place.
+- On desktop the service rail began moving within one second after entering view and resumed within one second after the pointer left a card. After the current glide completed, a hovered card stayed paused for three seconds. Keyboard focus likewise held the rail for three seconds and continued to pause when the mouse left. Reduced-motion mode showed the static original cards without clones. The mobile homepage had no horizontal overflow at 390px.
+- `npm run check`: 52 files, 0 errors or warnings. `npm run build`: 49 pages. `npm run audit`: 49 pages, 5,837 local references and 143 image elements passed. The requested pricing-transition notice remains deferred.
+
+### Third revision: service category pages
+
+- Local draft: Anatomy is available via reception, with the user-confirmed maternity pricing rules. The full-bladder instructions use the user-selected 2-hour and 4–5-glass wording. The post-date notice was removed as explicitly directed. General examination names and Foreign Body pricing are shared across category, individual and pricing pages; unrelated unavailable scans remain excluded.
+- `npm run check`: 52 files, no errors or warnings. `npm run build`: 50 pages. `npm run audit`: 50 pages, 6,197 local references and 147 image elements passed. In the local browser, the Anatomy and Foreign Body panels displayed the requested prices and reception links; the renamed General examinations were present. The General page had no horizontal overflow at 390px and the browser's desktop viewport.
+
+### Third revision: individual scan pages
+
+- Checked local responses for Dating, NT, Anatomy, Wellbeing, Thyroid/Neck, Female/Male pelvic, Renal, Abdomen and Pelvis, Foreign Body, Knee and Shoulder. Confirmed the updated preparation and names, Anatomy contact links, Foreign Body prices, removal of the post-date notice and the shoulder-only clothing advice. Dating no longer says the instruction applies only before 10 weeks.
+- `npm run check`: 52 files, no errors or warnings. `npm run build`: 50 pages. `npm run audit`: 50 pages, 6,197 local references and 147 image elements passed. No booking was made.
+
+### Third revision: remaining pages
+
+- The booking route retains the four original category anchors and leads to the shared category accordions. Patient Information and Appointment Policy render the same complete support-person policy; the patient navigation, FAQ and preparation guidance link or refer to the updated information. The Thank You page remains noindex and has a direct referral email action. Referrers and pricing reflect the shared names and rates. The pricing-transition notice was intentionally left out.
+- `npm run check`: 53 files, no errors or warnings. `npm run build`: 50 pages. `npm run audit`: 50 pages, 6,273 local references and 147 image elements passed. Local checks covered booking anchors, prices, the policy text, FAQ, referral email and noindex. Eight affected pages were checked for horizontal overflow at 320, 390, 768 and 1440 pixels; none was found. The mobile Thank You page was visually reviewed. No booking or email was sent.

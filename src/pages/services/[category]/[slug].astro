@@ -120,7 +120,9 @@ const schema = {
             <Icon name="clock" size={27} /> Preparing for your scan
           </h2>
           <ul>
-            {preparation[service.prep].map((line) => (
+            {preparation[service.prep].filter((_, index) =>
+              service.prep !== 'msk' || service.slug === 'shoulder' || index === 0,
+            ).map((line) => (
               <li>{line}</li>
             ))}
           </ul>
@@ -165,6 +167,9 @@ const schema = {
             {priceSummary} Payment is due at your appointment.{' '}
             <a href="/pricing/">View all prices</a>
           </p>
+          {service.category === 'musculoskeletal' && (
+            <p>There is currently no patient charge for musculoskeletal examinations with an ACC referral.</p>
+          )}
           <h2>
             <Icon name="scan" size={27} /> Your results
           </h2>
@@ -204,7 +209,7 @@ const schema = {
               </p>
             )}
             {service.enquire && (
-              <p>Please check availability with reception before booking.</p>
+              <p>{service.slug === 'anatomy' ? 'Contact reception to arrange your appointment.' : 'Please check availability with reception before booking.'}</p>
             )}
             <a
               class:list={[
@@ -230,6 +235,13 @@ const schema = {
                 Call {site.phone}
               </a>
             </p>
+            {service.slug === 'anatomy' && (
+              <p>
+                <a href={`mailto:${site.email}`} data-event="email_click">
+                  Email {site.email} to book
+                </a>
+              </p>
+            )}
             <a class="small" href="/pricing/">
               View all pricing and payment details
             </a>

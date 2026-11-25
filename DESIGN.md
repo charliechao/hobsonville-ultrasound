@@ -138,3 +138,25 @@ About uses the client's new story, Darshana Jivan's biography and registration l
 The About page now carries a real floral photograph through the introduction, story, team and careers sections, with a pale warm overlay for legibility. The booking banner uses a deep teal overlay over the same backdrop. Header and footer retain the established brand treatment. The image is decorative and no team portrait is used.
 
 Category pages use native expandable examination panels with the existing scan description, preparation, price, urgent guidance where applicable, and booking or reception action. A separate link leads to each existing detailed scan page. A general booking checklist sits alongside the list on desktop and follows it on mobile. The accordions work without JavaScript and preserve the current available-service list and appointment destinations.
+
+## Third revision: shared website elements, 24 November 2026
+
+Services and Patient Information have expandable navigation menus. Desktop menus open on hover and with the keyboard; the mobile menu uses nested native disclosures. The Services menu draws its categories and individual scan links from the existing available-service data. Patient Information links to current sections and the FAQ page. Each menu includes a link to its overview page.
+
+The footer uses the unmodified supplied logo artwork. Clinic location links and map-pin controls open the specified Google Maps place. Secondary text actions share the outlined treatment, while primary booking buttons retain the gold style. Appointment cancellation guidance refers to the confirmation email. The service names, clinical preparation and pricing revisions belong to the later page-specific work.
+
+### Homepage
+
+The homepage header booking action, including its mobile-menu counterpart, opens Services so visitors can choose a category and use the scan accordions. Header booking actions on other pages retain the existing booking route. The service rail starts and resumes sooner, using a faster initial glide while still settling on complete cards. It pauses between advances when a card is hovered or keyboard-focused and respects reduced motion. The homepage ACC message specifies musculoskeletal examinations rather than implying all ACC examinations are free. A pricing-transition notice is intentionally deferred.
+
+### Service category pages
+
+The Pregnancy category includes Anatomy ultrasound at $90 for eligible maternity patients, with reception phone and email booking and the existing maternity eligibility rates. Dating and NT use the confirmed full-bladder instructions; shared full-bladder guidance is consistent across other examinations. The client-requested post-date notice has been removed. General includes the renamed Female/Male pelvic and Thyroid/Neck examinations and the new Foreign Body examination, priced at $300 or $30 with ACC. Shared scan data also updates the navigation, detailed scan pages and pricing table. Existing scan URLs and online booking destinations are preserved.
+
+### Individual scan pages
+
+The scan pages use the same service names, prices and preparation guidance as their category panels. Dating no longer limits the full-bladder instruction to before 10 weeks. Anatomy provides a direct email booking link alongside the reception phone link. Musculoskeletal pages show the ACC referral price guidance, and shoulder-specific clothing advice appears only on the shoulder page.
+
+### Remaining pages
+
+The existing booking URL and its category anchors lead patients to the same expandable service category pages used elsewhere. Patient Information and Appointment Policy share the client's support-person and children policy; the FAQ and navigation link to it. Patient Information includes the approved preparation, an NT instruction, the shortened Musculoskeletal heading and an FAQ link. The Thank You page highlights the referral email as the next step in a responsive teal, gold and mist layout and retains noindex. Referrer pricing uses the updated Thyroid/Neck name. The pricing-transition notice remains deferred at the user's request.
